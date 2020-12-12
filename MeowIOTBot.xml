@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MeowIOTBot</name>
+    </assembly>
+    <members>
+        <member name="T:MeowIOTBot.MeowClient">
+            <summary>
+            代理的类
+            <para>DelegateLibrary</para>
+            <code>
+            <para>用法如下 (Usage)</para>
+            <para>using var c = new MeowClient("url", "qq");</para>
+            <para>c.Connect();</para>
+            <para>c.OnServerAction += (s, e) =>{};</para>
+            </code>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.MeowClient.logFlag">
+            <summary>
+            日志记录标志
+            <para>decided if you want to Console.Write(log)</para>
+            <para>this can be dynamically</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.MeowClient.socket">
+            <summary>
+            Socket标
+            <para>SocketClientModded</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.MeowClient.qq">
+            <summary>
+            要连接的QQ
+            <para>the QQ you want to Connect</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            构造方法
+            <para>Constructor</para>
+            </summary>
+            <param name="logFlag">
+            是否打印日志
+            <para>if you want have an Log</para>
+            </param>
+            <param name="url">
+            ws的连接Client位置 例如 ws://localhost:10000
+            <para>Ws connection backend, like wise 'ws://localhost:10000'</para>
+            </param>
+            <param name="qq">
+            要监听的QQ
+            <para>the QQ you want to Listento</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient.ObjectEventHandler">
+            <summary>
+            服务器消息事件委托
+            <para>Serveric Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowClient.OnServerAction">
+            <summary>
+            服务器消息事件
+            <para>Serveric Message Event</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Connect">
+            <summary>
+            连接并获取Client对象
+            <para>Connect and get Object Client</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Close">
+            <summary>
+            强制关闭Socket连接
+            <para>force close Socket</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Dispose">
+            <summary>
+            关闭连接
+            <para>normally dispose</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.NetworkHelper.HttpHelper">
+            <summary>
+            封装的网络包发送类 (边缘接口)
+            <para>an Interface (actually class) for PostData to Server</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.HttpHelper.Url">
+            <summary>
+            连接节点
+            <para>Backend Point</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.HttpHelper.contentType">
+            <summary>
+            内容默认模式
+            <para>ContentType</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.HttpHelper.Header">
+            <summary>
+            Nginx 设置的头检测
+            <para>HeaderCheck for linux Nginx</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.NetworkHelper.HttpHelper.#ctor">
+            <summary>
+            继承用空参构造
+            <para>empty-constructor for inherit</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.NetworkHelper.HttpHelper.#ctor(System.String,System.String)">
+            <summary>
+            外源用构造
+            <para>constructor for Extern Usage</para>
+            </summary>
+            <param name="url">
+            要连接的URL
+            <para>the url you wanna to get or post</para>
+            </param>
+            <param name="contentType">
+            内容格式 (多数是Json)
+            <para>a Type to specific the content Usage : mostly is <code>"application/json"</code></para>
+            </param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MeowIOTBot.NetworkHelper.HttpHelper.#ctor(System.String,System.String,System.Net.WebHeaderCollection)" -->
+        <member name="M:MeowIOTBot.NetworkHelper.HttpHelper.HttpGet">
+            <summary>
+            使用连接获取操作
+            <para>using Connector to get</para>
+            </summary>
+            <returns>
+            获得的字符
+            <para>Strings for Response</para>
+            </returns>
+        </member>
+        <member name="M:MeowIOTBot.NetworkHelper.HttpHelper.HttpPost(System.String)">
+            <summary>
+            使用连接发送数据
+            <para>to Send a Post Connection</para>
+            </summary>
+            <param name="Content">
+            要发送的数据
+            <para>Content which waiting to send a POST Action</para>
+            </param>
+            <returns>
+            操作返回的字符
+            <para>Action return string</para>
+            </returns>
+        </member>
+        <member name="T:MeowIOTBot.NetworkHelper.PostHelper">
+            <summary>
+            一个用于和IOT交流的PostHelper
+            <para>an IOT PostHelper for user delegate</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.NetworkHelper.PostHelper.CallerUrl">
+            <summary>
+            POST的URL地址
+            <para>for POST URL Position</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.NetworkHelper.PostHelper.LoginQQ">
+            <summary>
+            登录QQ
+            <para>Login QQ number</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.NetworkHelper.PostHelper.Timeout">
+            <summary>
+            超时设置(可以进行动态设置,默认是10s)
+            <para>setting for Timeout (*which COULD be dynamic and init with 10s)</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.NetworkHelper.PostHelper.#ctor(System.String,System.String,System.Int32,System.Net.WebHeaderCollection,System.String)">
+            <summary>
+            构造函数
+            <para>Constructor</para>
+            </summary>
+            <param name="callerUrl">
+            POST的URL地址
+            <para>for POST URL Position</para>
+            </param>
+            <param name="loginQQ">
+            登录QQ
+            <para>Login QQ number</para>
+            </param>
+            <param name="timeout">
+            超时设置(可以进行动态设置,默认是10s)
+            <para>setting for Timeout (*which COULD be dynamic and init with 10s)</para>
+            </param>
+            <param name="ua">
+            Nginx 设置的头检测
+            <para>HeaderCheck for linux Nginx</para>
+            </param>
+            <param name="ContentType">
+            内容默认模式
+            <para>ContentType</para>
+            </param>
+        </member>
+        <member name="M:MeowIOTBot.NetworkHelper.PostHelper.PrepareSend(MeowIOTBot.NetworkHelper.PostHelper.UrlType)">
+            <summary>
+            准备一个发送请求
+            <para>to prepare an Oredr to Server</para>
+            <para>支持连写用法 见下文 (*Support for Connection Write see below) </para>
+            <code>
+            await new PostHelper(para).PrepareSend(para).PostData(para);
+            </code>
+            </summary>
+            <param name="urlType">
+            要发送的"指令"类型
+            <para>the Command Type you want to Send</para>
+            </param>
+            <param name="Nginx">
+            是否使用了Nginx
+            <para>is Nginx Enabled</para>
+            </param>
+            <returns>
+            一个PostHelper实例
+            <para>a PostHelper Object</para>
+            </returns>
+        </member>
+        <member name="T:MeowIOTBot.NetworkHelper.PostHelper.UrlType">
+            <summary>
+            发送的类型(不断更新)
+            <para>an type that used to PostAction </para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.ClusterInfo">
+            <summary>
+            集群信息
+            <para>get clusterinfo</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.Announce">
+            <summary>
+            发送群公告
+            <para>send Announce</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.init">
+            <summary>
+            自动初始化 (大多数时间服务器已经自动初始化了)
+            <para>initialization (Most of the time is Done by server backend)</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.SendMsg">
+            <summary>
+            发送信息(弃用)
+            <para>send Message which is already Obselete</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.SendMsgV2">
+            <summary>
+            新的发送信息接口
+            <para>Version2 SendMsg</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GetQQUserList">
+            <summary>
+            获取好友列表
+            <para>get FirendList</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.SearchGroup">
+            <summary>
+            搜索QQ群
+            <para>search for QQGroup</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GetGroupList">
+            <summary>
+            获取群列表
+            <para>Get Group List</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GetGroupUserList">
+            <summary>
+            获取群成员列表
+            <para>get GroupUserList</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.QQZan">
+            <summary>
+            发送赞
+            <para>send QQZan to someone</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.AddQQUser">
+            <summary>
+            添加好友
+            <para>Add some QQUser</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.RevokeMsg">
+            <summary>
+            撤回信息
+            <para>Revoke Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.ShutUp">
+            <summary>
+            禁言(接口调用注意)
+            <para>Shut somebody (Please note This COULD have othe affect)</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.LogOut">
+            <summary>
+            登出
+            <para>LogOut Some QQ</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.DealFriend">
+            <summary>
+            处理好友请求
+            <para>Dealwith Friend Request</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.AnswerInviteGroup">
+            <summary>
+            处理群请求
+            <para>returnAnswerFromInvite</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.ModifyGroupCard">
+            <summary>
+            更改群名片
+            <para>to Change GroupID</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.SetUniqueTitle">
+            <summary>
+            设置头衔
+            <para>set Title</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GetUserInfo">
+            <summary>
+            获取任意用户信息
+            <para>getUserInfo</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GetUserCook">
+            <summary>
+            获取当前用户相关Cookie
+            <para>get User Cookies</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.GroupMgr">
+            <summary>
+            加群退群管理
+            <para>add in or leave Group Control</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.ObjectEvent.ObjectEventArgs">
+            <summary>
+            对象化事件
+            <para>Objective EventArgs</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.ObjectEvent.ObjectEventArgs.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            构造函数
+            <para>Constructor</para>
+            </summary>
+            <param name="raw">
+            服务端的原始数据 (需要Newtonsoft解析)
+            <para>Serveric raw data(which needs Newtonsoft Expeclict)</para>
+            </param>
+        </member>
+        <member name="P:MeowIOTBot.ObjectEvent.ObjectEventArgs.Data">
+            <summary>
+            重写的服务端Data字段
+            <para>Rewrite Data from Server</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.ObjectEvent.ObjectEventArgs.CurrentQQ">
+            <summary>
+            重写的CurrentQQ字段
+            <para>Rewrite 'currentQQ' from server</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.ObjectEvent.ObjectEventArgs.WebConnId">
+            <summary>
+            重写的WebConnId字段
+            <para>Rewrite 'WebConnId' from server</para>
+            </summary>
+        </member>
+    </members>
+</doc>

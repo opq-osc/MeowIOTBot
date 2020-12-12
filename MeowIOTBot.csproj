@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>DavidSciMeow</Authors>
+    <Company>Electronicute</Company>
+    <Product>MeowIOTBot</Product>
+    <Description>this is a delegate library for IOTQQBot Invertor which you can use this to connect your IOT backend Easily and this is full Codec comment Inline</Description>
+    <Copyright>2020 @ Electronicute</Copyright>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>null</RepositoryUrl>
+    <RepositoryType>null</RepositoryType>
+    <PackageReleaseNotes>first time release, comment in Chs and Eng other version Language please notify
+usage:
+            using var recv = new MeowClient(wsurl, qq);
+            var send = new PostHelper(callerurl, qq);
+            recv.Connect().OnServerAction += async (s, e) =&gt;
+            {
+                await send.PrepareSend(PostHelper.UrlType.SendMsgV2).HttpPost(data);
+            };</PackageReleaseNotes>
+    <NeutralLanguage>zh</NeutralLanguage>
+    <PackageProjectUrl>null</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\David\source\repos\MeowIOTBot\MeowIOTBot.xml</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MeowSocketLibraryForRinkoIOT" Version="1.0.1" />
+  </ItemGroup>
+
+</Project>
