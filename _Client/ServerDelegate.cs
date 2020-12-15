@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MeowIOTBot
+namespace MeowIOTBot.Basex
 {
     /// <summary>
     /// 带有详细回调的端
     /// <para>Client With a detailed delegate</para>
     /// </summary>
-    public sealed partial class MeowServiceClient : MeowClient
+    public sealed class MeowServiceClient : MeowClient
     {
         /// <summary>
         /// 一个自枚举的多功能解释端
@@ -39,52 +39,60 @@ namespace MeowIOTBot
             meow.OnGroupMsgs += (s, e) => { };
             meow.OnEventMsgs += (s, e) => { };
             meow.OnFriendMsgs += (s, e) => {
-                QQRecieveMessage prop;
-                {
-                    prop = new QQRecieveMessage(
-                        MessageIOType.Friend,
-                        new IOBody(
-                            e.Data["FromUin"].ToObject<long>(),
-                            e.Data["ToUin"].ToObject<long>(), 
-                            null, 
-                            null, 
-                            null
-                            ),
-                        new MsgProperty(
-                            null,
-                            e.Data["MsgSeq"].ToObject<long?>(), 
-                            null, 
-                            null,
-                            e.Data["RedBaginfo"].ToString(), 
-                            null
-                            ),
-                        e.CurrentQQ
-                    );
-                }
+
+                #region 报头 -- Info Head -- 
+                var prop = new QQRecieveMessage(
+                    MessageIOType.Friend,
+                    new IOBody(
+                        e.Data["FromUin"].ToObject<long>(),
+                        e.Data["ToUin"].ToObject<long>(), 
+                        null, 
+                        null, 
+                        null
+                        ),
+                    new MsgProperty(
+                        null,
+                        e.Data["MsgSeq"].ToObject<long?>(), 
+                        null, 
+                        null,
+                        e.Data["RedBaginfo"].ToString(), 
+                        null
+                        ),
+                    e.CurrentQQ
+                );
+                #endregion
+                //文本
+                var content = e.Data["Content"].ToString();
+
                 switch (e.Data["MsgType"].ToString())
                 {
-                    case "TextMsg": {
-                            var msg = new TextMessage(e.Data["Content"].ToString());
-                            _OnFriendTextMsg.Invoke(prop, msg);
-                        } break;
+                    case "TextMsg": 
+                        {
+                            var msg = new TextMessage(content);
+                            _FriendTextMsgRecieve.Invoke(prop, msg);
+                        } 
+                        break;
+                    case "PicMsg":
+                        {
+                            var msg = new PicMsg(content);
+                        }
+                        break;
                 };
             };
             return this;
         }
-    }
-    public partial class MeowServiceClient : MeowClient
-    {
+
         /// <summary>
         /// 好友消息委托
         /// <para>Serveric [OnFriend] Message Delegate</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void EventFriendTextMessageEventHandler(object sender, TextMessage e);
+        public delegate void EventFriendTextMessageEventHandler(QQRecieveMessage sender, TextMessage e);
         /// <summary>
         /// 好友消息事件
         /// <para>Serveric [OnFriend] Message Event</para>
         /// </summary>
-        public event EventFriendTextMessageEventHandler _OnFriendTextMsg;
+        public event EventFriendTextMessageEventHandler _FriendTextMsgRecieve;
     }
 }

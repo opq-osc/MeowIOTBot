@@ -4,7 +4,7 @@ using SocketLibrary;
 using SocketLibrary.Messages;
 using System;
 
-namespace MeowIOTBot
+namespace MeowIOTBot.Basex
 {
     /// <summary>
     /// 代理的类

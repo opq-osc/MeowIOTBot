@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace MeowIOTBot.NetworkHelper
 {
     /// <summary>
-    /// 封装的网络包发送类 (边缘接口)
+    /// 特征网络包发送类
     /// <para>an Interface (actually class) for PostData to Server</para>
     /// </summary>
     public class HttpHelper

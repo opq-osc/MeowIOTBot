@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,84 +11,80 @@ namespace MeowIOTBot.NetworkHelper
     /// 一个用于和IOT交流的PostHelper
     /// <para>an IOT PostHelper for user delegate</para>
     /// </summary>
-    public class PostHelper : HttpHelper
+    public class PostHelper
     {
         /// <summary>
         /// POST的URL地址
         /// <para>for POST URL Position</para>
         /// </summary>
-        public string CallerUrl { get; }
+        public static string CallerUrl { get; set; }
         /// <summary>
         /// 登录QQ
         /// <para>Login QQ number</para>
         /// </summary>
-        public string LoginQQ { get; }
+        public static string LoginQQ { get; set; }
         /// <summary>
         /// 超时设置(可以进行动态设置,默认是10s)
         /// <para>setting for Timeout (*which COULD be dynamic and init with 10s)</para>
         /// </summary>
-        public int Timeout { get; set; } = 10;
+        public static int Timeout { get; set; } = 10;
         /// <summary>
-        /// 构造函数
-        /// <para>Constructor</para>
+        /// 一个Nginx的Header识别标
+        /// <para>A nginx Header Surffix</para>
         /// </summary>
-        /// <param name="callerUrl">
-        /// POST的URL地址
-        /// <para>for POST URL Position</para>
-        /// </param>
-        /// <param name="loginQQ">
-        /// 登录QQ
-        /// <para>Login QQ number</para>
-        /// </param>
-        /// <param name="timeout">
-        /// 超时设置(可以进行动态设置,默认是10s)
-        /// <para>setting for Timeout (*which COULD be dynamic and init with 10s)</para>
-        /// </param>
-        /// <param name="ua">
-        /// Nginx 设置的头检测
-        /// <para>HeaderCheck for linux Nginx</para>
-        /// </param>
-        /// <param name="ContentType">
-        /// 内容默认模式
-        /// <para>ContentType</para>
-        /// </param>
-        public PostHelper(
-            string callerUrl, string loginQQ, int timeout = 10,
-            WebHeaderCollection ua = null, string ContentType = "application/json")
-        {
-            Header = ua;
-            contentType = ContentType;
-            CallerUrl = callerUrl;
-            LoginQQ = loginQQ;
-            Timeout = timeout;
-        }
+        public static WebHeaderCollection Header { get; set; }
         /// <summary>
-        /// 准备一个发送请求
-        /// <para>to prepare an Oredr to Server</para>
-        /// <para>支持连写用法 见下文 (*Support for Connection Write see below) </para>
-        /// <code>
-        /// await new PostHelper(para).PrepareSend(para).PostData(para);
-        /// </code>
+        /// 准备并且发送一个请求
+        /// <para>Prepare And Send Async (PASA)</para>
         /// </summary>
         /// <param name="urlType">
         /// 要发送的"指令"类型
         /// <para>the Command Type you want to Send</para>
         /// </param>
-        /// <returns>
-        /// 一个PostHelper实例
-        /// <para>a PostHelper Object</para>
-        /// </returns>
-        public PostHelper PrepareSend(UrlType urlType)
-        {
-            Url = urlType switch
+        /// <param name="Json">
+        /// 要发送的Json集
+        /// </param>
+        /// <returns></returns>
+        public static async Task<string> PASA(UrlType urlType, string Json) {
+            try
             {
-                UrlType.init => throw (new Exception("Initialization is done by Server!")),
-                UrlType.ClusterInfo => $"{CallerUrl}/v1/ClusterInfo",
-                UrlType.Announce => $"{CallerUrl}/v1/Group/Announce?qq={LoginQQ}",
-                //UrlType.SendMsgV2 => $"{CallerUrl}/v2/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
-                _ => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
-            };
-            return this;
+                var Url = urlType switch
+                {
+                    UrlType.init => throw (new Exception("Initialization is done by Server!")),
+                    UrlType.ClusterInfo => $"{CallerUrl}/v1/ClusterInfo",
+                    UrlType.Announce => $"{CallerUrl}/v1/Group/Announce?qq={LoginQQ}",
+                    //UrlType.SendMsgV2 => $"{CallerUrl}/v2/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
+                    _ => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
+                };
+
+                string result;
+                HttpWebRequest req = (HttpWebRequest)WebRequest.Create(Url);
+                req.Method = "POST";
+                req.ContentType = "application/json";
+                req.Headers = Header;
+                byte[] data = Encoding.UTF8.GetBytes(Json);//把字符串转换为字节
+
+                req.ContentLength = data.Length; //请求长度
+
+                using (Stream reqStream = req.GetRequestStream()) //获取
+                {
+                    reqStream.Write(data, 0, data.Length);//向当前流中写入字节
+                    reqStream.Close(); //关闭当前流
+                }
+                HttpWebResponse resp = (HttpWebResponse)await req.GetResponseAsync(); //响应结果
+                Stream stream = resp.GetResponseStream();
+                //获取响应内容
+                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                {
+                    result = reader.ReadToEnd();
+                }
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
         }
         /// <summary>
         /// 发送的类型(不断更新)

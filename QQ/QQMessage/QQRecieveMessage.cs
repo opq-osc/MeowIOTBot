@@ -276,7 +276,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
     /// at类型的消息 * 仅群聊
     /// <para>Type Of the message [@] * maybe only in Group Chat</para>
     /// </summary>
-    public abstract class AtTextMessage : Message
+    public class AtTextMessage : Message
     {
         /// <summary>
         /// 文本信息
@@ -284,12 +284,87 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         public string Content;
         /// <summary>
-        /// 构造的
+        /// 构造at类型的消息 * 仅群聊
+        /// <para>Type Of the message [@] * maybe only in Group Chat</para>
         /// </summary>
-        /// <param name="content"></param>
+        /// <param name="content">
+        /// 文本信息
+        /// <para>Text Message</para>
+        /// </param>
         public AtTextMessage(string content) : base(content)
         {
             Content = Regex.Replace(content, @"@[\S]+[\s]", "").Trim();
+        }
+    }
+    /// <summary>
+    /// 图片类信息
+    /// <para>Picture Message</para>
+    /// </summary>
+    public class PicMsg : Message
+    {
+        /// <summary>
+        /// 用户图片列表
+        /// <para>User Picture List Item</para>
+        /// </summary>
+        public class Pic
+        {
+            /// <summary>
+            /// 文件的Md5
+            /// </summary>
+            public string FileMd5 { get; }
+            /// <summary>
+            /// 文件的大小
+            /// </summary>
+            public string FileSize { get; }
+            /// <summary>
+            /// 文件的路径
+            /// </summary>
+            public string Path { get; }
+            /// <summary>
+            /// 文件的URL
+            /// </summary>
+            public string Url { get; }
+            /// <summary>
+            /// 文件的提示符号
+            /// </summary>
+            public string Tips { get; }
+            /// <summary>
+            /// 构造一个好友图片
+            /// </summary>
+            /// <param name="fileMd5"></param>
+            /// <param name="fileSize"></param>
+            /// <param name="path"></param>
+            /// <param name="url"></param>
+            /// <param name="tips"></param>
+            public Pic(string fileMd5, string fileSize, string path, string url, string tips)
+            {
+                FileMd5 = fileMd5;
+                FileSize = fileSize;
+                Path = path;
+                Url = url;
+                Tips = tips;
+            }
+        }
+        /// <summary>
+        /// 好友图片列表
+        /// </summary>
+        public List<Pic> FriendPic;
+        /// <summary>
+        /// 好友图片的内容
+        /// </summary>
+        public string Content;
+        /// <summary>
+        /// 构造好友图片
+        /// </summary>
+        /// <param name="content"></param>
+        public PicMsg(string content) : base(content)
+        {
+            var jo = JObject.Parse(content.Replace("\\\"", "\""));
+
+            jo.TryGetValue("Content", out var _Content);
+            this.Content = _Content.ToString();
+
+            Console.WriteLine();
         }
     }
 }
