@@ -73,10 +73,6 @@ namespace MeowIOTBot.NetworkHelper
         /// 要发送的"指令"类型
         /// <para>the Command Type you want to Send</para>
         /// </param>
-        /// <param name="Nginx">
-        /// 是否使用了Nginx
-        /// <para>is Nginx Enabled</para>
-        /// </param>
         /// <returns>
         /// 一个PostHelper实例
         /// <para>a PostHelper Object</para>

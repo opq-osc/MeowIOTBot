@@ -12,16 +12,16 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>null</RepositoryUrl>
     <RepositoryType>null</RepositoryType>
-    <PackageReleaseNotes>first time release, comment in Chs and Eng other version Language please notify
-usage:
-            using var recv = new MeowClient(wsurl, qq);
-            var send = new PostHelper(callerurl, qq);
-            recv.Connect().OnServerAction += async (s, e) =&gt;
-            {
-                await send.PrepareSend(PostHelper.UrlType.SendMsgV2).HttpPost(data);
-            };</PackageReleaseNotes>
+    <PackageReleaseNotes>this is a update version that split the service message and (kept) the basic input 
+add delegate like [OnGroup] [OnFriend] [OnEvent] and [OnServerAction] *(which is all three type)
+further action is on planned.</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>null</PackageProjectUrl>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>false</DelaySign>
+    <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

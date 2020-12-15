@@ -4,85 +4,23 @@
         <name>MeowIOTBot</name>
     </assembly>
     <members>
-        <member name="T:MeowIOTBot.MeowClient">
-            <summary>
-            代理的类
-            <para>DelegateLibrary</para>
-            <code>
-            <para>用法如下 (Usage)</para>
-            <para>using var c = new MeowClient("url", "qq");</para>
-            <para>c.Connect();</para>
-            <para>c.OnServerAction += (s, e) =>{};</para>
-            </code>
-            </summary>
-        </member>
-        <member name="P:MeowIOTBot.MeowClient.logFlag">
+        <member name="P:MeowIOTBot.MeowCreateClient.logFlag">
             <summary>
             日志记录标志
             <para>decided if you want to Console.Write(log)</para>
             <para>this can be dynamically</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.MeowClient.socket">
-            <summary>
-            Socket标
-            <para>SocketClientModded</para>
-            </summary>
-        </member>
-        <member name="P:MeowIOTBot.MeowClient.qq">
+        <member name="P:MeowIOTBot.MeowCreateClient.qq">
             <summary>
             要连接的QQ
             <para>the QQ you want to Connect</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.MeowClient.#ctor(System.String,System.String,System.Boolean)">
+        <member name="P:MeowIOTBot.MeowCreateClient.url">
             <summary>
-            构造方法
-            <para>Constructor</para>
-            </summary>
-            <param name="logFlag">
-            是否打印日志
-            <para>if you want have an Log</para>
-            </param>
-            <param name="url">
-            ws的连接Client位置 例如 ws://localhost:10000
-            <para>Ws connection backend, like wise 'ws://localhost:10000'</para>
-            </param>
-            <param name="qq">
-            要监听的QQ
-            <para>the QQ you want to Listento</para>
-            </param>
-        </member>
-        <member name="T:MeowIOTBot.MeowClient.ObjectEventHandler">
-            <summary>
-            服务器消息事件委托
-            <para>Serveric Message Delegate</para>
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="E:MeowIOTBot.MeowClient.OnServerAction">
-            <summary>
-            服务器消息事件
-            <para>Serveric Message Event</para>
-            </summary>
-        </member>
-        <member name="M:MeowIOTBot.MeowClient.Connect">
-            <summary>
-            连接并获取Client对象
-            <para>Connect and get Object Client</para>
-            </summary>
-        </member>
-        <member name="M:MeowIOTBot.MeowClient.Close">
-            <summary>
-            强制关闭Socket连接
-            <para>force close Socket</para>
-            </summary>
-        </member>
-        <member name="M:MeowIOTBot.MeowClient.Dispose">
-            <summary>
-            关闭连接
-            <para>normally dispose</para>
+            后端的处理位置
+            <para>Backends Url</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.NetworkHelper.HttpHelper">
@@ -216,10 +154,6 @@
             <param name="urlType">
             要发送的"指令"类型
             <para>the Command Type you want to Send</para>
-            </param>
-            <param name="Nginx">
-            是否使用了Nginx
-            <para>is Nginx Enabled</para>
             </param>
             <returns>
             一个PostHelper实例
@@ -390,6 +324,465 @@
             <summary>
             重写的WebConnId字段
             <para>Rewrite 'WebConnId' from server</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage">
+            <summary>
+            QQ信息的包装类
+            <para>QQ Message's Class</para>
+            </summary>
+            <typeparam name="MsgBody">
+            信息类型
+            <para>Message Type</para>
+            </typeparam>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage.CurrentQQ">
+            <summary>
+            当前服务端登录的QQ
+            <para>Service login QQ</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage.IOType">
+            <summary>
+            IO类型
+            <para>IO inner type</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage.IOBody">
+            <summary>
+            信息的IO附加参数
+            <para>Message IO Body Parameter</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage.Property">
+            <summary>
+            信息的公用属性类
+            <para>Message Public Properties</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage.#ctor(MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType,MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody,MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty,System.Int64)">
+            <summary>
+            构造参数
+            <para>Constructor</para>
+            </summary>
+            <param name="iOType">
+            IO类型
+            <para>IO inner type</para>
+            </param>
+            <param name="iOBody">
+            信息的IO附加参数
+            <para>Message IO Body Parameter</para>
+            </param>
+            <param name="body">
+            消息体
+            <para>Message Body</para>
+            </param>
+            <param name="property">
+            信息的公用属性类
+            <para>Message Public Properties</para>
+            </param>
+            <param name="currentQQ">
+            当前服务端登录的QQ
+            <para>Service login QQ</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody">
+            <summary>
+            信息的IO附加参数
+            <para>Message IO Body Parameter</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.MsgFromQQ">
+            <summary>
+            发信人
+            <para>sender QQ</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.MsgRecvQQ">
+            <summary>
+            收信人
+            <para>Reciever QQ</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.NickName">
+            <summary>
+            发信人昵称
+            <para>Sender NickName</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.FromGroupId">
+            <summary>
+            群聊的群号 (可空类型)
+            <para>GroupChat's Group Number (as it can be Nullable)</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.FromGroupName">
+            <summary>
+            群聊的群名 (可空类型)
+            <para>GroupChat's Group Name (as it can be Nullable)</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody.#ctor(System.Int64,System.Int64,System.String,System.Nullable{System.Int64},System.String)">
+            <summary>
+            构造
+            <para>Constructor</para>
+            </summary>
+            <param name="msgFromQQ">
+            发信人
+            <para>sender QQ</para>
+            </param>
+            <param name="msgRecvQQ">
+            收信人
+            <para>Reciever QQ</para>
+            </param>
+            <param name="nickName">
+            发信人昵称
+            <para>Sender NickName</para>
+            </param>
+            <param name="fromGroupId">
+            群聊的群号 (可空类型)
+            <para>GroupChat's Group Number (as it can be Nullable)</para> 
+            </param>
+            <param name="fromGroupName">
+            群聊的群名 (可空类型)
+            <para>GroupChat's Group Name (as it can be Nullable)</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty">
+            <summary>
+            信息的公用属性类
+            <para>Message Public Properties</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.C2cCmd">
+            <summary>
+            附属的第二指令
+            <para>Parametered Second Command Value</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.MsgTime">
+            <summary>
+            消息的验证时间
+            <para>Message Sender Time</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.MsgSeq">
+            <summary>
+            消息序列号
+            <para>Message Sequence Data</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.MsgRandom">
+            <summary>
+            消息的随机码
+            <para>Message Random Identify Data</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.MsgUid">
+            <summary>
+            消息的UID
+            <para>Message Uid</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.RedBagInfo">
+            <summary>
+            红包信息
+            <para>Redbag Infomation string</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty.#ctor(System.String,System.Nullable{System.Int64},System.Nullable{System.Int64},System.Nullable{System.Int64},System.String,System.Nullable{System.Int64})">
+            <summary>
+            构造方法
+            <para>Constructor</para>
+            </summary>
+            <param name="c2cCmd">
+            附属的第二指令
+            <para>Parametered Second Command Value</para>
+            </param>
+            <param name="msgSeq">
+            消息序列号
+            <para>Message Sequence Data</para>
+            </param>
+            <param name="msgRandom">
+            消息的随机码
+            <para>Message Random Identify Data</para> 
+            </param>
+            <param name="msgUid">
+            消息的UID
+            <para>Message Uid</para> 
+            </param>
+            <param name="redBagInfo">
+            红包信息
+            <para>Redbag Infomation string</para>
+            </param>
+            <param name="msgTime">
+            消息的验证时间
+            <para>Message Sender Time</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType">
+            <summary>
+            消息类型
+            <para>MessageIOType</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType.Friend">
+            <summary>
+            好友信息
+            <para>Friend Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType.Group">
+            <summary>
+            群信息
+            <para>Group Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType.TempSession">
+            <summary>
+            临时信息
+            <para>Temp Session Message</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.Message">
+            <summary>
+            基础消息格式(抽象继承模式)
+            <para>Message Type * Abstract Inherit Mode</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.Message.RawContent">
+            <summary>
+            信息的基础内容
+            <para>Message Basic Content</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.Message.#ctor(System.String)">
+            <summary>
+            构造基础的信息模型
+            <para>Constructor</para>
+            </summary>
+            <param name="content">
+            信息的基础内容
+            <para>Message Basic Content</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage">
+            <summary>
+            信息类型 : 文本信息
+            <para>Message Type : Text Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage.Content">
+            <summary>
+            文本信息
+            <para>Text Message</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage.#ctor(System.String)">
+            <summary>
+            构造信息类型 : 文本信息
+            <para>Message Constructor Type : Text Message</para>
+            </summary>
+            <param name="content">
+            信息的基础内容
+            <para>Message Basic Content</para>
+            </param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage">
+            <summary>
+            at类型的消息 * 仅群聊
+            <para>Type Of the message [@] * maybe only in Group Chat</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.Content">
+            <summary>
+            文本信息
+            <para>Text Message</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.#ctor(System.String)">
+            <summary>
+            构造的
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient">
+            <summary>
+            代理的类
+            <para>DelegateLibrary</para>
+            <code>
+            <para>用法如下 (Usage)</para>
+            <para>using var c = new MeowClient("url", "qq");</para>
+            <para>c.Connect();</para>
+            <para>c.OnServerAction += (s, e) =>{};</para>
+            </code>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.MeowClient.logFlag">
+            <summary>
+            日志记录标志
+            <para>decided if you want to Console.Write(log)</para>
+            <para>this can be dynamically</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.MeowClient.qq">
+            <summary>
+            要连接的QQ
+            <para>the QQ you want to Connect</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.MeowClient.url">
+            <summary>
+            后端的处理位置
+            <para>Backends Url</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.MeowClient.socket">
+            <summary>
+            socket标
+            <para>socket Client Variable</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            构造代理的类
+            <para>DelegateLibrary</para>
+            <code>
+            <para>用法如下 (Usage)</para>
+            <para>using var c = new MeowClient("url", "qq");</para>
+            <para>c.Connect();</para>
+            <para>c.OnServerAction += (s, e) =>{};</para>
+            </code>
+            </summary>
+            <param name="logFlag">
+            是否打印日志
+            <para>if you want have an Log</para>
+            </param>
+            <param name="url">
+            ws的连接Client位置 例如 ws://localhost:10000
+            <para>Ws connection backend, like wise 'ws://localhost:10000'</para>
+            </param>
+            <param name="qq">
+            要监听的QQ
+            <para>the QQ you want to Listento</para>
+            </param>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Connect">
+            <summary>
+            连接并获取最原始的Client对象
+            <para>Connect and get Object Client</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Close">
+            <summary>
+            强制关闭Socket连接
+            <para>force close Socket</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowClient.Dispose">
+            <summary>
+            关闭连接
+            <para>normally dispose</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient.ObjectEventHandler">
+            <summary>
+            服务器的总体事件集合委托
+            <para>On Server Message delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowClient.OnServerAction">
+            <summary>
+            服务器的总体事件集合
+            <para>On Server Message</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient.GroupMessageEventHandler">
+            <summary>
+            服务器群聊消息事件委托
+            <para>Serveric [OnGroup] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowClient.OnGroupMsgs">
+            <summary>
+            服务器群聊消息事件
+            <para>Serveric [OnGroup] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient.FriendMessageEventHandler">
+            <summary>
+            服务器好友消息事件委托
+            <para>Serveric [OnFriend] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowClient.OnFriendMsgs">
+            <summary>
+            服务器好友消息事件
+            <para>Serveric [OnFriend] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowClient.EventMessageEventHandler">
+            <summary>
+            服务器事件消息事件委托
+            <para>Serveric [OnEvent] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowClient.OnEventMsgs">
+            <summary>
+            服务器事件消息事件
+            <para>Serveric [OnEvent] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient">
+            <summary>
+            带有详细回调的端
+            <para>Client With a detailed delegate</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowServiceClient.#ctor(System.String,System.String,System.Boolean)">
+            <summary>
+            一个自枚举的多功能解释端
+            <para>an Enumable multi-purpose explain backend</para>
+            </summary>
+            <param name="url">
+            你的IOT连接位置
+            <para>IOT backend</para>
+            </param>
+            <param name="qq">
+            你的QQ号
+            <para>qq number</para>
+            </param>
+            <param name="logflag">
+            一个是否记录日志的标志(默认关闭)
+            <para>an entryset that if you want a log * (usually not)</para>
+            </param>
+        </member>
+        <member name="M:MeowIOTBot.MeowServiceClient.CreateClient">
+            <summary>
+            一个自枚举的多功能解释端
+            <para>an Enumable multi-purpose explain backend</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendTextMessageEventHandler">
+            <summary>
+            好友消息委托
+            <para>Serveric [OnFriend] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.MeowServiceClient._OnFriendDetailedMsg">
+            <summary>
+            好友消息事件
+            <para>Serveric [OnFriend] Message Event</para>
             </summary>
         </member>
     </members>
