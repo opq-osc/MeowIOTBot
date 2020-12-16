@@ -12,8 +12,7 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>null</RepositoryUrl>
     <RepositoryType>null</RepositoryType>
-    <PackageReleaseNotes>this is a update version that split the service message and (kept) the basic input 
-add delegate like [OnGroup] [OnFriend] [OnEvent] and [OnServerAction] *(which is all three type)
+    <PackageReleaseNotes>this is a update version which made huge defact
 further action is on planned.</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>null</PackageProjectUrl>

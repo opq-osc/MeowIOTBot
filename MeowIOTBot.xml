@@ -4,37 +4,9 @@
         <name>MeowIOTBot</name>
     </assembly>
     <members>
-        <member name="T:MeowIOTBot.MeowIOTClient">
-            <summary>
-            完全代理的IOT端
-            <para>Full stack delegated IOT Backend</para>
-            </summary>
-        </member>
-        <member name="F:MeowIOTBot.MeowIOTClient.socket">
-            <summary>
-            Socket标志
-            <para>Socket Sign</para>
-            </summary>
-        </member>
-        <member name="M:MeowIOTBot.MeowIOTClient.Connect(System.String,System.String,System.Boolean)">
-            <summary>
-            连接IOT后端
-            <para>Connect IOT Backend</para>
-            </summary>
-            <returns>
-            返回一个标准代理端
-            <para>returns an IOT Standard Backend</para>
-            </returns>
-        </member>
-        <member name="M:MeowIOTBot.MeowIOTClient.Dispose">
-            <summary>
-            默认的关闭操作 (为了使用using)
-            <para>default close opearion [as can use 'using']</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.NetworkHelper.HttpHelper">
             <summary>
-            封装的网络包发送类 (边缘接口)
+            特征网络包发送类
             <para>an Interface (actually class) for PostData to Server</para>
             </summary>
         </member>
@@ -319,215 +291,265 @@
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.code">
             <summary>
             代码
+            <para>Code parameter</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.data">
             <summary>
             存储区
+            <para>it's which the DataStores</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQPerson.datax">
             <summary>
             储存用的类
+            <para>the Class that holds the Data</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.avatarUrl">
             <summary>
             头像地址
+            <para>the avator url</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.bitmap">
             <summary>
             头像bitmapHash
+            <para>avator Bitmap Hash</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.commfrd">
             <summary>
             保留字段
+            <para>some unidentify parameter</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.friendship">
             <summary>
             朋友状态
+            <para>a statues that indecate friendship-status</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.from">
             <summary>
             所在地
+            <para>a parameter that indecate where its from(s)</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.gender">
             <summary>
             性别
+            <para>Friend Gender</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.intimacyScore">
             <summary>
             活跃值
+            <para>it's a value that indecate your friends QQ using frequency</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.isFriend">
             <summary>
             是否为朋友
+            <para>it's a parameter that if you two is friend</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.logolabel">
             <summary>
-            
+            --
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.nickname">
             <summary>
             昵称
+            <para>a parameter that shows your friend nickname</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.qqvip">
             <summary>
             腾讯会员等级状态
+            <para>is a parameter shows that your friend is a VIP</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.qzone">
             <summary>
             是否开通QQ空间
+            <para>is a parameter that indecate is your friend have QZone Opened</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.realname">
             <summary>
             真名
+            <para>it's a parameter that indecate your friend's Realname</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.smartname">
             <summary>
             其他名
+            <para>it's a parameter that indecate is you friend is having some other nick name</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.datax.uin">
             <summary>
             QQ号
+            <para>user QQ number</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.default">
             <summary>
             默认行为
+            <para>in progress default function place</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.message">
             <summary>
             返回的查询信息
+            <para>the result of query</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQPerson.subcode">
             <summary>
             子串码
+            <para>the next gen of query code</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQPerson.GetPerson(System.Int64)">
             <summary>
             获取实例的边界操作
+            <para>is the operation thath getPersondetailed Message</para>
             </summary>
-            <param name="qqid">QQ号</param>
+            <param name="qqid">
+            QQ号
+            <para>Query QQ number</para>
+            </param>
             <returns></returns>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQRequestResponse">
             <summary>
             QQ请求应答
+            <para>QQ Action response</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQRequestResponse.DealFriend(System.Int32)">
             <summary>
             处理好友添加
+            <para>dealing with Friend Addition</para>
             </summary>
-            <param name="Action"> 1忽略 2同意 3拒绝 </param>
+            <param name="Action"> 
+            1忽略 2同意 3拒绝 
+            <para>for a type [int] 1:Ignore 2:Agree 3:Reject</para>
+            </param>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQRequestResponse.DealGroupInvite(System.Int32)">
             <summary>
             处理群添加
+            <para>dealing with Group Addition</para>
             </summary>
-            <param name="Action"> 11 同意 14 忽略 21 不同意 </param>
+            <param name="Action"> 
+            11 同意 14 忽略 21 不同意 
+            <para>for a type [int] 11:Agree 14:Ignore 21:Reject</para>
+            </param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQMe">
             <summary>
             本账号操作
+            <para>any parameter that in selfsponse</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQMe.GetUserCook">
             <summary>
             获取在线账号的Cookie
+            <para>get the cookie of this Online(ed) QQ</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQFriendList">
             <summary>
             好友列表
+            <para>get QQFriendList</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend">
             <summary>
             QQ好友类
+            <para>this is a class that indecate your QQ friend</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.FriendUin">
             <summary>
             好友QQ号
+            <para>QQ number</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.IsRemark">
             <summary>
             是否含有备注
+            <para>if you get this Friend Remarked</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.NickName">
             <summary>
             好友昵称
+            <para>your friends nickname</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.OnlineStr">
             <summary>
             在线字符串
+            <para>this is a string that your friend that Online choose</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.Remark">
             <summary>
             昵称
+            <para>this is the remark that you may give to your </para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend.status">
             <summary>
             状态
+            <para>status</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.Friend_count">
             <summary>
             总好友数
+            <para>the full count of your friend</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.FriendList">
             <summary>
             被调用好友数
+            <para>the sequence that your Indecator have</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.GetfriendCount">
             <summary>
             获取好友数
+            <para>the friend that is using to get</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.StartIndex">
             <summary>
             列表读取
+            <para>List Start Index</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQFriendList.Totoal_friend_count">
             <summary>
             好友总数
+            <para>Total Friend Count</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQFriendList._FriendList">
             <summary>
             内部保存的SET集
+            <para>the Set of all indecator</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendList._FriendList.Add(MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend)">
             <summary>
             添加集方法
+            <para>Set Insert Function</para>
             </summary>
             <param name="n">项目</param>
             <returns></returns>
@@ -535,18 +557,21 @@
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendList._FriendList.getInstance">
             <summary>
             获取集
+            <para>get Set</para>
             </summary>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendList.GetFriendList">
             <summary>
             获取好友列表
+            <para>get the QQFriend List</para>
             </summary>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendList.GetListOnIndex(System.Int32)">
             <summary>
             获取列表的部分集合
+            <para>get partial list of indecator SETs</para>
             </summary>
             <param name="Index"></param>
             <returns></returns>
@@ -554,207 +579,258 @@
         <member name="T:MeowIOTBot.QQ.QQFunc.QQFriendRequest">
             <summary>
             QQ好友请求(管理类)方法
+            <para>QQ Friend Request Response Method</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendRequest.__FriendManage(System.Int32,System.Int64,System.Int64,System.String)">
             <summary>
             加好友总方法
+            <para>Add Friend Method Set</para>
             </summary>
-            <param name="AddFromSource">2011 空间 2020 QQ搜索 2004 群组 2005 讨论组</param>
-            <param name="FromGroupID">来源为2004时需要添加</param>
-            <param name="Content">内容</param>
-            <param name="AddUserUid">要添加的用户</param>
+            <param name="AddFromSource">
+            2011 空间 2020 QQ搜索 2004 群组 2005 讨论组
+            <para>2011:Qzone 2020:QQSearch 2004:FromSpecificGroup 2005:FromDiscussGroup</para>
+            </param>
+            <param name="FromGroupID">
+            来源为2004时需要添加
+            <para>the Group you both in, which is needed for Type 2004</para>
+            </param>
+            <param name="Content">
+            内容
+            <para>the content that you want to present</para>
+            </param>
+            <param name="AddUserUid">
+            要添加的用户
+            <para>the User that you want to install with</para>
+            </param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendRequest.AddFriendFromQQSearch(System.Int64,System.String)">
             <summary>
             从QQ搜索加人
+            <para>Add Friend From QQSearch</para>
             </summary>
-            <param name="AddUserUid">要加的人QQ号</param>
-            <param name="Content">验证内容</param>
+            <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
+            <param name="Content">验证内容<para>the specific content you want to send</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendRequest.AddFriendFromQQSpace(System.Int64,System.String)">
             <summary>
             从QQ空间加人
             </summary>
-            <param name="AddUserUid">被加人的QQ</param>
-            <param name="Content">验证内容</param>
+            <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
+            <param name="Content">验证内容<para>the specific content you want to send</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendRequest.AddFriendFromQQGroup(System.Int64,System.Int64,System.String)">
             <summary>
             从群内加人
             </summary>
-            <param name="AddUserUid">被加人的QQ</param>
-            <param name="fromGroupId">同在的群号</param>
-            <param name="Content">验证内容</param>
+            <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
+            <param name="Content">验证内容<para>the specific content you want to send</para></param>
+            <param name="fromGroupId">同在的群号<para>the specific group that you two both in</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQFriendRequest.AddFriendFromQQDisGroup(System.Int64,System.String)">
             <summary>
             从讨论组加人 (暂时弃用)
             </summary>
-            <param name="AddUserUid">被加人的QQ</param>
-            <param name="Content">验证内容</param>
+            <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
+            <param name="Content">验证内容<para>the specific content you want to send</para></param>
             <returns></returns>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupUserList">
             <summary>
             群成员列表
+            <para>QQ GroupMember List</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQFunc.QQGroupUserList.Count">
             <summary>
             列对象
+            <para>the counter object int</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQFunc.QQGroupUserList.GroupUin">
             <summary>
             群号
+            <para>the GroupNumber</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQFunc.QQGroupUserList.LastUin">
             <summary>
             保留
+            <para>the Programme running need this parameter to check</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQFunc.QQGroupUserList.MemberList">
             <summary>
             群成员列表
+            <para>GroupMember List</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser">
             <summary>
             QQ群成员
+            <para>the Group member Class</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.Age">
             <summary>
             年龄
+            <para>Age</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.FaceId">
             <summary>
             未知属性
+            <para>some undefined code</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.Gender">
             <summary>
             性别
+            <para>gender</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.GroupCard">
             <summary>
             群昵称
+            <para>his group nickname</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.JoinGroupTime">
             <summary>
             加入群时间
+            <para>the Time that join in Group</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.MemberEmail">
             <summary>
             展示的群成员邮箱
+            <para>The Email it choose</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.MemberUin">
             <summary>
             群成员QQ号
+            <para>the QQ number that Member have</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.NickName">
             <summary>
             群成员昵称
+            <para>the nickname of the specific (QQNickName)</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.RankDes">
+            <summary>
+            --
+            <para>--</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.Remark">
             <summary>
             我的群成员备注
+            <para>the Group Remark</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.SpeakTime">
             <summary>
             群成员最后一次发言时间
+            <para>the last time he talkin</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.Status">
             <summary>
-            群成员当前状态 
-            10在线 | 20隐身
+            群成员当前状态 10在线 | 20隐身
+            <para>the Status the Mebemer [int] for 10 is online and 20 is offline</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser.GroupAdmin">
             <summary>
             是否群管理员 0F/1T
+            <para>a parameter indecate this memeber is GroupAdministrator</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupUserList.GetGroupUserList(System.Int64)">
             <summary>
             获取一个QQGroupUserList对象
+            <para>get a QQGroupList Obejct</para>
             </summary>
-            <param name="i">一个请求对象</param>
-            <returns>返回一个标准的QQGroupUserList对象</returns>
+            <param name="GroupId">一个请求对象<para>The QQ Group Request Object</para></param>
+            <returns>返回一个标准的QQGroupUserList对象<para>returns a standarded QQGroupList Object</para></returns>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupList">
             <summary>
             群列表
+            <para>Group List class</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.Count">
             <summary>
             群总数
+            <para>the Total Count of QQGroup</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.NextToken">
             <summary>
             拉取列表的下一个操作验证
+            <para>the next gen of the Programme</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.TroopList">
             <summary>
             拉取的部分群列表
+            <para>converted QQGroupList</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup">
             <summary>
             QQ群的操作列表
+            <para>Group Class</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupId">
             <summary>
             群号
+            <para>Group Number</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupMemberCount">
             <summary>
             群成员数
+            <para>Group Member Count</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupName">
             <summary>
             群名
+            <para>Group Name</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupNotice">
             <summary>
             群公告(获取最近一条置顶)
+            <para>the Most Recently GroupAnnounce</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupOwner">
             <summary>
             群主
+            <para>the Group Owner</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup.GroupTotalCount">
             <summary>
             群总成员数
+            <para>Group Memeber Total Count</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupList._GroupList">
             <summary>
             内套的群列表
+            <para>Inner class of Group List</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQFunc.QQGroupList._GroupList.q">
@@ -778,62 +854,89 @@
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupList.GetGroupList">
             <summary>
             获取所有群列表
+            <para>get-all Group list</para>
             </summary>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupList.GetGroupListOnIndex(System.Int32)">
             <summary>
             拉取群列表
+            <para>the Group List</para>
             </summary>
-            <param name="nt">索引号</param>
+            <param name="nt">
+            索引号
+            <para>Index number</para>
+            </param>
             <returns></returns>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQGroupRequest">
             <summary>
             QQ群请求(管理类)方法
+            <para>QQGroup Manager Method</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupRequest.__GroupManage(System.Int32,System.Int64,System.Int64,System.String)">
             <summary>
             总方法
+            <para>General Method</para>
             </summary>
-            <param name="ActionType">8拉人 1加入 2退出 3移出</param>
-            <param name="GroupID">群号</param>
-            <param name="ActionUserID">QQ用户ID *加入退出不用写* </param>
-            <param name="Content">内容</param>
+            <param name="ActionType">
+            8拉人 1加入 2退出 3移出
+            <para>for [int] 8:invite 1:joinin 2:leave 3:remove-someone</para>
+            </param>
+            <param name="GroupID">
+            群号
+            <para>GroupNumber</para>
+            </param>
+            <param name="ActionUserID">
+            QQ用户ID *加入退出不用写* 
+            <para>the QQ number (*for enter and quit please leave this blanked)</para>
+            </param>
+            <param name="Content">
+            内容
+            <para>the Content</para>
+            </param>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupRequest.AddIntoGroup(System.Int64,System.String)">
             <summary>
-            加群
+            加群<para>Joinin Group</para>
+            <para>Addin Group</para>
             </summary>
-            <param name="GroupId">加入的群群号</param>
-            <param name="Content">验证内容</param>
+            <param name="GroupId">加入的群群号<para>the Group Number</para></param>
+            <param name="Content">验证内容<para>the identify content</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupRequest.QuitGroup(System.Int64,System.String)">
             <summary>
-            退群
+            退群<para>Leave Group</para>
             </summary>
-            <param name="GroupId">群号</param>
-            <param name="Content">内容</param>
+            <param name="GroupId">加入的群群号<para>the Group Number</para></param>
+            <param name="Content">验证内容<para>the identify content</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupRequest.RemoveSomeBodyFrom(System.Int64,System.Int64,System.String)">
             <summary>
-            移除群员
+            移除群员<para>remove Group Member</para>
             </summary>
-            <param name="GroupId">群号</param>
-            <param name="QQPerson">被移除者</param>
-            <param name="Content">内容</param>
+            <param name="GroupId">加入的群群号<para>the Group Number</para></param>
+            <param name="Content">验证内容<para>the identify content</para></param>
+            <param name="QQPerson">被移除者<para>the one that will be execute</para></param>
             <returns></returns>
         </member>
         <member name="M:MeowIOTBot.QQ.QQFunc.QQGroupRequest.InviteSomeBodyInto(System.Int64,System.Int64,System.String)">
             <summary>
             拉人到..
+            <para>inviteSomeone</para>
             </summary>
-            <param name="GroupId">群号</param>
-            <param name="QQPerson">被拉人</param>
-            <param name="Content">内容</param>
+            <param name="GroupId">加入的群群号
+            <para>the Group Number</para>
+            </param>
+            <param name="Content">验证内容
+            <para>the identify content</para>
+            </param>
+            <param name="QQPerson">被拉人
+            <para>the one that you ingage in</para>
+            </param>
             <returns></returns>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage">
@@ -1135,41 +1238,36 @@
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.FileMd5">
             <summary>
             文件的Md5
+            <para>File Md5</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.FileSize">
             <summary>
             文件的大小
+            <para>File Size</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.Path">
             <summary>
             文件的路径
+            <para>File Path (relative)</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.Url">
             <summary>
             文件的URL
+            <para>file Url</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.Tips">
             <summary>
             文件的提示符号
+            <para>File tips</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.#ctor(System.String,System.String,System.String,System.String,System.String)">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.PicList">
             <summary>
-            构造一个好友图片
-            </summary>
-            <param name="fileMd5"></param>
-            <param name="fileSize"></param>
-            <param name="path"></param>
-            <param name="url"></param>
-            <param name="tips"></param>
-        </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.FriendPic">
-            <summary>
-            好友图片列表
+            图片列表
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Content">
@@ -1224,7 +1322,7 @@
             <param name="GroupId">陌生人识别号</param>
             <param name="atqq">是否atqq -1(没有)/0(群聊全体)/qq号</param>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2.getJson">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2.Send">
             <summary>
             一个异步的发送信息方法
             </summary>
@@ -1491,7 +1589,40 @@
             转发信息
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowClient">
+        <member name="T:MeowIOTBot.MeowIOTClient">
+            <summary>
+            完全代理的IOT端
+            <para>Full stack delegated IOT Backend</para>
+            <para>用法如下 (Usage as below)</para>
+            <code>
+            <para>using var recv = MeowIOTClient.Connect("url", "qq");</para>
+            <para>recv._(delegate event) += (s, e) =>{};</para>
+            </code>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.MeowIOTClient.socket">
+            <summary>
+            Socket标志
+            <para>Socket Sign</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.MeowIOTClient.Connect(System.String,System.String,System.Boolean)">
+            <summary>
+            连接IOT后端
+            <para>Connect IOT Backend</para>
+            </summary>
+            <returns>
+            返回一个标准代理端
+            <para>returns an IOT Standard Backend</para>
+            </returns>
+        </member>
+        <member name="M:MeowIOTBot.MeowIOTClient.Dispose">
+            <summary>
+            默认的关闭操作 (为了使用using)
+            <para>default close opearion [as can use 'using']</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowClient">
             <summary>
             代理的类
             <para>DelegateLibrary</para>
@@ -1503,32 +1634,32 @@
             </code>
             </summary>
         </member>
-        <member name="P:MeowIOTBot.MeowClient.logFlag">
+        <member name="P:MeowIOTBot.Basex.MeowClient.logFlag">
             <summary>
             日志记录标志
             <para>decided if you want to Console.Write(log)</para>
             <para>this can be dynamically</para>
             </summary>
         </member>
-        <member name="P:MeowIOTBot.MeowClient.qq">
+        <member name="P:MeowIOTBot.Basex.MeowClient.qq">
             <summary>
             要连接的QQ
             <para>the QQ you want to Connect</para>
             </summary>
         </member>
-        <member name="P:MeowIOTBot.MeowClient.url">
+        <member name="P:MeowIOTBot.Basex.MeowClient.url">
             <summary>
             后端的处理位置
             <para>Backends Url</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.MeowClient.socket">
+        <member name="F:MeowIOTBot.Basex.MeowClient.socket">
             <summary>
             socket标
             <para>socket Client Variable</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.MeowClient.#ctor(System.String,System.String,System.Boolean)">
+        <member name="M:MeowIOTBot.Basex.MeowClient.#ctor(System.String,System.String,System.Boolean)">
             <summary>
             构造代理的类
             <para>DelegateLibrary</para>
@@ -1552,25 +1683,25 @@
             <para>the QQ you want to Listento</para>
             </param>
         </member>
-        <member name="M:MeowIOTBot.MeowClient.Connect">
+        <member name="M:MeowIOTBot.Basex.MeowClient.Connect">
             <summary>
             连接并获取最原始的Client对象
             <para>Connect and get Object Client</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.MeowClient.Close">
+        <member name="M:MeowIOTBot.Basex.MeowClient.Close">
             <summary>
             强制关闭Socket连接
             <para>force close Socket</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.MeowClient.Dispose">
+        <member name="M:MeowIOTBot.Basex.MeowClient.Dispose">
             <summary>
             关闭连接
             <para>normally dispose</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowClient.ObjectEventHandler">
+        <member name="T:MeowIOTBot.Basex.MeowClient.ObjectEventHandler">
             <summary>
             服务器的总体事件集合委托
             <para>On Server Message delegate</para>
@@ -1578,13 +1709,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.MeowClient.OnServerAction">
+        <member name="E:MeowIOTBot.Basex.MeowClient.OnServerAction">
             <summary>
             服务器的总体事件集合
             <para>On Server Message</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowClient.GroupMessageEventHandler">
+        <member name="T:MeowIOTBot.Basex.MeowClient.GroupMessageEventHandler">
             <summary>
             服务器群聊消息事件委托
             <para>Serveric [OnGroup] Message Delegate</para>
@@ -1592,13 +1723,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.MeowClient.OnGroupMsgs">
+        <member name="E:MeowIOTBot.Basex.MeowClient.OnGroupMsgs">
             <summary>
             服务器群聊消息事件
             <para>Serveric [OnGroup] Message Event</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowClient.FriendMessageEventHandler">
+        <member name="T:MeowIOTBot.Basex.MeowClient.FriendMessageEventHandler">
             <summary>
             服务器好友消息事件委托
             <para>Serveric [OnFriend] Message Delegate</para>
@@ -1606,13 +1737,13 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.MeowClient.OnFriendMsgs">
+        <member name="E:MeowIOTBot.Basex.MeowClient.OnFriendMsgs">
             <summary>
             服务器好友消息事件
             <para>Serveric [OnFriend] Message Event</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowClient.EventMessageEventHandler">
+        <member name="T:MeowIOTBot.Basex.MeowClient.EventMessageEventHandler">
             <summary>
             服务器事件消息事件委托
             <para>Serveric [OnEvent] Message Delegate</para>
@@ -1620,19 +1751,19 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.MeowClient.OnEventMsgs">
+        <member name="E:MeowIOTBot.Basex.MeowClient.OnEventMsgs">
             <summary>
             服务器事件消息事件
             <para>Serveric [OnEvent] Message Event</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowServiceClient">
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient">
             <summary>
             带有详细回调的端
             <para>Client With a detailed delegate</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.MeowServiceClient.#ctor(System.String,System.String,System.Boolean)">
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.#ctor(System.String,System.String,System.Boolean)">
             <summary>
             一个自枚举的多功能解释端
             <para>an Enumable multi-purpose explain backend</para>
@@ -1650,24 +1781,90 @@
             <para>an entryset that if you want a log * (usually not)</para>
             </param>
         </member>
-        <member name="M:MeowIOTBot.MeowServiceClient.CreateClient">
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.CreateClient">
             <summary>
             一个自枚举的多功能解释端
             <para>an Enumable multi-purpose explain backend</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendTextMessageEventHandler">
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnEventMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
             <summary>
-            好友消息委托
-            <para>Serveric [OnFriend] Message Delegate</para>
+            事件解析
+            <para>Event Interperter</para>
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.MeowServiceClient._FriendTextMsgRecieve">
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnFriendMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
             <summary>
-            好友消息事件
-            <para>Serveric [OnFriend] Message Event</para>
+            私聊解析
+            <para>Friend Conget</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnGroupMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
+            <summary>
+            群聊解析
+            <para>Group Conget</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendTextMessageEventHandler">
+            <summary>
+            好友消息委托 : 文本
+            <para>Serveric [OnFriend : Text] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendTextMsgRecieve">
+            <summary>
+            好友消息事件 : 文本
+            <para>Serveric [OnFriend : Text] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendPicMessageEventHandler">
+            <summary>
+            好友消息委托 : 图片大类
+            <para>Serveric [OnFriend : Pic] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendPicMsgRecieve">
+            <summary>
+            好友消息事件 : 图片大类
+            <para>Serveric [OnFriend : Pic] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupTextMessageEventHandler">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : Text] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupTextMsgRecieve">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : Text] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupPicMessageEventHandler">
+            <summary>
+            好友消息委托 : 图片大类
+            <para>Serveric [OnFriend : Pic] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupPicMsgRecieve">
+            <summary>
+            群消息事件 : 文本大类
+            <para>Serveric [OnFriend : Pic] Message Event</para>
             </summary>
         </member>
     </members>

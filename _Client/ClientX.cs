@@ -8,6 +8,11 @@ namespace MeowIOTBot
     /// <summary>
     /// 完全代理的IOT端
     /// <para>Full stack delegated IOT Backend</para>
+    /// <para>用法如下 (Usage as below)</para>
+    /// <code>
+    /// <para>using var recv = MeowIOTClient.Connect("url", "qq");</para>
+    /// <para>recv._(delegate event) += (s, e) =>{};</para>
+    /// </code>
     /// </summary>
     public class MeowIOTClient : IDisposable
     {
@@ -28,7 +33,15 @@ namespace MeowIOTBot
         {
             socket = new Basex.MeowServiceClient(url, qq, logFlag);
             socket.CreateClient();
+            //好友私聊
             socket._FriendTextMsgRecieve += (s, e) => { };
+            //好友图片
+            socket._FriendPicMsgRecieve += (s, e) => { };
+
+            //群聊文本
+            socket._GroupTextMsgRecieve += (s, e) => { };
+            //群聊图片
+            socket._GroupPicMsgRecieve += (s, e) => { };
             return socket;
         }
         /// <summary>

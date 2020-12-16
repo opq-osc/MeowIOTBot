@@ -310,45 +310,34 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         {
             /// <summary>
             /// 文件的Md5
+            /// <para>File Md5</para>
             /// </summary>
             public string FileMd5 { get; }
             /// <summary>
             /// 文件的大小
+            /// <para>File Size</para>
             /// </summary>
             public string FileSize { get; }
             /// <summary>
             /// 文件的路径
+            /// <para>File Path (relative)</para>
             /// </summary>
             public string Path { get; }
             /// <summary>
             /// 文件的URL
+            /// <para>file Url</para>
             /// </summary>
             public string Url { get; }
             /// <summary>
             /// 文件的提示符号
+            /// <para>File tips</para>
             /// </summary>
             public string Tips { get; }
-            /// <summary>
-            /// 构造一个好友图片
-            /// </summary>
-            /// <param name="fileMd5"></param>
-            /// <param name="fileSize"></param>
-            /// <param name="path"></param>
-            /// <param name="url"></param>
-            /// <param name="tips"></param>
-            public Pic(string fileMd5, string fileSize, string path, string url, string tips)
-            {
-                FileMd5 = fileMd5;
-                FileSize = fileSize;
-                Path = path;
-                Url = url;
-                Tips = tips;
-            }
         }
         /// <summary>
-        /// 好友图片列表
+        /// 图片列表
         /// </summary>
-        public List<Pic> FriendPic;
+        public List<Pic> PicList;
         /// <summary>
         /// 好友图片的内容
         /// </summary>
@@ -362,9 +351,12 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             var jo = JObject.Parse(content.Replace("\\\"", "\""));
 
             jo.TryGetValue("Content", out var _Content);
-            this.Content = _Content.ToString();
-
-            Console.WriteLine();
+            this.Content = _Content?.ToString();
+            jo.TryGetValue("GroupPic", out var _GroupPic);
+            jo.TryGetValue("FriendPic", out var _FriendPic);
+            PicList = (_GroupPic != null) ?
+                _GroupPic?.ToObject<List<Pic>>():
+                _FriendPic?.ToObject<List<Pic>>();
         }
     }
 }
