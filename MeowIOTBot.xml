@@ -1839,7 +1839,7 @@
             <para>Serveric [OnFriend : Pic] Message Event</para>
             </summary>
         </member>
-        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupTextMessageEventHandler">
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupAtTextMessageEventHandler">
             <summary>
             群消息委托 : 文本大类
             <para>Serveric [OnGroup : Text] Message Delegate</para>
@@ -1847,7 +1847,7 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupTextMsgRecieve">
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtTextMsgRecieve">
             <summary>
             群消息委托 : 文本大类
             <para>Serveric [OnGroup : Text] Message Event</para>

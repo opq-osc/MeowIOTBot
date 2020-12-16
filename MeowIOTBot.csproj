@@ -10,8 +10,8 @@
     <Description>this is a delegate library for IOTQQBot Invertor which you can use this to connect your IOT backend Easily and this is full Codec comment Inline</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>null</RepositoryUrl>
-    <RepositoryType>null</RepositoryType>
+    <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
+    <RepositoryType>GitRepo</RepositoryType>
     <PackageReleaseNotes>this is a update version which made huge defact
 further action is on planned.</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
@@ -19,8 +19,8 @@ further action is on planned.</PackageReleaseNotes>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>1.1.0</Version>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <Version>1.2.0</Version>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
