@@ -1,7 +1,6 @@
-# 欢迎光临 MeowIOTBot的资源介绍页
-## Welcome To MeowIOTBot's Resource Page
-> ### (For which you as an English speaker Please Hit Wiki On [HERE]() -- of course it's useless I haven't edit yet)  
-> ### 中文阅读者请 点击 [此处](https://github.com/DavidSciMeow/MeowIOTBot/wiki) 进入wiki
+# 欢迎光临 MeowIOTBot `高级开发者版` 的资源介绍页
+## Welcome To MeowIOTBot-EnterpriseVer.'s Resource Page
+
 ***
 ![LogoLong](https://github.com/DavidSciMeow/MeowIOTBot/blob/main/githubImgFolder/LogoLong.png)
 ***
@@ -13,5 +12,8 @@
 > ![png1](https://github.com/DavidSciMeow/MeowIOTBot/blob/main/githubImgFolder/_com1.png)
 > ## 3. 二次开发 `项目保有最初始的端,您可以自己从头实现自己的特殊功能`
 > ## 还有更多特性等待您在Wiki里面发现哦~
+***
+> ### (For which you as an English speaker Please Hit Wiki On [HERE]() -- of course it's useless I haven't edit yet)  
+> ### 中文阅读者请 点击 [此处](https://github.com/DavidSciMeow/MeowIOTBot/wiki) 进入wiki
 ***
 ![Logo](https://github.com/DavidSciMeow/MeowIOTBot/blob/main/githubImgFolder/Logo.png)
