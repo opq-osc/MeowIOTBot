@@ -23,11 +23,28 @@ namespace MeowIOTBot
         private static Basex.MeowServiceClient socket = null;
         /// <summary>
         /// 连接IOT后端
-        /// <para>Connect IOT Backend</para>
+        /// <para>connect IOT Backend</para>
         /// </summary>
+        /// <param name="url">
+        /// IOT处理端地址(请详细参见项目wiki)
+        /// <para>IOT backend Url:please visit Wiki to see more</para>
+        /// </param>
+        /// <param name="qq">
+        /// 你要监听的qq
+        /// <para>the QQ you want to listen to</para>
+        /// </param>
+        /// <param name="logFlag">
+        /// 日志处理标
+        /// <para>the log handler</para>
+        /// </param>
         /// <returns>
-        /// 返回一个标准代理端
-        /// <para>returns an IOT Standard Backend</para>
+        /// 完全代理的IOT端
+        /// <para>Full stack delegated IOT Backend</para>
+        /// <para>用法如下 (Usage as below)</para>
+        /// <code>
+        /// <para>using var recv = MeowIOTClient.Connect("url", "qq");</para>
+        /// <para>recv._(delegate event) += (s, e) =>{};</para>
+        /// </code>
         /// </returns>
         public static Basex.MeowServiceClient Connect(string url, string qq, bool logFlag = false)
         {
