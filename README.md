@@ -1,6 +1,9 @@
 # 欢迎光临 MeowIOTBot `高级开发者版` 的资源介绍页
 ## Welcome To MeowIOTBot-EnterpriseVer.'s Resource Page
 
+### 目前项目还在添加各种事件监听和优化,  
+### 请各位开发者耐心等待,  
+### 已添加的已经在每个发行版本的注释中写出  
 ***
 ![LogoLong](https://github.com/DavidSciMeow/MeowIOTBot/blob/main/githubImgFolder/LogoLong.png)
 ***
