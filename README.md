@@ -19,4 +19,3 @@
 > ### (For which you as an English speaker Please Hit Wiki On [HERE]() -- of course it's useless I haven't edit yet)  
 > ### 中文阅读者请 点击 [此处](https://github.com/DavidSciMeow/MeowIOTBot/wiki) 进入wiki
 ***
-![Logo](https://github.com/DavidSciMeow/MeowIOTBot/blob/main/githubImgFolder/Logo.png)
