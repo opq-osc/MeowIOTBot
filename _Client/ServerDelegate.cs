@@ -187,14 +187,14 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public event EventGroupAtTextMessageEventHandler _GroupAtTextMsgRecieve;
         /// <summary>
-        /// 好友消息委托 : 图片大类
+        /// 群消息委托 : 图片大类
         /// <para>Serveric [OnFriend : Pic] Message Delegate</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public delegate void EventGroupPicMessageEventHandler(QQRecieveMessage sender, PicMsg e);
         /// <summary>
-        /// 群消息事件 : 文本大类
+        /// 群消息事件 : 图片大类
         /// <para>Serveric [OnFriend : Pic] Message Event</para>
         /// </summary>
         public event EventGroupPicMessageEventHandler _GroupPicMsgRecieve;
