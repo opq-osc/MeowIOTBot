@@ -1213,6 +1213,11 @@
             <para>Text Message</para>
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.AtedQQ">
+            <summary>
+            被at的人
+            </summary>
+        </member>
         <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.#ctor(System.String)">
             <summary>
             构造at类型的消息 * 仅群聊
@@ -1311,7 +1316,7 @@
             陌生人识别号
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendType,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendType,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             构造一个原始信息类(内部解析)
             </summary>
@@ -1320,7 +1325,8 @@
             <param name="sendMsgType">信息类型</param>
             <param name="content">信息主体</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否atqq -1(没有)/0(群聊全体)/qq号</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2.Send">
             <summary>
@@ -1333,7 +1339,7 @@
             封装的文字信息
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_TxtMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_TxtMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             文字信息
             </summary>
@@ -1341,7 +1347,8 @@
             <param name="sendToType">收件人类型</param>
             <param name="content">内容</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_PicMsg">
             <summary>
@@ -1363,7 +1370,7 @@
             图像的Md5
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_PicMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.String,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_PicMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.String,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             总体图片构造类
             </summary>
@@ -1374,7 +1381,8 @@
             <param name="picPath">图片服务端路径</param>
             <param name="picMd5s">图片Md5</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_VocMsg">
             <summary>
@@ -1391,7 +1399,7 @@
             语音的路径
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_VocMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_VocMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.Int64)">
             <summary>
             语音信息
             </summary>
@@ -1400,7 +1408,6 @@
             <param name="voiceUrl">语音URL</param>
             <param name="voicePath">语音文件服务端路径</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_FwdMsg">
             <summary>
@@ -1417,16 +1424,17 @@
             转发区
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_FwdMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_FwdMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             转发信息的多定义
             </summary>
-            <param name="sendTo"></param>
-            <param name="sendToType"></param>
-            <param name="forwordBuf"></param>
-            <param name="forwordField"></param>
-            <param name="GroupId"></param>
-            <param name="atqq"></param>
+            <param name="sendTo">发送到</param>
+            <param name="sendToType">信息类型</param>
+            <param name="forwordBuf">框架生成的参数</param>
+            <param name="forwordField">框架生成的参数</param>
+            <param name="GroupId">群号</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_RplMsg">
             <summary>
@@ -1494,7 +1502,7 @@
             封装的Json信息
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_JsnMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_JsnMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             Json信息
             </summary>
@@ -1502,14 +1510,15 @@
             <param name="sendToType">接收人类型</param>
             <param name="JsonContent">Json串</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_XmlMsg">
             <summary>
             封装的Xml信息
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_XmlMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Int64)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_XmlMsg.#ctor(System.Int64,MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType,System.String,System.Int64,System.Collections.Generic.List{System.Int64},System.Boolean)">
             <summary>
             XML信息
             </summary>
@@ -1517,7 +1526,8 @@
             <param name="sendToType">接收人类型</param>
             <param name="XmlContent">XML流</param>
             <param name="GroupId">陌生人识别号</param>
-            <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+            <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+            <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType">
             <summary>

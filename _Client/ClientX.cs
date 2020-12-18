@@ -54,7 +54,6 @@ namespace MeowIOTBot
             socket._FriendTextMsgRecieve += (s, e) => { };
             //好友图片
             socket._FriendPicMsgRecieve += (s, e) => { };
-
             //群聊文本
             socket._GroupAtTextMsgRecieve += (s, e) => { };
             //群聊图片

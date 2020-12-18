@@ -284,6 +284,10 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         public string Content;
         /// <summary>
+        /// 被at的人
+        /// </summary>
+        public long[] AtedQQ;
+        /// <summary>
         /// 构造at类型的消息 * 仅群聊
         /// <para>Type Of the message [@] * maybe only in Group Chat</para>
         /// </summary>
@@ -293,7 +297,9 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </param>
         public AtTextMessage(string content) : base(content)
         {
-            Content = Regex.Replace(content, @"@[\S]+[\s]", "").Trim();
+            var jo = JObject.Parse(content);
+            Content = Regex.Replace($"{jo["Content"]} ", @"@[\S]+[\s]", "").Trim();
+            AtedQQ = jo["UserID"].ToObject<long[]>();
         }
     }
     /// <summary>
@@ -337,7 +343,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <summary>
         /// 图片列表
         /// </summary>
-        public List<Pic> PicList;
+        public Pic[] PicList;
         /// <summary>
         /// 好友图片的内容
         /// </summary>
@@ -349,14 +355,13 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         public PicMsg(string content) : base(content)
         {
             var jo = JObject.Parse(content.Replace("\\\"", "\""));
-
             jo.TryGetValue("Content", out var _Content);
             this.Content = _Content?.ToString();
             jo.TryGetValue("GroupPic", out var _GroupPic);
             jo.TryGetValue("FriendPic", out var _FriendPic);
             PicList = (_GroupPic != null) ?
-                _GroupPic?.ToObject<List<Pic>>():
-                _FriendPic?.ToObject<List<Pic>>();
+                _GroupPic?.ToObject<Pic[]>():
+                _FriendPic?.ToObject<Pic[]>();
         }
     }
 }

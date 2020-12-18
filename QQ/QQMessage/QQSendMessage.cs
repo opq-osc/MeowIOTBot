@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
@@ -37,9 +39,10 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="sendMsgType">信息类型</param>
         /// <param name="content">信息主体</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否atqq -1(没有)/0(群聊全体)/qq号</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2(long sendTo, MessageSendToType sendToType, MessageSendType sendMsgType, string content,
-            long GroupId, long atqq = -1)
+            long GroupId, List<long> atqq = null, bool atAll = false)
         {
             ToUserUid = sendTo;
             SendToType = (int)sendToType;
@@ -49,15 +52,24 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
             {
                 GroupID = GroupId;
             }
-            else if (sendToType == MessageSendToType.Group && atqq != -1)
+            else if (sendToType == MessageSendToType.Group && (atqq != null || atAll))
             {
-                if (atqq == 0)
+                if (atAll == true)
                 {
-                    Content = $"[ATALL()]" + content;
+                    Content = $"[ATALL()]{content}";
                 }
                 else
                 {
-                    Content = $"[ATUSER({atqq})]" + content;
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append("[ATUSER(");
+                    bool x = false;
+                    foreach (var k in atqq)
+                    {
+                        if (x){sb.Append(",");}
+                        sb.Append(k);
+                        x = true;
+                    }
+                    Content = $"{sb.ToString()})]{content}";
                 }
             }
         }
@@ -83,9 +95,10 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="sendToType">收件人类型</param>
         /// <param name="content">内容</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
-        public MsgV2_TxtMsg(long sendTo, MessageSendToType sendToType, string content, long GroupId = 0, long atqq = -1)
-            : base(sendTo, sendToType, MessageSendType.TextMsg, content, GroupId, atqq)
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
+        public MsgV2_TxtMsg(long sendTo, MessageSendToType sendToType, string content, long GroupId = 0, List<long> atqq = null,bool atAll=false)
+            : base(sendTo, sendToType, MessageSendType.TextMsg, content, GroupId, atqq, atAll)
         { }
     }
     /// <summary>
@@ -115,11 +128,12 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="picPath">图片服务端路径</param>
         /// <param name="picMd5s">图片Md5</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_PicMsg(long sendTo, MessageSendToType sendToType, string content = null,
             string picUrl = null, string picPath = null, string picMd5s = null,
-            long GroupId = 0, long atqq = -1)
-            : base(sendTo, sendToType, MessageSendType.PicMsg, content, GroupId, atqq)
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+            : base(sendTo, sendToType, MessageSendType.PicMsg, content, GroupId, atqq, atAll)
         {
             PicUrl = picUrl;
             PicPath = picPath;
@@ -147,11 +161,10 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="voiceUrl">语音URL</param>
         /// <param name="voicePath">语音文件服务端路径</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
         public MsgV2_VocMsg(long sendTo, MessageSendToType sendToType,
             string voiceUrl = null, string voicePath = null,
-            long GroupId = 0, long atqq = -1)
-            : base(sendTo, sendToType, MessageSendType.VoiceMsg, null, GroupId, -1)
+            long GroupId = 0)
+            : base(sendTo, sendToType, MessageSendType.VoiceMsg, null, GroupId, null)
         {
             VoiceUrl = voiceUrl;
             VoicePath = voicePath;
@@ -173,16 +186,17 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <summary>
         /// 转发信息的多定义
         /// </summary>
-        /// <param name="sendTo"></param>
-        /// <param name="sendToType"></param>
-        /// <param name="forwordBuf"></param>
-        /// <param name="forwordField"></param>
-        /// <param name="GroupId"></param>
-        /// <param name="atqq"></param>
+        /// <param name="sendTo">发送到</param>
+        /// <param name="sendToType">信息类型</param>
+        /// <param name="forwordBuf">框架生成的参数</param>
+        /// <param name="forwordField">框架生成的参数</param>
+        /// <param name="GroupId">群号</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_FwdMsg(long sendTo, MessageSendToType sendToType,
             string forwordBuf, string forwordField,
-            long GroupId = 0, long atqq = -1)
-           : base(sendTo, sendToType, MessageSendType.ForwordMsg, null, GroupId, atqq)
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+           : base(sendTo, sendToType, MessageSendType.ForwordMsg, null, GroupId, atqq, atAll)
         {
             ForwordBuf = forwordBuf;
             ForwordField = forwordField;
@@ -239,7 +253,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="sendTo">发送到</param>
         /// <param name="replayInfo">一个回复信息内容对象</param>
         public MsgV2_RplMsg(long sendTo, replayInfo replayInfo)
-           : base(sendTo, MessageSendToType.Group, MessageSendType.ReplayMsg, null, 0, -1)
+           : base(sendTo, MessageSendToType.Group, MessageSendType.ReplayMsg, null, 0, null)
         {
             ReplayInfo = replayInfo;
         }
@@ -252,7 +266,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="userId">用户ID</param>
         /// <param name="rawContent">内容</param>
         public MsgV2_RplMsg(long sendTo, long msgSeq, long msgTime, long userId, string rawContent)
-           : base(sendTo, MessageSendToType.Group, MessageSendType.ReplayMsg, null, 0, -1)
+           : base(sendTo, MessageSendToType.Group, MessageSendType.ReplayMsg, null, 0, null)
         {
             ReplayInfo = new replayInfo(msgSeq, msgTime, userId, rawContent);
         }
@@ -269,10 +283,11 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="sendToType">接收人类型</param>
         /// <param name="JsonContent">Json串</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_JsnMsg(long sendTo, MessageSendToType sendToType, string JsonContent,
-            long GroupId = 0, long atqq = -1)
-            : base(sendTo, sendToType, MessageSendType.JsonMsg, JsonContent, GroupId, atqq)
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+            : base(sendTo, sendToType, MessageSendType.JsonMsg, JsonContent, GroupId, atqq, atAll)
         { }
     }
     /// <summary>
@@ -287,10 +302,11 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="sendToType">接收人类型</param>
         /// <param name="XmlContent">XML流</param>
         /// <param name="GroupId">陌生人识别号</param>
-        /// <param name="atqq">是否群聊中atqq (-1)无/(0)全体/(QQ号)at某个qq</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_XmlMsg(long sendTo, MessageSendToType sendToType, string XmlContent,
-            long GroupId = 0, long atqq = -1)
-            : base(sendTo, sendToType, MessageSendType.XmlMsg, XmlContent, GroupId, atqq)
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+            : base(sendTo, sendToType, MessageSendType.XmlMsg, XmlContent, GroupId, atqq, atAll)
         { }
     }
     #endregion
