@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using MeowIOTBot.Basex;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -229,7 +230,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         TempSession
     }
 
-
     /// <summary>
     /// 基础消息格式(抽象继承模式)
     /// <para>Message Type * Abstract Inherit Mode</para>
@@ -250,6 +250,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <para>Message Basic Content</para>
         /// </param>
         protected Message(string content) => RawContent = JObject.Parse(content);
+        
     }
     /// <summary>
     /// 信息类型 : 文本信息
@@ -271,6 +272,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <para>Message Basic Content</para>
         /// </param>
         public TextMessage(string content) : base($"{{\"Content\":\"{content}\"}}") => Content = content;
+        
     }
     /// <summary>
     /// at类型的消息 * 仅群聊
@@ -284,9 +286,19 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         public string Content;
         /// <summary>
+        /// 文本信息
+        /// <para>Text Message</para>
+        /// </summary>
+        public string RemoveAtContent;
+        /// <summary>
         /// 被at的人
         /// </summary>
-        public long[] AtedQQ;
+        public List<QQinfo> AtedQQ;
+        public class QQinfo
+        {
+            public string QQNick;
+            public long QQNumber;
+        }
         /// <summary>
         /// 构造at类型的消息 * 仅群聊
         /// <para>Type Of the message [@] * maybe only in Group Chat</para>
@@ -297,9 +309,25 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </param>
         public AtTextMessage(string content) : base(content)
         {
-            var jo = JObject.Parse(content);
-            Content = Regex.Replace($"{jo["Content"]} ", @"@[\S]+[\s]", "").Trim();
-            AtedQQ = jo["UserID"].ToObject<long[]>();
+            var c = content.Replace("\\\"", "\"");
+            var jo = JObject.Parse(c);
+            StringBuilder sb = new StringBuilder();
+            AtedQQ = jo["UserExt"].ToObject<List<QQinfo>>();
+            List<QQinfo> ls = new List<QQinfo>();
+            Content = jo["Content"].ToString();
+            foreach (var d in Content.Split(' ')[AtedQQ.Count..])
+            {
+                for (int i = 0; i < ls.Count; i++) 
+                {
+                    if (d.Equals(ls[i].QQNick))
+                    {
+                        ls[i] = null;
+                        break;
+                    }
+                }
+                sb.Append($"{d} ");
+            }
+            RemoveAtContent = sb.ToString();
         }
     }
     /// <summary>
@@ -309,8 +337,8 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
     public class PicMsg : Message
     {
         /// <summary>
-        /// 用户图片列表
-        /// <para>User Picture List Item</para>
+        /// 好友图片列表
+        /// <para>Private User Picture List Item</para>
         /// </summary>
         public class Pic
         {
@@ -323,7 +351,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             /// 文件的大小
             /// <para>File Size</para>
             /// </summary>
-            public string FileSize { get; }
+            public long FileSize { get; }
             /// <summary>
             /// 文件的路径
             /// <para>File Path (relative)</para>
@@ -342,14 +370,22 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         }
         /// <summary>
         /// 图片列表
+        /// <para>PicList</para>
         /// </summary>
         public Pic[] PicList;
         /// <summary>
+        /// At的QQ
+        /// <para>ated QQ number</para>
+        /// </summary>
+        public int[] AtedQQ;
+        /// <summary>
         /// 好友图片的内容
+        /// <para>Friend Pic Text Content</para>
         /// </summary>
         public string Content;
         /// <summary>
         /// 构造好友图片
+        /// <para>construct a Content</para>
         /// </summary>
         /// <param name="content"></param>
         public PicMsg(string content) : base(content)
@@ -359,9 +395,37 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             this.Content = _Content?.ToString();
             jo.TryGetValue("GroupPic", out var _GroupPic);
             jo.TryGetValue("FriendPic", out var _FriendPic);
-            PicList = (_GroupPic != null) ?
-                _GroupPic?.ToObject<Pic[]>():
-                _FriendPic?.ToObject<Pic[]>();
+            if (_FriendPic != null)
+            {
+                PicList = _FriendPic.ToObject<Pic[]>();
+            }
+            else if (_GroupPic != null)
+            {
+                PicList = _GroupPic.ToObject<Pic[]>();
+            }
+            jo.TryGetValue("UserID", out var atuid);
+            AtedQQ = atuid?.ToObject<int[]>();
+        }
+    }
+    /// <summary>
+    /// 语音类信息
+    /// <para>Voice Message</para>
+    /// </summary>
+    public class VoiceMsg : Message
+    {
+        /// <summary>
+        /// 语音文件的URL
+        /// </summary>
+        public string url;
+        /// <summary>
+        /// 构造群聊语音
+        /// </summary>
+        /// <param name="content"></param>
+        public VoiceMsg(string content) : base(content)
+        {
+            var jo = JObject.Parse(content.Replace("\\\"", "\""));
+            jo.TryGetValue("Url", out var _Url);
+            this.url = _Url?.ToString();
         }
     }
 }

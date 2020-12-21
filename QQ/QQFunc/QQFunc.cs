@@ -125,7 +125,7 @@ namespace MeowIOTBot.QQ.QQFunc
         public int subcode;
         /// <summary>
         /// 获取实例的边界操作
-        /// <para>is the operation thath getPersondetailed Message</para>
+        /// <para>is the operation that getPersondetailed Message</para>
         /// </summary>
         /// <param name="qqid">
         /// QQ号

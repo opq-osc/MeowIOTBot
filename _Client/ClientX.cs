@@ -54,10 +54,12 @@ namespace MeowIOTBot
             socket._FriendTextMsgRecieve += (s, e) => { };
             //好友图片
             socket._FriendPicMsgRecieve += (s, e) => { };
-            //群聊文本
+            //群聊At文本
             socket._GroupAtTextMsgRecieve += (s, e) => { };
             //群聊图片
             socket._GroupPicMsgRecieve += (s, e) => { };
+            //群聊文本
+            socket._GroupTextMsgRecieve += (s, e) => { };
             return socket;
         }
         /// <summary>

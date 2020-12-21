@@ -14,19 +14,19 @@
     <RepositoryType>GitRepo</RepositoryType>
     <PackageReleaseNotes>further action is on planned.</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
-    <PackageProjectUrl>null</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>1.2.4</Version>
-    <AssemblyVersion>1.2.4.0</AssemblyVersion>
-    <FileVersion>1.2.4.0</FileVersion>
+    <Version>1.3.0</Version>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <FileVersion>1.3.0.0</FileVersion>
     <PackageId>MeowIOTBot</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\David\source\repos\MeowIOTBot\MeowIOTBot.xml</DocumentationFile>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <ItemGroup>

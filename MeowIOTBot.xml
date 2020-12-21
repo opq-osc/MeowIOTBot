@@ -416,7 +416,7 @@
         <member name="M:MeowIOTBot.QQ.QQFunc.QQPerson.GetPerson(System.Int64)">
             <summary>
             获取实例的边界操作
-            <para>is the operation thath getPersondetailed Message</para>
+            <para>is the operation that getPersondetailed Message</para>
             </summary>
             <param name="qqid">
             QQ号
@@ -1213,6 +1213,12 @@
             <para>Text Message</para>
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.RemoveAtContent">
+            <summary>
+            文本信息
+            <para>Text Message</para>
+            </summary>
+        </member>
         <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.AtedQQ">
             <summary>
             被at的人
@@ -1236,8 +1242,8 @@
         </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic">
             <summary>
-            用户图片列表
-            <para>User Picture List Item</para>
+            好友图片列表
+            <para>Private User Picture List Item</para>
             </summary>
         </member>
         <member name="P:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic.FileMd5">
@@ -1273,16 +1279,42 @@
         <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.PicList">
             <summary>
             图片列表
+            <para>PicList</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.AtedQQ">
+            <summary>
+            At的QQ
+            <para>ated QQ number</para>
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Content">
             <summary>
             好友图片的内容
+            <para>Friend Pic Text Content</para>
             </summary>
         </member>
         <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.#ctor(System.String)">
             <summary>
             构造好友图片
+            <para>construct a Content</para>
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VoiceMsg">
+            <summary>
+            语音类信息
+            <para>Voice Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VoiceMsg.url">
+            <summary>
+            语音文件的URL
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VoiceMsg.#ctor(System.String)">
+            <summary>
+            构造群聊语音
             </summary>
             <param name="content"></param>
         </member>
@@ -1697,7 +1729,7 @@
             <para>c.OnServerAction += (s, e) =>{};</para>
             </code>
             </summary>
-            <param name="logFlag">
+            <param name="logflag">
             是否打印日志
             <para>if you want have an Log</para>
             </param>
@@ -1838,6 +1870,14 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Log(System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            日志输出
+            </summary>
+            <param name="s">字串</param>
+            <param name="Fore">前景色</param>
+            <param name="Back">背景色</param>
+        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendTextMessageEventHandler">
             <summary>
             好友消息委托 : 文本
@@ -1869,12 +1909,26 @@
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupAtTextMessageEventHandler">
             <summary>
             群消息委托 : 文本大类
-            <para>Serveric [OnGroup : Text] Message Delegate</para>
+            <para>Serveric [OnGroup : AtText] Message Delegate</para>
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
         </member>
         <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtTextMsgRecieve">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : AtText] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupTextMessageEventHandler">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : Text] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupTextMsgRecieve">
             <summary>
             群消息委托 : 文本大类
             <para>Serveric [OnGroup : Text] Message Event</para>

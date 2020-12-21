@@ -88,12 +88,16 @@ namespace MeowIOTBot.Basex
                 case "TextMsg":
                     {
                         var msg = new TextMessage(content);
+                        Log($"好友文本信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
+                            $"内容:{msg.Content}", ConsoleColor.Magenta);
                         _FriendTextMsgRecieve.Invoke(prop, msg);
                     }
                     break;
                 case "PicMsg":
                     {
                         var msg = new PicMsg(content);
+                        Log($"好友图片信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
+                            $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
                         _FriendPicMsgRecieve.Invoke(prop, msg);
                     }
                     break;
@@ -133,19 +137,51 @@ namespace MeowIOTBot.Basex
             //触发对应操作信息
             switch (e.Data["MsgType"].ToString())
             {
+                case "TextMsg":
+                    {
+                        var msg = new TextMessage(content);
+                        _GroupTextMsgRecieve.Invoke(prop, msg);
+                        Log($"群文本信息 [{prop.IOBody.MsgFromQQ}] " +
+                            $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
+                            $"内容:{msg.Content}", ConsoleColor.Magenta);
+                    }
+                    break;
                 case "AtMsg":
                     {
                         var msg = new AtTextMessage(content);
                         _GroupAtTextMsgRecieve.Invoke(prop, msg);
+                        Log($"群At文本信息 [{prop.IOBody.MsgFromQQ}] " +
+                            $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
+                            $"内容:{msg.Content}", ConsoleColor.Magenta,ConsoleColor.Cyan);
                     }
                     break;
                 case "PicMsg":
                     {
                         var msg = new PicMsg(content);
                         _GroupPicMsgRecieve.Invoke(prop, msg);
+                        Log($"群图片信息 [{prop.IOBody.MsgFromQQ}] " +
+                            $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
+                            $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
                     }
                     break;
             };
+        }
+
+        /// <summary>
+        /// 日志输出
+        /// </summary>
+        /// <param name="s">字串</param>
+        /// <param name="Fore">前景色</param>
+        /// <param name="Back">背景色</param>
+        private static void Log(string s, ConsoleColor Fore = ConsoleColor.White,ConsoleColor Back=ConsoleColor.Black)
+        {
+            if (logFlag)
+            {
+                Console.ForegroundColor = Fore;
+                Console.BackgroundColor = Back;
+                Console.WriteLine($"{DateTime.Now} : : {s}");
+                Console.ResetColor();
+            }
         }
 
         #region 触发事件区域 -- Event Trigger --
@@ -176,16 +212,28 @@ namespace MeowIOTBot.Basex
 
         /// <summary>
         /// 群消息委托 : 文本大类
-        /// <para>Serveric [OnGroup : Text] Message Delegate</para>
+        /// <para>Serveric [OnGroup : AtText] Message Delegate</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public delegate void EventGroupAtTextMessageEventHandler(QQRecieveMessage sender, AtTextMessage e);
         /// <summary>
         /// 群消息委托 : 文本大类
-        /// <para>Serveric [OnGroup : Text] Message Event</para>
+        /// <para>Serveric [OnGroup : AtText] Message Event</para>
         /// </summary>
         public event EventGroupAtTextMessageEventHandler _GroupAtTextMsgRecieve;
+        /// <summary>
+        /// 群消息委托 : 文本大类
+        /// <para>Serveric [OnGroup : Text] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventGroupTextMessageEventHandler(QQRecieveMessage sender, TextMessage e);
+        /// <summary>
+        /// 群消息委托 : 文本大类
+        /// <para>Serveric [OnGroup : Text] Message Event</para>
+        /// </summary>
+        public event EventGroupTextMessageEventHandler _GroupTextMsgRecieve;
         /// <summary>
         /// 群消息委托 : 图片大类
         /// <para>Serveric [OnFriend : Pic] Message Delegate</para>

@@ -23,7 +23,7 @@ namespace MeowIOTBot.Basex
         /// <para>decided if you want to Console.Write(log)</para>
         /// <para>this can be dynamically</para>
         /// </summary>
-        public bool logFlag { get; set; }
+        public static bool logFlag { get; set; }
         /// <summary>
         /// 要连接的QQ
         /// <para>the QQ you want to Connect</para>
@@ -49,7 +49,7 @@ namespace MeowIOTBot.Basex
         /// <para>c.OnServerAction += (s, e) =>{};</para>
         /// </code>
         /// </summary>
-        /// <param name="logFlag">
+        /// <param name="logflag">
         /// 是否打印日志
         /// <para>if you want have an Log</para>
         /// </param>
@@ -61,9 +61,9 @@ namespace MeowIOTBot.Basex
         /// 要监听的QQ
         /// <para>the QQ you want to Listento</para>
         /// </param>
-        public MeowClient(string url, string qq, bool logFlag = false)
+        public MeowClient(string url, string qq, bool logflag = false)
         {
-            this.logFlag = logFlag;
+            logFlag = logflag;
             this.qq = qq;
             this.url = url;
         }
@@ -74,37 +74,30 @@ namespace MeowIOTBot.Basex
         public MeowClient Connect()
         {
             Client socket = new Client(url);
-            //开Socket
             socket.Connect();
-            //服务端连接
             socket.On("connect", (fn) =>
             {
-                Console.WriteLine(((ConnectMessage)fn).ConnectMsg);
-                socket.Emit("GetWebConn", this.qq, null, (d) =>
+                socket.Emit("GetWebConn", qq, null, (d) =>
                 {
                     var jsonMsg = d as string;
-                    Console.WriteLine($"返回状态 [{qq}].{jsonMsg}");
+                    Console.WriteLine($"状态 => [{qq}].{jsonMsg}");
                 });
             });
-            //回调群消息事件源
             socket.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
                 OnServerAction.Invoke(new object(), x);
                 OnGroupMsgs.Invoke(new object(), x);
             });
-            //回调好友消息事件源
             socket.On("OnFriendMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
                 OnServerAction.Invoke(new object(), x);
                 OnFriendMsgs.Invoke(new object(), x);
             });
-            //回调事件源
             socket.On("OnEvents", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
                 OnServerAction.Invoke(new object(), x);
                 OnEventMsgs.Invoke(new object(), x);
             });
-            //支持连写
             return this;
         }
         /// <summary>
