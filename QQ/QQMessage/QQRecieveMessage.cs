@@ -230,6 +230,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         TempSession
     }
 
+
     /// <summary>
     /// 基础消息格式(抽象继承模式)
     /// <para>Message Type * Abstract Inherit Mode</para>
@@ -256,7 +257,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
     /// 信息类型 : 文本信息
     /// <para>Message Type : Text Message</para>
     /// </summary>
-    public class TextMessage : Message
+    public class TextMsg : Message
     {
         /// <summary>
         /// 文本信息
@@ -271,14 +272,14 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// 信息的基础内容
         /// <para>Message Basic Content</para>
         /// </param>
-        public TextMessage(string content) : base($"{{\"Content\":\"{content}\"}}") => Content = content;
+        public TextMsg(string content) : base($"{{\"Content\":\"{content}\"}}") => Content = content;
         
     }
     /// <summary>
     /// at类型的消息 * 仅群聊
     /// <para>Type Of the message [@] * maybe only in Group Chat</para>
     /// </summary>
-    public class AtTextMessage : Message
+    public class AtTextMsg : Message
     {
         /// <summary>
         /// 文本信息
@@ -292,11 +293,24 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         public string RemoveAtContent;
         /// <summary>
         /// 被at的人
+        /// <para>the List of AtedQQ</para>
         /// </summary>
         public List<QQinfo> AtedQQ;
+        /// <summary>
+        /// 信息
+        /// <para>Info</para>
+        /// </summary>
         public class QQinfo
         {
+            /// <summary>
+            /// QQ昵称
+            /// <para>Nick</para>
+            /// </summary>
             public string QQNick;
+            /// <summary>
+            /// QQ号
+            /// <para>QQNumber</para>
+            /// </summary>
             public long QQNumber;
         }
         /// <summary>
@@ -307,7 +321,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// 文本信息
         /// <para>Text Message</para>
         /// </param>
-        public AtTextMessage(string content) : base(content)
+        public AtTextMsg(string content) : base(content)
         {
             var c = content.Replace("\\\"", "\"");
             var jo = JObject.Parse(c);

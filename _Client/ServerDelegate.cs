@@ -87,10 +87,11 @@ namespace MeowIOTBot.Basex
             {
                 case "TextMsg":
                     {
-                        var msg = new TextMessage(content);
+                        var msg = new TextMsg(content);
                         Log($"好友文本信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
                             $"内容:{msg.Content}", ConsoleColor.Magenta);
                         _FriendTextMsgRecieve.Invoke(prop, msg);
+                        __FriendMsgRecieve.Invoke(prop,)
                     }
                     break;
                 case "PicMsg":
@@ -139,7 +140,7 @@ namespace MeowIOTBot.Basex
             {
                 case "TextMsg":
                     {
-                        var msg = new TextMessage(content);
+                        var msg = new TextMsg(content);
                         _GroupTextMsgRecieve.Invoke(prop, msg);
                         Log($"群文本信息 [{prop.IOBody.MsgFromQQ}] " +
                             $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
@@ -148,7 +149,7 @@ namespace MeowIOTBot.Basex
                     break;
                 case "AtMsg":
                     {
-                        var msg = new AtTextMessage(content);
+                        var msg = new AtTextMsg(content);
                         _GroupAtTextMsgRecieve.Invoke(prop, msg);
                         Log($"群At文本信息 [{prop.IOBody.MsgFromQQ}] " +
                             $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
@@ -191,7 +192,7 @@ namespace MeowIOTBot.Basex
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void EventFriendTextMessageEventHandler(QQRecieveMessage sender, TextMessage e);
+        public delegate void EventFriendTextMessageEventHandler(QQRecieveMessage sender, TextMsg e);
         /// <summary>
         /// 好友消息事件 : 文本
         /// <para>Serveric [OnFriend : Text] Message Event</para>
@@ -216,7 +217,7 @@ namespace MeowIOTBot.Basex
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void EventGroupAtTextMessageEventHandler(QQRecieveMessage sender, AtTextMessage e);
+        public delegate void EventGroupAtTextMessageEventHandler(QQRecieveMessage sender, AtTextMsg e);
         /// <summary>
         /// 群消息委托 : 文本大类
         /// <para>Serveric [OnGroup : AtText] Message Event</para>
@@ -228,7 +229,7 @@ namespace MeowIOTBot.Basex
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public delegate void EventGroupTextMessageEventHandler(QQRecieveMessage sender, TextMessage e);
+        public delegate void EventGroupTextMessageEventHandler(QQRecieveMessage sender, TextMsg e);
         /// <summary>
         /// 群消息委托 : 文本大类
         /// <para>Serveric [OnGroup : Text] Message Event</para>
