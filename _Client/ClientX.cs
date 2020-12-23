@@ -50,6 +50,7 @@ namespace MeowIOTBot
         {
             socket = new Basex.MeowServiceClient(url, qq, logFlag);
             socket.CreateClient();
+
             socket._FriendTextMsgRecieve += (s, e) => { }; //好友私聊
             socket._FriendPicMsgRecieve += (s, e) => { }; //好友图片
             socket._FriendVocMsgRecieve += (s, e) => { }; //好友语音
@@ -60,6 +61,7 @@ namespace MeowIOTBot
             socket._GroupTextMsgRecieve += (s, e) => { }; //群聊文本
             socket._GroupVocMsgRecieve += (s, e) => { }; //群聊语音
             socket._GroupVidMsgRecieve += (s, e) => { }; //群聊视频
+
             return socket;
         }
         /// <summary>

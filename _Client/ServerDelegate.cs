@@ -206,7 +206,6 @@ namespace MeowIOTBot.Basex
                     break;
             };
         }
-
         /// <summary>
         /// 日志输出
         /// </summary>
@@ -224,7 +223,7 @@ namespace MeowIOTBot.Basex
             }
         }
 
-        #region 触发事件区域 -- Event Trigger --
+        #region 触发好友消息事件区域 -- Event Trigger --
         /// <summary>
         /// 好友消息委托 : 文本
         /// <para>Serveric [OnFriend : Text] Message Delegate</para>
@@ -273,7 +272,9 @@ namespace MeowIOTBot.Basex
         /// <para>Serveric [OnFriend : Vid] Message Event</para>
         /// </summary>
         public event EventFriendVidMessageEventHandler _FriendVidMsgRecieve;
+        #endregion
 
+        #region 触发群消息事件区域 -- Event Trigger --
         /// <summary>
         /// 群消息委托 : 文本大类
         /// <para>Serveric [OnGroup : AtText] Message Delegate</para>
@@ -347,5 +348,7 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public event EventGroupVidMessageEventHandler _GroupVidMsgRecieve;
         #endregion
+
+
     }
 }

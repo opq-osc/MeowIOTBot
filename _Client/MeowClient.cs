@@ -135,8 +135,8 @@ namespace MeowIOTBot.Basex
         /// <param name="e"></param>
         public delegate void ObjectEventHandler(object sender, ObjectEventArgs e);
         /// <summary>
-        /// 服务器的总体事件集合
-        /// <para>On Server Message</para>
+        /// 服务器的总体事件集合 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+        /// <para>On Server Message (if you rewrite the Build Core will fail)</para>
         /// </summary>
         public event ObjectEventHandler OnServerAction;
         /// <summary>
@@ -147,8 +147,8 @@ namespace MeowIOTBot.Basex
         /// <param name="e"></param>
         public delegate void GroupMessageEventHandler(object sender, ObjectEventArgs e);
         /// <summary>
-        /// 服务器群聊消息事件
-        /// <para>Serveric [OnGroup] Message Event</para>
+        /// 服务器群聊消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+        /// <para>Serveric [OnGroup] Message Event (if you rewrite the Build Core will fail)</para>
         /// </summary>
         public event GroupMessageEventHandler OnGroupMsgs;
         /// <summary>
@@ -159,8 +159,8 @@ namespace MeowIOTBot.Basex
         /// <param name="e"></param>
         public delegate void FriendMessageEventHandler(object sender, ObjectEventArgs e);
         /// <summary>
-        /// 服务器好友消息事件
-        /// <para>Serveric [OnFriend] Message Event</para>
+        /// 服务器好友消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+        /// <para>Serveric [OnFriend] Message Event (if you rewrite the Build Core will fail)</para>
         /// </summary>
         public event FriendMessageEventHandler OnFriendMsgs;
         /// <summary>
@@ -171,8 +171,8 @@ namespace MeowIOTBot.Basex
         /// <param name="e"></param>
         public delegate void EventMessageEventHandler(object sender, ObjectEventArgs e);
         /// <summary>
-        /// 服务器事件消息事件
-        /// <para>Serveric [OnEvent] Message Event</para>
+        /// 服务器事件消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+        /// <para>Serveric [OnEvent] Message Event (if you rewrite the Build Core will fail)</para>
         /// </summary>
         public event EventMessageEventHandler OnEventMsgs;
     }
