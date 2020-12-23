@@ -7,20 +7,21 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>this is a delegate library for IOTQQBot Invertor which you can use this to connect your IOT backend Easily and this is full Codec comment Inline</Description>
+    <Description>this is a delegate library for IOTQQBot user which you can use this to connect your IOT backend Easily and 
+which have full Codec comment Inline bydef is EN/CN but mostly is CN comment.</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
-    <RepositoryType>GitRepo</RepositoryType>
+    <RepositoryType>GitHub</RepositoryType>
     <PackageReleaseNotes>further action is on planned.</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>1.3.0</Version>
-    <AssemblyVersion>1.3.0.0</AssemblyVersion>
-    <FileVersion>1.3.0.0</FileVersion>
+    <Version>1.3.5</Version>
+    <AssemblyVersion>1.3.5.0</AssemblyVersion>
+    <FileVersion>1.3.5.0</FileVersion>
     <PackageId>MeowIOTBot</PackageId>
   </PropertyGroup>
 

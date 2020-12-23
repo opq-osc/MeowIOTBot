@@ -230,7 +230,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         TempSession
     }
 
-
     /// <summary>
     /// 基础消息格式(抽象继承模式)
     /// <para>Message Type * Abstract Inherit Mode</para>
@@ -251,7 +250,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <para>Message Basic Content</para>
         /// </param>
         protected Message(string content) => RawContent = JObject.Parse(content);
-        
     }
     /// <summary>
     /// 信息类型 : 文本信息
@@ -440,6 +438,64 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             var jo = JObject.Parse(content.Replace("\\\"", "\""));
             jo.TryGetValue("Url", out var _Url);
             this.url = _Url?.ToString();
+        }
+    }
+    /// <summary>
+    /// 视频类消息
+    /// <para>Video Message</para>
+    /// </summary>
+    public class VideoMsg : Message
+    {
+        /// <summary>
+        /// 内部的文字内容
+        /// <para>the content of text</para>
+        /// </summary>
+        public string innerContent;
+        /// <summary>
+        /// 前置的发送buf字段
+        /// <para>the inner forward Buffer property</para>
+        /// </summary>
+        public string ForwordBuf;
+        /// <summary>
+        /// 前置的发送字段
+        /// <para>the inner forward buffer field</para>
+        /// </summary>
+        public long ForwordField;
+        /// <summary>
+        /// 视频的Md5码
+        /// <para>the SHAMd5 of video</para>
+        /// </summary>
+        public string VideoMd5;
+        /// <summary>
+        /// 视频的大小(应该是单位Byte)
+        /// <para>the Size of Video (which is maybe using Byte)</para>
+        /// </summary>
+        public long VideoSize;
+        /// <summary>
+        /// 视频的Url
+        /// <para>the URL of the Video</para>
+        /// </summary>
+        public string VideoUrl;
+        /// <summary>
+        /// 构造一个视频信息
+        /// <para>Construct a video msg</para>
+        /// </summary>
+        /// <param name="content"></param>
+        public VideoMsg(string content) : base(content)
+        {
+            var jo = JObject.Parse(content.Replace("\\\"", "\""));
+            jo.TryGetValue("Content", out var _Content);
+            this.innerContent = _Content?.ToString();
+            jo.TryGetValue("ForwordBuf", out var _ForwordBuf);
+            this.ForwordBuf = _ForwordBuf?.ToString();
+            jo.TryGetValue("ForwordField", out var _ForwordField);
+            this.ForwordField = _ForwordField?.ToObject<long>() ?? 0;
+            jo.TryGetValue("VideoMd5", out var _VideoMd5);
+            this.VideoMd5 = _VideoMd5?.ToString();
+            jo.TryGetValue("VideoSize", out var _VideoSize);
+            this.VideoSize = _VideoSize?.ToObject<long>() ?? 0;
+            jo.TryGetValue("VideoUrl", out var _VideoUrl);
+            this.VideoUrl = _VideoUrl?.ToString();
         }
     }
 }

@@ -91,7 +91,6 @@ namespace MeowIOTBot.Basex
                         Log($"好友文本信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
                             $"内容:{msg.Content}", ConsoleColor.Magenta);
                         _FriendTextMsgRecieve.Invoke(prop, msg);
-                        __FriendMsgRecieve.Invoke(prop,)
                     }
                     break;
                 case "PicMsg":
@@ -100,6 +99,22 @@ namespace MeowIOTBot.Basex
                         Log($"好友图片信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
                             $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
                         _FriendPicMsgRecieve.Invoke(prop, msg);
+                    }
+                    break;
+                case "VoiceMsg":
+                    {
+                        var msg = new VoiceMsg(content);
+                        _FriendVocMsgRecieve.Invoke(prop, msg);
+                        Log($"好友语音信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}]"
+                            , ConsoleColor.DarkMagenta);
+                    }
+                    break;
+                case "VideoMsg":
+                    {
+                        var msg = new VideoMsg(content);
+                        _FriendVidMsgRecieve.Invoke(prop, msg);
+                        Log($"好友视频信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}]"
+                            , ConsoleColor.Green);
                     }
                     break;
             };
@@ -159,10 +174,34 @@ namespace MeowIOTBot.Basex
                 case "PicMsg":
                     {
                         var msg = new PicMsg(content);
+                        var d = "";
+                        if(msg.AtedQQ.Length != 0)
+                        {
+                            _GroupAtPicMsgRecieve.Invoke(prop, msg);
+                            d = "At";
+                        }
                         _GroupPicMsgRecieve.Invoke(prop, msg);
-                        Log($"群图片信息 [{prop.IOBody.MsgFromQQ}] " +
+                        Log($"群{d}图片信息 [{prop.IOBody.MsgFromQQ}] " +
                             $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
                             $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
+                    }
+                    break;
+                case "VoiceMsg":
+                    {
+                        var msg = new VoiceMsg(content);
+                        _GroupVocMsgRecieve.Invoke(prop, msg);
+                        Log($"群语音信息 [{prop.IOBody.MsgFromQQ}] " +
+                            $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}]"
+                            , ConsoleColor.DarkMagenta);
+                    }
+                    break;
+                case "VideoMsg":
+                    {
+                        var msg = new VideoMsg(content);
+                        _GroupVidMsgRecieve.Invoke(prop, msg);
+                        Log($"群视频信息 [{prop.IOBody.MsgFromQQ}] " +
+                            $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}]"
+                            , ConsoleColor.Green);
                     }
                     break;
             };
@@ -210,6 +249,30 @@ namespace MeowIOTBot.Basex
         /// <para>Serveric [OnFriend : Pic] Message Event</para>
         /// </summary>
         public event EventFriendPicMessageEventHandler _FriendPicMsgRecieve;
+        /// <summary>
+        /// 好友消息委托 : 语音大类
+        /// <para>Serveric [OnFriend : Voc] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventFriendVocMessageEventHandler(QQRecieveMessage sender, VoiceMsg e);
+        /// <summary>
+        /// 好友消息事件 : 语音大类
+        /// <para>Serveric [OnFriend : Voc] Message Event</para>
+        /// </summary>
+        public event EventFriendVocMessageEventHandler _FriendVocMsgRecieve;
+        /// <summary>
+        /// 好友消息委托 : 视频大类
+        /// <para>Serveric [OnFriend : Vid] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventFriendVidMessageEventHandler(QQRecieveMessage sender, VideoMsg e);
+        /// <summary>
+        /// 好友消息事件 : 视频大类
+        /// <para>Serveric [OnFriend : Vid] Message Event</para>
+        /// </summary>
+        public event EventFriendVidMessageEventHandler _FriendVidMsgRecieve;
 
         /// <summary>
         /// 群消息委托 : 文本大类
@@ -237,16 +300,52 @@ namespace MeowIOTBot.Basex
         public event EventGroupTextMessageEventHandler _GroupTextMsgRecieve;
         /// <summary>
         /// 群消息委托 : 图片大类
-        /// <para>Serveric [OnFriend : Pic] Message Delegate</para>
+        /// <para>Serveric [OnGroup : Pic] Message Delegate</para>
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public delegate void EventGroupPicMessageEventHandler(QQRecieveMessage sender, PicMsg e);
         /// <summary>
         /// 群消息事件 : 图片大类
-        /// <para>Serveric [OnFriend : Pic] Message Event</para>
+        /// <para>Serveric [OnGroup : Pic] Message Event</para>
         /// </summary>
         public event EventGroupPicMessageEventHandler _GroupPicMsgRecieve;
+        /// <summary>
+        /// 群消息委托 : 图片大类
+        /// <para>Serveric [OnGroup : AtPic] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventGroupAtPicMessageEventHandler(QQRecieveMessage sender, PicMsg e);
+        /// <summary>
+        /// 群消息事件 : 图片大类
+        /// <para>Serveric [OnGroup : AtPic] Message Event</para>
+        /// </summary>
+        public event EventGroupAtPicMessageEventHandler _GroupAtPicMsgRecieve;
+        /// <summary>
+        /// 群消息委托 : 语音大类
+        /// <para>Serveric [OnGroup : Voc] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventGroupVocMessageEventHandler(QQRecieveMessage sender, VoiceMsg e);
+        /// <summary>
+        /// 群消息事件 : 语音大类
+        /// <para>Serveric [OnGroup : Voc] Message Event</para>
+        /// </summary>
+        public event EventGroupVocMessageEventHandler _GroupVocMsgRecieve;
+        /// <summary>
+        /// 群消息委托 : 视频大类
+        /// <para>Serveric [OnGroup : Vid] Message Delegate</para>
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void EventGroupVidMessageEventHandler(QQRecieveMessage sender, VideoMsg e);
+        /// <summary>
+        /// 群消息事件 : 视频大类
+        /// <para>Serveric [OnGroup : Vid] Message Event</para>
+        /// </summary>
+        public event EventGroupVidMessageEventHandler _GroupVidMsgRecieve;
         #endregion
     }
 }

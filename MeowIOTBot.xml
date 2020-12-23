@@ -1179,19 +1179,19 @@
             <para>Message Basic Content</para>
             </param>
         </member>
-        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage">
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMsg">
             <summary>
             信息类型 : 文本信息
             <para>Message Type : Text Message</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage.Content">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMsg.Content">
             <summary>
             文本信息
             <para>Text Message</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMessage.#ctor(System.String)">
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMsg.#ctor(System.String)">
             <summary>
             构造信息类型 : 文本信息
             <para>Message Constructor Type : Text Message</para>
@@ -1201,30 +1201,49 @@
             <para>Message Basic Content</para>
             </param>
         </member>
-        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage">
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg">
             <summary>
             at类型的消息 * 仅群聊
             <para>Type Of the message [@] * maybe only in Group Chat</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.Content">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.Content">
             <summary>
             文本信息
             <para>Text Message</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.RemoveAtContent">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.RemoveAtContent">
             <summary>
             文本信息
             <para>Text Message</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.AtedQQ">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.AtedQQ">
             <summary>
             被at的人
+            <para>the List of AtedQQ</para>
             </summary>
         </member>
-        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMessage.#ctor(System.String)">
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo">
+            <summary>
+            信息
+            <para>Info</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo.QQNick">
+            <summary>
+            QQ昵称
+            <para>Nick</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo.QQNumber">
+            <summary>
+            QQ号
+            <para>QQNumber</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.#ctor(System.String)">
             <summary>
             构造at类型的消息 * 仅群聊
             <para>Type Of the message [@] * maybe only in Group Chat</para>
@@ -1315,6 +1334,55 @@
         <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VoiceMsg.#ctor(System.String)">
             <summary>
             构造群聊语音
+            </summary>
+            <param name="content"></param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg">
+            <summary>
+            视频类消息
+            <para>Video Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.innerContent">
+            <summary>
+            内部的文字内容
+            <para>the content of text</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.ForwordBuf">
+            <summary>
+            前置的发送buf字段
+            <para>the inner forward Buffer property</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.ForwordField">
+            <summary>
+            前置的发送字段
+            <para>the inner forward buffer field</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.VideoMd5">
+            <summary>
+            视频的Md5码
+            <para>the SHAMd5 of video</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.VideoSize">
+            <summary>
+            视频的大小(应该是单位Byte)
+            <para>the Size of Video (which is maybe using Byte)</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.VideoUrl">
+            <summary>
+            视频的Url
+            <para>the URL of the Video</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg.#ctor(System.String)">
+            <summary>
+            构造一个视频信息
+            <para>Construct a video msg</para>
             </summary>
             <param name="content"></param>
         </member>
@@ -1906,6 +1974,34 @@
             <para>Serveric [OnFriend : Pic] Message Event</para>
             </summary>
         </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendVocMessageEventHandler">
+            <summary>
+            好友消息委托 : 语音大类
+            <para>Serveric [OnFriend : Voc] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendVocMsgRecieve">
+            <summary>
+            好友消息事件 : 语音大类
+            <para>Serveric [OnFriend : Voc] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendVidMessageEventHandler">
+            <summary>
+            好友消息委托 : 视频大类
+            <para>Serveric [OnFriend : Vid] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendVidMsgRecieve">
+            <summary>
+            好友消息事件 : 视频大类
+            <para>Serveric [OnFriend : Vid] Message Event</para>
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupAtTextMessageEventHandler">
             <summary>
             群消息委托 : 文本大类
@@ -1937,7 +2033,7 @@
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupPicMessageEventHandler">
             <summary>
             群消息委托 : 图片大类
-            <para>Serveric [OnFriend : Pic] Message Delegate</para>
+            <para>Serveric [OnGroup : Pic] Message Delegate</para>
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -1945,7 +2041,49 @@
         <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupPicMsgRecieve">
             <summary>
             群消息事件 : 图片大类
-            <para>Serveric [OnFriend : Pic] Message Event</para>
+            <para>Serveric [OnGroup : Pic] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupAtPicMessageEventHandler">
+            <summary>
+            群消息委托 : 图片大类
+            <para>Serveric [OnGroup : AtPic] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtPicMsgRecieve">
+            <summary>
+            群消息事件 : 图片大类
+            <para>Serveric [OnGroup : AtPic] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupVocMessageEventHandler">
+            <summary>
+            群消息委托 : 语音大类
+            <para>Serveric [OnGroup : Voc] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupVocMsgRecieve">
+            <summary>
+            群消息事件 : 语音大类
+            <para>Serveric [OnGroup : Voc] Message Event</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupVidMessageEventHandler">
+            <summary>
+            群消息委托 : 视频大类
+            <para>Serveric [OnGroup : Vid] Message Delegate</para>
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupVidMsgRecieve">
+            <summary>
+            群消息事件 : 视频大类
+            <para>Serveric [OnGroup : Vid] Message Event</para>
             </summary>
         </member>
     </members>
