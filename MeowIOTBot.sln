@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeowIOTBot", "MeowIOTBot.csproj", "{3CD6E6DE-6285-4D2A-A4AF-5DDDCD92B3F4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RawTest", "..\RawTest\RawTest.csproj", "{35AB84AA-9C9B-419B-9D1E-B3B480913E06}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "rinkov2", "D:\Users\David\source\repos\rinkov2\rinkov2.csproj", "{99AD85DB-FB63-4D30-A035-FDA3D17D8C5B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IotTest", "..\IotTest\IotTest.csproj", "{488941E5-5319-4B16-BD1B-F7D95BD86661}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{3CD6E6DE-6285-4D2A-A4AF-5DDDCD92B3F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CD6E6DE-6285-4D2A-A4AF-5DDDCD92B3F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CD6E6DE-6285-4D2A-A4AF-5DDDCD92B3F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{35AB84AA-9C9B-419B-9D1E-B3B480913E06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{35AB84AA-9C9B-419B-9D1E-B3B480913E06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{35AB84AA-9C9B-419B-9D1E-B3B480913E06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{35AB84AA-9C9B-419B-9D1E-B3B480913E06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99AD85DB-FB63-4D30-A035-FDA3D17D8C5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99AD85DB-FB63-4D30-A035-FDA3D17D8C5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99AD85DB-FB63-4D30-A035-FDA3D17D8C5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99AD85DB-FB63-4D30-A035-FDA3D17D8C5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488941E5-5319-4B16-BD1B-F7D95BD86661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488941E5-5319-4B16-BD1B-F7D95BD86661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488941E5-5319-4B16-BD1B-F7D95BD86661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488941E5-5319-4B16-BD1B-F7D95BD86661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -123,6 +123,12 @@
             <para>an type that used to PostAction </para>
             </summary>
         </member>
+        <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.LoginQQ">
+            <summary>
+            登录QQ
+            <para>get one QQ Login</para>
+            </summary>
+        </member>
         <member name="F:MeowIOTBot.NetworkHelper.PostHelper.UrlType.ClusterInfo">
             <summary>
             集群信息
@@ -282,6 +288,34 @@
             重写的WebConnId字段
             <para>Rewrite 'WebConnId' from server</para>
             </summary>
+        </member>
+        <member name="T:MeowIOTBot.LoginQQ">
+            <summary>
+            框架登录处理
+            <para>Interfaceable QQ Login</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.LoginQQ.Login(System.Int32,System.Int32)">
+            <summary>
+            登录接口
+            <para>Login Interface</para>
+            </summary>
+            <param name="imgHeight">
+            打印时控制台的高度(建议50),过大可能导致分页
+            <para>console output selected height -by default is 50 (be aware if too large may cause to split-page)</para>
+            </param>
+            <param name="imgWidth">
+            打印时控制台的宽度(建议50),过大可能导致分页
+            <para>console output selected width -by default is 50 (be aware if too large may cause to split-page)</para>
+            </param>
+        </member>
+        <member name="M:MeowIOTBot.LoginQQ.PrintQRCodeFromBase64(System.String,System.Int32,System.Int32)">
+            <summary>
+            打印QR码
+            </summary>
+            <param name="base64img">base64子串</param>
+            <param name="height">高度</param>
+            <param name="width">宽度</param>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQPerson">
             <summary>
@@ -1838,8 +1872,8 @@
         </member>
         <member name="E:MeowIOTBot.Basex.MeowClient.OnServerAction">
             <summary>
-            服务器的总体事件集合
-            <para>On Server Message</para>
+            服务器的总体事件集合 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+            <para>On Server Message (if you rewrite the Build Core will fail)</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowClient.GroupMessageEventHandler">
@@ -1852,8 +1886,8 @@
         </member>
         <member name="E:MeowIOTBot.Basex.MeowClient.OnGroupMsgs">
             <summary>
-            服务器群聊消息事件
-            <para>Serveric [OnGroup] Message Event</para>
+            服务器群聊消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+            <para>Serveric [OnGroup] Message Event (if you rewrite the Build Core will fail)</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowClient.FriendMessageEventHandler">
@@ -1866,8 +1900,8 @@
         </member>
         <member name="E:MeowIOTBot.Basex.MeowClient.OnFriendMsgs">
             <summary>
-            服务器好友消息事件
-            <para>Serveric [OnFriend] Message Event</para>
+            服务器好友消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+            <para>Serveric [OnFriend] Message Event (if you rewrite the Build Core will fail)</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowClient.EventMessageEventHandler">
@@ -1880,8 +1914,8 @@
         </member>
         <member name="E:MeowIOTBot.Basex.MeowClient.OnEventMsgs">
             <summary>
-            服务器事件消息事件
-            <para>Serveric [OnEvent] Message Event</para>
+            服务器事件消息事件 (如果你重写这个事件,那么服务端的解析将会由您自己决定)
+            <para>Serveric [OnEvent] Message Event (if you rewrite the Build Core will fail)</para>
             </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient">

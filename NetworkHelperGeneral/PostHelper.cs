@@ -53,6 +53,7 @@ namespace MeowIOTBot.NetworkHelper
                     UrlType.init => throw (new Exception("Initialization is done by Server!")),
                     UrlType.ClusterInfo => $"{CallerUrl}/v1/ClusterInfo",
                     UrlType.Announce => $"{CallerUrl}/v1/Group/Announce?qq={LoginQQ}",
+                    UrlType.LoginQQ => $"{CallerUrl}/v1/Login/GetQRcode",
                     //UrlType.SendMsgV2 => $"{CallerUrl}/v2/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                     _ => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                 };
@@ -92,6 +93,11 @@ namespace MeowIOTBot.NetworkHelper
         /// </summary>
         public enum UrlType
         {
+            /// <summary>
+            /// 登录QQ
+            /// <para>get one QQ Login</para>
+            /// </summary>
+            LoginQQ,
             /// <summary>
             /// 集群信息
             /// <para>get clusterinfo</para>

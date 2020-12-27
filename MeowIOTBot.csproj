@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>DavidSciMeow</Authors>
@@ -32,6 +32,7 @@ which have full Codec comment Inline bydef is EN/CN but mostly is CN comment.</D
 
   <ItemGroup>
     <PackageReference Include="MeowSocketLibraryForRinkoIOT" Version="1.0.1" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 
 </Project>

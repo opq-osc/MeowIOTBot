@@ -175,7 +175,7 @@ namespace MeowIOTBot.Basex
                     {
                         var msg = new PicMsg(content);
                         var d = "";
-                        if(msg.AtedQQ.Length != 0)
+                        if(msg.AtedQQ != null)
                         {
                             _GroupAtPicMsgRecieve.Invoke(prop, msg);
                             d = "At";
