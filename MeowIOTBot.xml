@@ -4,6 +4,12 @@
         <name>MeowIOTBot</name>
     </assembly>
     <members>
+        <member name="T:MeowIOTBot.EC">
+            <summary>
+            用于枚举错误类型
+            <para>for Enum the Exception Type</para>
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.NetworkHelper.HttpHelper">
             <summary>
             特征网络包发送类
@@ -316,6 +322,104 @@
             <param name="base64img">base64子串</param>
             <param name="height">高度</param>
             <param name="width">宽度</param>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQEvent.EventType">
+            <summary>
+            事件类型枚举类
+            <para>EventType EnumClass</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_NULL_REF">
+            <summary>
+            还没识别的事件类型
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_GROUP_ADMIN">
+            <summary>
+            管理员变更事件
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_GROUP_ADMINSYSNOTIFY">
+            <summary>
+            管理员设置事件
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_GROUP_SHUT">
+            <summary>
+            群禁言
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQEvent.EventMsg">
+            <summary>
+            事件的摘要
+            <para>Event Hash</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQEvent.EventMsg.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            构造用
+            </summary>
+            <param name="jo"></param>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.Data">
+            <summary>
+            其他数据(扩展类)
+            <para>eXtensionClass - for InnerData</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.FromUser">
+            <summary>
+            来源用户
+            <para>For The Msg From</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.ToUser">
+            <summary>
+            接收用户
+            <para>For The Msg To</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.MsgType">
+            <summary>
+            信息类型
+            <para>MsginnerType</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.MsgSeq">
+            <summary>
+            消息序列号
+            <para>Msg Sequence</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.EventMsg.Content">
+            <summary>
+            信息内容
+            <para>Msg Innerexcption</para>
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQEvent.Event">
+            <summary>
+            继承用事件内部数据类
+            <para>for inherit classes (which is EventData-Typed)</para>
+            </summary>
+        </member>
+        <member name="M:MeowIOTBot.QQ.QQEvent.Event.#ctor(Newtonsoft.Json.Linq.JObject)">
+            <summary>
+            构造用
+            </summary>
+            <param name="jo"></param>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.Event.EType">
+            <summary>
+            枚举类型(用于转换下面的InnerData)
+            <para>inner Class For Cast InnerData</para>
+            </summary>
+        </member>
+        <member name="P:MeowIOTBot.QQ.QQEvent.Event.EMsg">
+            <summary>
+            事件的摘要信息
+            <para>Event Hash</para>
+            </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQFunc.QQPerson">
             <summary>
@@ -1988,12 +2092,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendTextMsgRecieve">
-            <summary>
-            好友消息事件 : 文本
-            <para>Serveric [OnFriend : Text] Message Event</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendPicMessageEventHandler">
             <summary>
             好友消息委托 : 图片大类
@@ -2001,12 +2099,6 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
-        </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendPicMsgRecieve">
-            <summary>
-            好友消息事件 : 图片大类
-            <para>Serveric [OnFriend : Pic] Message Event</para>
-            </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendVocMessageEventHandler">
             <summary>
@@ -2016,12 +2108,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendVocMsgRecieve">
-            <summary>
-            好友消息事件 : 语音大类
-            <para>Serveric [OnFriend : Voc] Message Event</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventFriendVidMessageEventHandler">
             <summary>
             好友消息委托 : 视频大类
@@ -2029,6 +2115,24 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendTextMsgRecieve">
+            <summary>
+            好友消息事件 : 文本
+            <para>Serveric [OnFriend : Text] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendPicMsgRecieve">
+            <summary>
+            好友消息事件 : 图片大类
+            <para>Serveric [OnFriend : Pic] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendVocMsgRecieve">
+            <summary>
+            好友消息事件 : 语音大类
+            <para>Serveric [OnFriend : Voc] Message Event</para>
+            </summary>
         </member>
         <member name="E:MeowIOTBot.Basex.MeowServiceClient._FriendVidMsgRecieve">
             <summary>
@@ -2044,12 +2148,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtTextMsgRecieve">
-            <summary>
-            群消息委托 : 文本大类
-            <para>Serveric [OnGroup : AtText] Message Event</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupTextMessageEventHandler">
             <summary>
             群消息委托 : 文本大类
@@ -2057,12 +2155,6 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
-        </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupTextMsgRecieve">
-            <summary>
-            群消息委托 : 文本大类
-            <para>Serveric [OnGroup : Text] Message Event</para>
-            </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupPicMessageEventHandler">
             <summary>
@@ -2072,12 +2164,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupPicMsgRecieve">
-            <summary>
-            群消息事件 : 图片大类
-            <para>Serveric [OnGroup : Pic] Message Event</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupAtPicMessageEventHandler">
             <summary>
             群消息委托 : 图片大类
@@ -2085,12 +2171,6 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
-        </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtPicMsgRecieve">
-            <summary>
-            群消息事件 : 图片大类
-            <para>Serveric [OnGroup : AtPic] Message Event</para>
-            </summary>
         </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupVocMessageEventHandler">
             <summary>
@@ -2100,12 +2180,6 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
-        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupVocMsgRecieve">
-            <summary>
-            群消息事件 : 语音大类
-            <para>Serveric [OnGroup : Voc] Message Event</para>
-            </summary>
-        </member>
         <member name="T:MeowIOTBot.Basex.MeowServiceClient.EventGroupVidMessageEventHandler">
             <summary>
             群消息委托 : 视频大类
@@ -2113,6 +2187,36 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtTextMsgRecieve">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : AtText] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupTextMsgRecieve">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : Text] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupPicMsgRecieve">
+            <summary>
+            群消息事件 : 图片大类
+            <para>Serveric [OnGroup : Pic] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupAtPicMsgRecieve">
+            <summary>
+            群消息事件 : 图片大类
+            <para>Serveric [OnGroup : AtPic] Message Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupVocMsgRecieve">
+            <summary>
+            群消息事件 : 语音大类
+            <para>Serveric [OnGroup : Voc] Message Event</para>
+            </summary>
         </member>
         <member name="E:MeowIOTBot.Basex.MeowServiceClient._GroupVidMsgRecieve">
             <summary>
