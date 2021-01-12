@@ -229,7 +229,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         TempSession
     }
-
     /// <summary>
     /// 基础消息格式(抽象继承模式)
     /// <para>Message Type * Abstract Inherit Mode</para>

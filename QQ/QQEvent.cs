@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MeowIOTBot.QQ.QQEvent
 {
@@ -68,6 +66,7 @@ namespace MeowIOTBot.QQ.QQEvent
         public long UserID;
         public string UserName;
     }
+
 
     /// <summary>
     /// 事件类型枚举类

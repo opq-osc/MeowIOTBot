@@ -3,6 +3,7 @@ using MeowIOTBot.QQ.QQEvent;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Newtonsoft.Json.Linq;
 
 namespace MeowIOTBot.Basex
 {
@@ -223,7 +224,25 @@ namespace MeowIOTBot.Basex
                 case "ON_EVENT_GROUP_ADMINSYSNOTIFY":
                     {
                         var x = (ON_EVENT_GROUP_ADMINSYSNOTIFY)d.Data;
-                        __ON_EVENT_GROUP_ADMINSYSNOTIFY.Invoke(d.EMsg, x);
+                        __A_ON_EVENT_GROUP_ADMINSYSNOTIFY.Invoke(d.EMsg, x);
+                    }
+                    break;
+                case "ON_EVENT_GROUP_EXIT":
+                    {
+                        var x = (ON_EVENT_GROUP_EXIT)d.Data;
+                        __ON_EVENT_GROUP_EXIT.Invoke(d.EMsg, x);
+                    }
+                    break;
+                case "ON_EVENT_GROUP_EXIT_SUCC":
+                    {
+                        var x = (ON_EVENT_GROUP_EXIT_SUCC)d.Data;
+                        __ON_EVENT_GROUP_EXIT_SUCC.Invoke(d.EMsg, x);
+                    }
+                    break;
+                case "ON_EVENT_GROUP_JOIN":
+                    {
+                        var x = (ON_EVENT_GROUP_JOIN)d.Data;
+                        __ON_EVENT_GROUP_JOIN.Invoke(d.EMsg, x);
                     }
                     break;
             }
@@ -375,13 +394,59 @@ namespace MeowIOTBot.Basex
         #endregion
 
         #region 触发事件代理区域 -- Event Trigger -- 
+        /// <summary>
+        /// 群组管理类变动事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public delegate void Event_ON_EVENT_GROUP_ADMIN_EventHandler(EventMsg sender, ON_EVENT_GROUP_ADMIN e);
+        /// <summary>
+        /// 群禁言事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public delegate void Event_ON_EVENT_GROUP_SHUT_EventHandler(EventMsg sender, ON_EVENT_GROUP_SHUT e);
-        public delegate void Event_ON_EVENT_GROUP_ADMINSYSNOTIFY_EventHandler(EventMsg sender, ON_EVENT_GROUP_ADMINSYSNOTIFY e);
+        /// <summary>
+        /// 所有群事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler(EventMsg sender, ON_EVENT_GROUP_ADMINSYSNOTIFY e);
+        /// <summary>
+        /// 群成员退群事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_GROUP_EXIT_EventHandler(EventMsg sender, ON_EVENT_GROUP_EXIT e);
+        /// <summary>
+        /// 主动退群事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_GROUP_EXIT_SUCC_EventHandler(EventMsg sender, ON_EVENT_GROUP_EXIT_SUCC e);
+        /// <summary>
+        /// 群成员加群事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_GROUP_JOIN_EventHandler(EventMsg sender, ON_EVENT_GROUP_JOIN e);
+        /// <summary>
+        /// 所有未识别的事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_EventHandler(EventMsg sender, JObject e);
 
+        /// <summary>
+        /// 
+        /// </summary>
         public event Event_ON_EVENT_GROUP_ADMIN_EventHandler __ON_EVENT_GROUP_ADMIN;
         public event Event_ON_EVENT_GROUP_SHUT_EventHandler __ON_EVENT_GROUP_SHUT;
-        public event Event_ON_EVENT_GROUP_ADMINSYSNOTIFY_EventHandler __ON_EVENT_GROUP_ADMINSYSNOTIFY;
+        public event Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler __A_ON_EVENT_GROUP_ADMINSYSNOTIFY;
+        public event Event_ON_EVENT_GROUP_EXIT_EventHandler __ON_EVENT_GROUP_EXIT;
+        public event Event_ON_EVENT_GROUP_EXIT_SUCC_EventHandler __ON_EVENT_GROUP_EXIT_SUCC;
+        public event Event_ON_EVENT_GROUP_JOIN_EventHandler __ON_EVENT_GROUP_JOIN;
+        public event Event_ON_EVENT_EventHandler __ON_UUMOUNT_EVENT;
         #endregion
 
     }
