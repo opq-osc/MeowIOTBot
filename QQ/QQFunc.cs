@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using static MeowIOTBot.NetworkHelper.PostHelper;
+using static MeowIOTBot.QQ.QQFunc.QQGroupList;
+using static MeowIOTBot.QQ.QQFunc.QQGroupUserList;
 
 /// <summary>
 /// 总操作函数库
@@ -12,6 +14,124 @@ using static MeowIOTBot.NetworkHelper.PostHelper;
 /// </summary>
 namespace MeowIOTBot.QQ.QQFunc
 {
+    /// <summary>
+    /// 用户的Cookie[字段未识别用途,保留]
+    /// <para>User's Cookies the Parameter is not in instance for usage</para>
+    /// </summary>
+    public class QQCookie
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public string ClientKey { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Cookies { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Gtk { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Gtk32 { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public Pskey PSkey { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Skey { get; set; }
+        /// <summary>
+        /// Inner Class for cookie.//
+        /// </summary>
+        public class Pskey
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            public string connect { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string docs { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string docx { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string game { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string gamecenter { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string imgcache { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string mtencentcom { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string mail { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string mma { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string now { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string office { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string openmobile { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string qqweb { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string qun { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string qzone { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string qzonecom { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string tenpaycom { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string ti { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string vip { get; set; }
+            /// <summary>
+            /// 
+            /// </summary>
+            public string weishi { get; set; }
+        }
+    }
+
     /// <summary>
     /// QQ用户
     /// </summary>
@@ -123,54 +243,6 @@ namespace MeowIOTBot.QQ.QQFunc
         /// <para>the next gen of query code</para>
         /// </summary>
         public int subcode;
-        /// <summary>
-        /// 获取实例的边界操作
-        /// <para>is the operation that getPersondetailed Message</para>
-        /// </summary>
-        /// <param name="qqid">
-        /// QQ号
-        /// <para>Query QQ number</para>
-        /// </param>
-        /// <returns></returns>
-        public static async Task<QQPerson> GetPerson(long qqid) => JsonConvert.DeserializeObject<QQPerson>(await PASA(UrlType.GetUserInfo, $"{{\"UserID\":{ qqid}}}"));
-
-    }
-    /// <summary>
-    /// QQ请求应答
-    /// <para>QQ Action response</para>
-    /// </summary>
-    public class QQRequestResponse
-    {
-        /// <summary>
-        /// 处理好友添加
-        /// <para>dealing with Friend Addition</para>
-        /// </summary>
-        /// <param name="Action"> 
-        /// 1忽略 2同意 3拒绝 
-        /// <para>for a type [int] 1:Ignore 2:Agree 3:Reject</para>
-        /// </param>
-        public static async Task<string> DealFriend(int Action) => await PASA(UrlType.DealFriend, $"{{\"Action\":{Action}}}");
-        /// <summary>
-        /// 处理群添加
-        /// <para>dealing with Group Addition</para>
-        /// </summary>
-        /// <param name="Action"> 
-        /// 11 同意 14 忽略 21 不同意 
-        /// <para>for a type [int] 11:Agree 14:Ignore 21:Reject</para>
-        /// </param>
-        public static async Task<string> DealGroupInvite(int Action) => await PASA(UrlType.AnswerInviteGroup, $"{{\"Action\":{Action}}}");
-    }
-    /// <summary>
-    /// 本账号操作
-    /// <para>any parameter that in selfsponse</para>
-    /// </summary>
-    public class QQMe
-    {
-        /// <summary>
-        /// 获取在线账号的Cookie
-        /// <para>get the cookie of this Online(ed) QQ</para>
-        /// </summary>
-        public static async void GetUserCook() => await PASA(UrlType.GetUserCook, "");
     }
     /// <summary>
     /// 好友列表
@@ -272,38 +344,14 @@ namespace MeowIOTBot.QQ.QQFunc
             /// <returns></returns>
             public List<QQFriend> getInstance() => this.q;
         }
-        /// <summary>
-        /// 获取好友列表
-        /// <para>get the QQFriend List</para>
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<List<QQFriend>> GetFriendList()
-        {
-            _FriendList u = new _FriendList();
-            int index = 0;
-            while (true)
-            {
-                var r = await GetListOnIndex(index);
-                r.FriendList.ForEach((k) => { u.Add(k); });
-                if (r.Totoal_friend_count > index)
-                {
-                    index = ((index + r.GetfriendCount) > r.Totoal_friend_count ? r.Totoal_friend_count : index += r.GetfriendCount);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return u.getInstance();
 
-        }
         /// <summary>
         /// 获取列表的部分集合
         /// <para>get partial list of indecator SETs</para>
         /// </summary>
         /// <param name="Index"></param>
         /// <returns></returns>
-        private static async Task<QQFriendList> GetListOnIndex(int Index) => JsonConvert.DeserializeObject<QQFriendList>(await PASA(UrlType.GetQQUserList, $"{{\"StartIndex\":{Index}}}"));
+        public static async Task<QQFriendList> GetListOnIndex(int Index) => JsonConvert.DeserializeObject<QQFriendList>(await PASA(UrlType.GetQQUserList, $"{{\"StartIndex\":{Index}}}"));
     }
     /// <summary>
     /// QQ好友请求(管理类)方法
@@ -332,7 +380,7 @@ namespace MeowIOTBot.QQ.QQFunc
         /// <para>the User that you want to install with</para>
         /// </param>
         /// <returns></returns>
-        private static async Task<string> __FriendManage(int AddFromSource, long FromGroupID, long AddUserUid, string Content) =>
+        public static async Task<string> __FriendManage(int AddFromSource, long FromGroupID, long AddUserUid, string Content) =>
                 await PASA(
                     UrlType.AddQQUser,
                     $"{{\"AddUserUid\":{AddUserUid}," +
@@ -340,38 +388,8 @@ namespace MeowIOTBot.QQ.QQFunc
                     $"\"AddFromSource\":{AddFromSource}," +
                     $"\"FromGroupID\":{FromGroupID}}}"
                 );
-        /// <summary>
-        /// 从QQ搜索加人
-        /// <para>Add Friend From QQSearch</para>
-        /// </summary>
-        /// <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
-        /// <param name="Content">验证内容<para>the specific content you want to send</para></param>
-        /// <returns></returns>
-        public static async Task<string> AddFriendFromQQSearch(long AddUserUid, string Content) => await __FriendManage(2020, 0, AddUserUid, Content);
-        /// <summary>
-        /// 从QQ空间加人
-        /// </summary>
-        /// <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
-        /// <param name="Content">验证内容<para>the specific content you want to send</para></param>
-        /// <returns></returns>
-        public static async Task<string> AddFriendFromQQSpace(long AddUserUid, string Content) => await __FriendManage(2011, 0, AddUserUid, Content);
-        /// <summary>
-        /// 从群内加人
-        /// </summary>
-        /// <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
-        /// <param name="Content">验证内容<para>the specific content you want to send</para></param>
-        /// <param name="fromGroupId">同在的群号<para>the specific group that you two both in</para></param>
-        /// <returns></returns>
-        public static async Task<string> AddFriendFromQQGroup(long AddUserUid, long fromGroupId, string Content) => await __FriendManage(2004, fromGroupId, AddUserUid, Content);
-        /// <summary>
-        /// 从讨论组加人 (暂时弃用)
-        /// </summary>
-        /// <param name="AddUserUid">要加的人QQ号<para>the QQnumber that you want to become friend with</para></param>
-        /// <param name="Content">验证内容<para>the specific content you want to send</para></param>
-        /// <returns></returns>
-        [Obsolete]
-        public static async Task<string> AddFriendFromQQDisGroup(long AddUserUid, string Content) => await __FriendManage(2005, 0, AddUserUid, Content);
     }
+
     /// <summary>
     /// 群成员列表
     /// <para>QQ GroupMember List</para>
@@ -397,7 +415,7 @@ namespace MeowIOTBot.QQ.QQFunc
         /// 群成员列表
         /// <para>GroupMember List</para>
         /// </summary>
-        public  List<QQGroupUser> MemberList { get; set; }
+        public List<QQGroupUser> MemberList { get; set; }
         /// <summary>
         /// QQ群成员
         /// <para>the Group member Class</para>
@@ -469,35 +487,6 @@ namespace MeowIOTBot.QQ.QQFunc
             /// <para>a parameter indecate this memeber is GroupAdministrator</para>
             /// </summary>
             public int GroupAdmin;
-        }
-        /// <summary>
-        /// 获取一个QQGroupUserList对象
-        /// <para>get a QQGroupList Obejct</para>
-        /// </summary>
-        /// <param name="GroupId">一个请求对象<para>The QQ Group Request Object</para></param>
-        /// <returns>返回一个标准的QQGroupUserList对象<para>returns a standarded QQGroupList Object</para></returns>
-        public static async Task<List<QQGroupUser>> GetGroupUserList(long GroupId)
-        {
-            long LastUin = 0;
-            List<QQGroupUser> u = new List<QQGroupUser>();
-            while (true)
-            {
-                var k = await PASA(
-                    UrlType.GetGroupUserList,
-                    $"{{\"GroupUin\":{GroupId},\"LastUin\":{LastUin}}}"
-                    );
-                var d = JsonConvert.DeserializeObject<QQGroupUserList>(k);
-                u.AddRange(d.MemberList.ToArray());
-                if (d.LastUin == 0)
-                {
-                    break;
-                }
-                else
-                {
-                    LastUin = d.LastUin;
-                }
-            }
-            return u;
         }
     }
     /// <summary>
@@ -592,26 +581,6 @@ namespace MeowIOTBot.QQ.QQFunc
             public List<QQGroup> getInstance() => this.q;
         }
         /// <summary>
-        /// 获取所有群列表
-        /// <para>get-all Group list</para>
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<List<QQGroup>> GetGroupList()
-        {
-            _GroupList u = new _GroupList();
-            int index = 0;
-            while (true)
-            {
-                var r = await GetGroupListOnIndex(index);
-                r.TroopList.ForEach((k) => { u.Add(k); });
-                if (r.NextToken == 0 || r.NextToken == null)
-                {
-                    break;
-                }
-            }
-            return u.getInstance();
-        }
-        /// <summary>
         /// 拉取群列表
         /// <para>the Group List</para>
         /// </summary>
@@ -620,7 +589,7 @@ namespace MeowIOTBot.QQ.QQFunc
         /// <para>Index number</para>
         /// </param>
         /// <returns></returns>
-        private static async Task<QQGroupList> GetGroupListOnIndex(int nt) =>
+        public static async Task<QQGroupList> GetGroupListOnIndex(int nt) =>
             JsonConvert.DeserializeObject<QQGroupList>(
                 await PASA(
                     UrlType.GetGroupList,
@@ -653,50 +622,42 @@ namespace MeowIOTBot.QQ.QQFunc
         /// 内容
         /// <para>the Content</para>
         /// </param>
-        private static async Task<string> __GroupManage(int ActionType, long GroupID, long ActionUserID, string Content) => await
+        public static async Task<string> __GroupManage(int ActionType, long GroupID, long ActionUserID, string Content) => await
             PostHelper.PASA(
                 PostHelper.UrlType.GroupMgr,
                 $"{{\"ActionType\":{ActionType},\"GroupID\":{GroupID}," +
                 $"\"ActionUserID\":{ActionUserID},\"Content\":\"{Content}\"}}"
                 );
+    }
+    /// <summary>
+    /// QQ请求应答
+    /// <para>QQ Action response</para>
+    /// <para>请求应答已经禁用,以后的请求应答会在请求的委托中决定,保证请求的操作同步</para>
+    /// <para>for request response is now OBSOLETE you need to go Event and set the Parameter</para>
+    /// </summary>
+    [Obsolete]
+    public class QQRequestResponse
+    {
         /// <summary>
-        /// 加群<para>Joinin Group</para>
-        /// <para>Addin Group</para>
+        /// 处理好友添加
+        /// <para>dealing with Friend Addition</para>
         /// </summary>
-        /// <param name="GroupId">加入的群群号<para>the Group Number</para></param>
-        /// <param name="Content">验证内容<para>the identify content</para></param>
-        /// <returns></returns>
-        public static async Task<string> AddIntoGroup(long GroupId, string Content) => await __GroupManage(1, GroupId, 0, Content);
-        /// <summary>
-        /// 退群<para>Leave Group</para>
-        /// </summary>
-        /// <param name="GroupId">加入的群群号<para>the Group Number</para></param>
-        /// <param name="Content">验证内容<para>the identify content</para></param>
-        /// <returns></returns>
-        public static async Task<string> QuitGroup(long GroupId, string Content) => await __GroupManage(2, GroupId, 0, Content);
-        /// <summary>
-        /// 移除群员<para>remove Group Member</para>
-        /// </summary>
-        /// <param name="GroupId">加入的群群号<para>the Group Number</para></param>
-        /// <param name="Content">验证内容<para>the identify content</para></param>
-        /// <param name="QQPerson">被移除者<para>the one that will be execute</para></param>
-        /// <returns></returns>
-        public static async Task<string> RemoveSomeBodyFrom(long GroupId, long QQPerson, string Content) => await __GroupManage(3, GroupId, QQPerson, Content);
-        /// <summary>
-        /// 拉人到..
-        /// <para>inviteSomeone</para>
-        /// </summary>
-        /// <param name="GroupId">加入的群群号
-        /// <para>the Group Number</para>
+        /// <param name="Action"> 
+        /// 1忽略 2同意 3拒绝 
+        /// <para>for a type [int] 1:Ignore 2:Agree 3:Reject</para>
         /// </param>
-        /// <param name="Content">验证内容
-        /// <para>the identify content</para>
-        /// </param>
-        /// <param name="QQPerson">被拉人
-        /// <para>the one that you ingage in</para>
-        /// </param>
-        /// <returns></returns>
-        public static async Task<string> InviteSomeBodyInto(long GroupId, long QQPerson, string Content) => await __GroupManage(8, GroupId, QQPerson, Content);
 
+        public static async Task<string> DealFriend(int Action) => await PASA(UrlType.DealFriend, $"{{\"Action\":{Action}}}");
+        /// <summary>
+        /// 处理群添加
+        /// <para>dealing with Group Addition</para>
+        /// </summary>
+        /// <param name="Action"> 
+        /// 11 同意 14 忽略 21 不同意 
+        /// <para>for a type [int] 11:Agree 14:Ignore 21:Reject</para>
+        /// </param>
+        public static async Task<string> DealGroupInvite(int Action) => await PASA(UrlType.AnswerInviteGroup, $"{{\"Action\":{Action}}}");
     }
 }
+
+

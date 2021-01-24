@@ -67,6 +67,12 @@ namespace MeowIOTBot
             socket.__ON_EVENT_GROUP_ADMIN += (s, e) => { }; //事件回调
             socket.__ON_EVENT_GROUP_ADMINSYSNOTIFY += (s, e) => { }; //事件回调
             socket.__ON_EVENT_GROUP_SHUT += (s, e) => { }; //事件回调
+            socket.__ON_EVENT_GROUP_EXIT += (s, e) => { }; //事件回调
+            socket.__ON_EVENT_GROUP_EXIT_SUCC += (s, e) => { }; //事件回调
+            socket.__ON_EVENT_GROUP_JOIN += (s, e) => { }; //事件回调
+            socket.__ON_EVENT_FRIEND_ADD += (s, e) => { }; //事件回调
+            socket.__ON_UNMOUNT_EVENT += (s, e) => {}; //事件回调
+
 
             return socket;
         }

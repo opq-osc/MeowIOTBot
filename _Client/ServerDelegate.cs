@@ -43,12 +43,6 @@ namespace MeowIOTBot.Basex
             meow.OnFriendMsgs += Meow_OnFriendMsgs;
             return this;
         }
-        /// <summary>
-        /// 私聊解析
-        /// <para>Friend Conget</para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Meow_OnFriendMsgs(object sender, ObjectEvent.ObjectEventArgs e)
         {
             #region 私聊报头 -- Private Info Head -- 
@@ -111,12 +105,6 @@ namespace MeowIOTBot.Basex
                     break;
             };
         }
-        /// <summary>
-        /// 群聊解析
-        /// <para>Group Conget</para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Meow_OnGroupMsgs(object sender, ObjectEvent.ObjectEventArgs e)
         {
             #region 群聊报头 -- Group Info Head -- 
@@ -198,14 +186,9 @@ namespace MeowIOTBot.Basex
                     break;
             };
         }
-        /// <summary>
-        /// 事件解析
-        /// <para>Event Interperter</para>
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void Meow_OnEventMsgs(object sender, ObjectEvent.ObjectEventArgs e)
         {
+            Console.WriteLine(e.Data);
             var d = new Event(e.Data);
             switch (d.EType.ToString())
             {
@@ -224,7 +207,7 @@ namespace MeowIOTBot.Basex
                 case "ON_EVENT_GROUP_ADMINSYSNOTIFY":
                     {
                         var x = (ON_EVENT_GROUP_ADMINSYSNOTIFY)d.Data;
-                        __A_ON_EVENT_GROUP_ADMINSYSNOTIFY.Invoke(d.EMsg, x);
+                        __ON_EVENT_GROUP_ADMINSYSNOTIFY.Invoke(d.EMsg, x);
                     }
                     break;
                 case "ON_EVENT_GROUP_EXIT":
@@ -243,6 +226,17 @@ namespace MeowIOTBot.Basex
                     {
                         var x = (ON_EVENT_GROUP_JOIN)d.Data;
                         __ON_EVENT_GROUP_JOIN.Invoke(d.EMsg, x);
+                    }
+                    break;
+                case "ON_EVENT_FRIEND_ADD":
+                    {
+                        var x = (ON_EVENT_FRIEND_ADD)d.Data;
+                        __ON_EVENT_FRIEND_ADD.Invoke(d.EMsg, x);
+                    }
+                    break;
+                default:
+                    {
+                        __ON_UNMOUNT_EVENT.Invoke(null, e.Data);
                     }
                     break;
             }
@@ -431,22 +425,26 @@ namespace MeowIOTBot.Basex
         /// <param name="e"></param>
         public delegate void Event_ON_EVENT_GROUP_JOIN_EventHandler(EventMsg sender, ON_EVENT_GROUP_JOIN e);
         /// <summary>
+        /// 加好友事件委托
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public delegate void Event_ON_EVENT_FRIEND_ADD_EventHandler(EventMsg sender, ON_EVENT_FRIEND_ADD e);
+        /// <summary>
         /// 所有未识别的事件委托
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         public delegate void Event_ON_EVENT_EventHandler(EventMsg sender, JObject e);
 
-        /// <summary>
-        /// 
-        /// </summary>
         public event Event_ON_EVENT_GROUP_ADMIN_EventHandler __ON_EVENT_GROUP_ADMIN;
         public event Event_ON_EVENT_GROUP_SHUT_EventHandler __ON_EVENT_GROUP_SHUT;
-        public event Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler __A_ON_EVENT_GROUP_ADMINSYSNOTIFY;
+        public event Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler __ON_EVENT_GROUP_ADMINSYSNOTIFY;
         public event Event_ON_EVENT_GROUP_EXIT_EventHandler __ON_EVENT_GROUP_EXIT;
         public event Event_ON_EVENT_GROUP_EXIT_SUCC_EventHandler __ON_EVENT_GROUP_EXIT_SUCC;
         public event Event_ON_EVENT_GROUP_JOIN_EventHandler __ON_EVENT_GROUP_JOIN;
-        public event Event_ON_EVENT_EventHandler __ON_UUMOUNT_EVENT;
+        public event Event_ON_EVENT_FRIEND_ADD_EventHandler __ON_EVENT_FRIEND_ADD;
+        public event Event_ON_EVENT_EventHandler __ON_UNMOUNT_EVENT;
         #endregion
 
     }

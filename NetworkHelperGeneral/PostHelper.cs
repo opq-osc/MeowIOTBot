@@ -24,10 +24,10 @@ namespace MeowIOTBot.NetworkHelper
         /// </summary>
         public static string LoginQQ { get; set; }
         /// <summary>
-        /// 超时设置(可以进行动态设置,默认是10s)
-        /// <para>setting for Timeout (*which COULD be dynamic and init with 10s)</para>
+        /// 超时设置(可以进行动态设置,默认是30s)
+        /// <para>setting for Timeout (*which COULD be dynamic and init with 30s)</para>
         /// </summary>
-        public static int Timeout { get; set; } = 10;
+        public static int Timeout { get; set; } = 30;
         /// <summary>
         /// 一个Nginx的Header识别标
         /// <para>A nginx Header Surffix</para>
@@ -54,6 +54,10 @@ namespace MeowIOTBot.NetworkHelper
                     UrlType.ClusterInfo => $"{CallerUrl}/v1/ClusterInfo",
                     UrlType.Announce => $"{CallerUrl}/v1/Group/Announce?qq={LoginQQ}",
                     UrlType.LoginQQ => $"{CallerUrl}/v1/Login/GetQRcode",
+                    UrlType.__RefreshKeys => $"{CallerUrl}/v1/RefreshKeys?qq={LoginQQ}",
+                    UrlType.__Logs => $"{CallerUrl}/v1/Log",
+                    UrlType.ShutUpSingle => $"{CallerUrl}/v1/LuaApiCaller?qq=${LoginQQ}&funcname=OidbSvc.0x570_8&timeout={Timeout}",
+                    UrlType.ShutUpEntirely => $"{CallerUrl}/v1/LuaApiCaller?qq=${LoginQQ}&funcname=OidbSvc.0x89a_0&timeout={Timeout}",
                     //UrlType.SendMsgV2 => $"{CallerUrl}/v2/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                     _ => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                 };
@@ -62,7 +66,7 @@ namespace MeowIOTBot.NetworkHelper
                 HttpWebRequest req = (HttpWebRequest)WebRequest.Create(Url);
                 req.Method = "POST";
                 req.ContentType = "application/json";
-                req.Headers = Header;
+                req.Headers = Header??new WebHeaderCollection();
                 byte[] data = Encoding.UTF8.GetBytes(Json);//把字符串转换为字节
 
                 req.ContentLength = data.Length; //请求长度
@@ -94,10 +98,23 @@ namespace MeowIOTBot.NetworkHelper
         public enum UrlType
         {
             /// <summary>
+            /// 全局日志
+            /// </summary>
+            __Logs,
+            /// <summary>
+            /// 刷新Key重新登录
+            /// </summary>
+            __RefreshKeys,
+            /// <summary>
             /// 登录QQ
             /// <para>get one QQ Login</para>
             /// </summary>
             LoginQQ,
+            /// <summary>
+            /// 登出
+            /// <para>LogOut Some QQ</para>
+            /// </summary>
+            LogOut,
             /// <summary>
             /// 集群信息
             /// <para>get clusterinfo</para>
@@ -160,15 +177,15 @@ namespace MeowIOTBot.NetworkHelper
             /// </summary>
             RevokeMsg,
             /// <summary>
-            /// 禁言(接口调用注意)
+            /// 禁言某人
             /// <para>Shut somebody (Please note This COULD have othe affect)</para>
             /// </summary>
-            ShutUp,
+            ShutUpSingle,
             /// <summary>
-            /// 登出
-            /// <para>LogOut Some QQ</para>
+            /// 禁言整个群组
+            /// <para>Shut Whole Group</para>
             /// </summary>
-            LogOut,
+            ShutUpEntirely,
             /// <summary>
             /// 处理好友请求
             /// <para>Dealwith Friend Request</para>

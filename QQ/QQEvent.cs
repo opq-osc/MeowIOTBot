@@ -1,5 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
+using static MeowIOTBot.NetworkHelper.PostHelper;
 using System;
+using System.Threading.Tasks;
 
 namespace MeowIOTBot.QQ.QQEvent
 {
@@ -66,6 +68,89 @@ namespace MeowIOTBot.QQ.QQEvent
         public long UserID;
         public string UserName;
     }
+    /// <summary>
+    /// 加好友事件
+    /// </summary>
+    public class ON_EVENT_FRIEND_ADD
+    {
+        /// <summary>
+        /// QQ号
+        /// </summary>
+        public long UserID;
+        /// <summary>
+        /// 用户昵称
+        /// </summary>
+        public string UserNick;
+        /// <summary>
+        /// 来源类型
+        /// </summary>
+        public long FromType;
+        /// <summary>
+        /// 类型
+        /// </summary>
+        public long Type;
+        /// <summary>
+        /// 
+        /// </summary>
+        public string MsgTypeStr;
+        /// <summary>
+        /// 
+        /// </summary>
+        public long Field_3;
+        /// <summary>
+        /// 
+        /// </summary>
+        public long Field_8;
+        /// <summary>
+        /// 验证信息
+        /// </summary>
+        public string Content;
+        /// <summary>
+        /// 群信息
+        /// </summary>
+        public string FromContent;
+        /// <summary>
+        /// 来源群号
+        /// </summary>
+        public long FromGroupId;
+        /// <summary>
+        /// 来源群名
+        /// </summary>
+        public string FromGroupName;
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Action;
+
+        /// <summary>
+        /// 同意请求
+        /// </summary>
+        public async Task<string> RequestAccept()
+        {
+            var k = this;
+            k.Action = 2;
+            return await PASA(UrlType.DealFriend, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+        /// <summary>
+        /// 拒绝请求
+        /// </summary>
+        public async Task<string> RequestDenied()
+        {
+            var k = this;
+            k.Action = 3;
+            return await PASA(UrlType.DealFriend, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+        /// <summary>
+        /// 忽略请求
+        /// </summary>
+        public async Task<string> RequestDismiss()
+        {
+            var k = this;
+            k.Action = 1;
+            return await PASA(UrlType.DealFriend, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+    }
+    //[11 agree 14 忽略 21 disagree]
 
 
     /// <summary>
@@ -101,7 +186,11 @@ namespace MeowIOTBot.QQ.QQEvent
         /// <summary>
         /// 某人进群事件
         /// </summary>
-        ON_EVENT_GROUP_JOIN
+        ON_EVENT_GROUP_JOIN,
+        /// <summary>
+        /// 某人加你好友
+        /// </summary>
+        ON_EVENT_FRIEND_ADD
     }
     /// <summary>
     /// 事件的摘要
@@ -186,6 +275,7 @@ namespace MeowIOTBot.QQ.QQEvent
                     "ON_EVENT_GROUP_EXIT" => EventType.ON_EVENT_GROUP_EXIT,
                     "ON_EVENT_GROUP_EXIT_SUCC" => EventType.ON_EVENT_GROUP_EXIT_SUCC,
                     "ON_EVENT_GROUP_JOIN" => EventType.ON_EVENT_GROUP_JOIN,
+                    "ON_EVENT_FRIEND_ADD" => EventType.ON_EVENT_FRIEND_ADD,
                     _ => EventType.ON_EVENT_NULL_REF
                 };
             }
@@ -201,6 +291,7 @@ namespace MeowIOTBot.QQ.QQEvent
                     "ON_EVENT_GROUP_EXIT" => jed.ToObject<ON_EVENT_GROUP_EXIT>(),
                     "ON_EVENT_GROUP_EXIT_SUCC" => jed.ToObject<ON_EVENT_GROUP_EXIT_SUCC>(),
                     "ON_EVENT_GROUP_JOIN" => jed.ToObject<ON_EVENT_GROUP_JOIN>(),
+                    "ON_EVENT_FRIEND_ADD" => jed.ToObject<ON_EVENT_FRIEND_ADD>(),
                     _ => null
                 };
             }
