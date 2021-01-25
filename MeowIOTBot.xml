@@ -441,7 +441,7 @@
         <member name="M:MeowIOTBot.QQ.QQAction.Group.GetGroupUserList(System.Int64)">
             <summary>
             获取一个QQGroupUserList对象
-            <para>get a QQGroupList Obejct</para>
+            <para>get a QQGroupList Object</para>
             </summary>
             <param name="GroupId">一个请求对象<para>The QQ Group Request Object</para></param>
             <returns>返回一个标准的QQGroupUserList对象<para>returns a standarded QQGroupList Object</para></returns>
@@ -2420,30 +2420,6 @@
             一个自枚举的多功能解释端
             <para>an Enumable multi-purpose explain backend</para>
             </summary>
-        </member>
-        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnFriendMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
-            <summary>
-            私聊解析
-            <para>Friend Conget</para>
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnGroupMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
-            <summary>
-            群聊解析
-            <para>Group Conget</para>
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:MeowIOTBot.Basex.MeowServiceClient.Meow_OnEventMsgs(System.Object,MeowIOTBot.ObjectEvent.ObjectEventArgs)">
-            <summary>
-            事件解析
-            <para>Event Interperter</para>
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
         </member>
         <member name="M:MeowIOTBot.Basex.MeowServiceClient.Log(System.String,System.ConsoleColor,System.ConsoleColor)">
             <summary>

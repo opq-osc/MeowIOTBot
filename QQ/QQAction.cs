@@ -112,7 +112,7 @@ namespace MeowIOTBot.QQ.QQAction
             $"{{\"GroupID\":{qqgroup},\"UserID\":{userid},\"NewNick\":\"{newName}\"}}");
         /// <summary>
         /// 获取一个QQGroupUserList对象
-        /// <para>get a QQGroupList Obejct</para>
+        /// <para>get a QQGroupList Object</para>
         /// </summary>
         /// <param name="GroupId">一个请求对象<para>The QQ Group Request Object</para></param>
         /// <returns>返回一个标准的QQGroupUserList对象<para>returns a standarded QQGroupList Object</para></returns>

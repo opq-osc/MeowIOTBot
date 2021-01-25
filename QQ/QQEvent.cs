@@ -150,6 +150,25 @@ namespace MeowIOTBot.QQ.QQEvent
             return await PASA(UrlType.DealFriend, Newtonsoft.Json.JsonConvert.SerializeObject(k));
         }
     }
+    /// <summary>
+    /// 成为好友事件
+    /// </summary>
+    public class ON_EVENT_NOTIFY_PUSHADDFRD
+    {
+        public string NickName;
+        public long UserID;
+    }
+    /// <summary>
+    /// 好友状态信息事件(被同意添加好友/被拒绝添加好友)
+    /// </summary>
+    public class ON_EVENT_FRIEND_ADD_STATUS
+    {
+        public string NickName;
+        public int Type;
+        public string TypeStatus;
+        public int UserID;
+    }
+
     //[11 agree 14 忽略 21 disagree]
 
 

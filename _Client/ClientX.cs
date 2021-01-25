@@ -50,32 +50,28 @@ namespace MeowIOTBot
         {
             socket = new Basex.MeowServiceClient(url, qq, logFlag);
             socket.CreateClient();
-
             //防止空指针异常
-            socket._FriendTextMsgRecieve += (s, e) => { }; //好友私聊
-            socket._FriendPicMsgRecieve += (s, e) => { }; //好友图片
-            socket._FriendVocMsgRecieve += (s, e) => { }; //好友语音
-            socket._FriendVidMsgRecieve += (s, e) => { }; //好友视频
-
-            socket._GroupAtTextMsgRecieve += (s, e) => { }; //群聊At文本
-            socket._GroupAtPicMsgRecieve += (s, e) => { }; //群聊At图片
-            socket._GroupPicMsgRecieve += (s, e) => { }; //群聊图片
-            socket._GroupTextMsgRecieve += (s, e) => { }; //群聊文本
-            socket._GroupVocMsgRecieve += (s, e) => { }; //群聊语音
-            socket._GroupVidMsgRecieve += (s, e) => { }; //群聊视频
-            
-            socket.__ON_EVENT_GROUP_ADMIN += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_GROUP_ADMINSYSNOTIFY += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_GROUP_SHUT += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_GROUP_EXIT += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_GROUP_EXIT_SUCC += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_GROUP_JOIN += (s, e) => { }; //事件回调
-            socket.__ON_EVENT_FRIEND_ADD += (s, e) => { }; //事件回调
-            socket.__ON_UNMOUNT_EVENT += (s, e) => {}; //事件回调
-
-
+            socket._FriendTextMsgRecieve += SocketNullDelegate; //好友私聊
+            socket._FriendPicMsgRecieve += SocketNullDelegate; //好友图片
+            socket._FriendVocMsgRecieve += SocketNullDelegate; //好友语音
+            socket._FriendVidMsgRecieve += SocketNullDelegate; //好友视频
+            socket._GroupAtTextMsgRecieve += SocketNullDelegate; //群聊At文本
+            socket._GroupAtPicMsgRecieve += SocketNullDelegate; //群聊At图片
+            socket._GroupPicMsgRecieve += SocketNullDelegate; //群聊图片
+            socket._GroupTextMsgRecieve += SocketNullDelegate; //群聊文本
+            socket._GroupVocMsgRecieve += SocketNullDelegate; //群聊语音
+            socket._GroupVidMsgRecieve += SocketNullDelegate; //群聊视频
+            socket.__ON_EVENT_GROUP_ADMIN += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_GROUP_ADMINSYSNOTIFY += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_GROUP_SHUT += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_GROUP_EXIT += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_GROUP_EXIT_SUCC += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_GROUP_JOIN += SocketNullDelegate; //事件回调
+            socket.__ON_EVENT_FRIEND_ADD += SocketNullDelegate; //加好友事件回调
+            socket.__ON_UNMOUNT_EVENT += SocketNullDelegate; //事件回调
             return socket;
         }
+        private static void SocketNullDelegate(object sender, object e){ }
         /// <summary>
         /// 默认的关闭操作 (为了使用using)
         /// <para>default close opearion [as can use 'using']</para>
