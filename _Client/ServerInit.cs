@@ -1,6 +1,7 @@
-﻿using System;
+﻿using MeowIOTBot.Basex;
+using System;
 
-namespace MeowIOTBot.Basex
+namespace MeowIOTBot
 {
     /// <summary>
     /// 带有详细回调的端

@@ -2,6 +2,7 @@
 using MeowIOTBot.QQ.QQMessage.QQRecieveMessage;
 using System.Collections.Generic;
 using System.Text;
+using MeowIOTBot.QQ.QQEvent;
 
 namespace MeowIOTBot
 {
@@ -20,7 +21,7 @@ namespace MeowIOTBot
         /// Socket标志
         /// <para>Socket Sign</para>
         /// </summary>
-        private static Basex.MeowServiceClient socket = null;
+        private static MeowServiceClient socket = null;
         /// <summary>
         /// 连接IOT后端
         /// <para>connect IOT Backend</para>
@@ -46,9 +47,9 @@ namespace MeowIOTBot
         /// <para>recv._(delegate event) += (s, e) =>{};</para>
         /// </code>
         /// </returns>
-        public static Basex.MeowServiceClient Connect(string url, string qq, bool logFlag = false)
+        public static MeowServiceClient Connect(string url, string qq, bool logFlag = false)
         {
-            socket = new Basex.MeowServiceClient(url, qq, logFlag);
+            socket = new MeowServiceClient(url, qq, logFlag);
             socket.CreateClient();
             //防止空指针异常
             socket._FriendTextMsgRecieve += SocketNullDelegate; //好友私聊
@@ -61,14 +62,21 @@ namespace MeowIOTBot
             socket._GroupTextMsgRecieve += SocketNullDelegate; //群聊文本
             socket._GroupVocMsgRecieve += SocketNullDelegate; //群聊语音
             socket._GroupVidMsgRecieve += SocketNullDelegate; //群聊视频
-            socket.__ON_EVENT_GROUP_ADMIN += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_GROUP_ADMINSYSNOTIFY += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_GROUP_SHUT += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_GROUP_EXIT += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_GROUP_EXIT_SUCC += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_GROUP_JOIN += SocketNullDelegate; //事件回调
-            socket.__ON_EVENT_FRIEND_ADD += SocketNullDelegate; //加好友事件回调
-            socket.__ON_UNMOUNT_EVENT += SocketNullDelegate; //事件回调
+
+            socket.__ON_EVENT_GROUP_ADMIN += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_ADMINSYSNOTIFY += SocketNullDelegate; 
+            socket.__ON_EVENT_GROUP_EXIT += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_EXIT_SUCC += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_INVITE += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_JOIN += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_SHUT += SocketNullDelegate;
+
+            socket.__ON_EVENT_FRIEND_ADD += SocketNullDelegate; 
+            socket.__ON_EVENT_FRIEND_ADD_STATUS += SocketNullDelegate;
+            socket.__ON_EVENT_FRIEND_DELETE += SocketNullDelegate;
+            socket.__ON_EVENT_FRIEND_PUSHADDFRD += SocketNullDelegate;
+
+            socket.__ON_UNMOUNT_EVENT += SocketNullDelegate; 
             return socket;
         }
         private static void SocketNullDelegate(object sender, object e){ }

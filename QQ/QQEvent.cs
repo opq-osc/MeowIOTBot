@@ -69,6 +69,63 @@ namespace MeowIOTBot.QQ.QQEvent
         public string UserName;
     }
     /// <summary>
+    /// 邀请加群
+    /// </summary>
+    public class ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP : ON_EVENT_GROUP_ADMINSYSNOTIFY
+    {
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="x"></param>
+        public ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP(ON_EVENT_GROUP_ADMINSYSNOTIFY x)
+        {
+            Seq = x.Seq;
+            Type = x.Type;
+            MsgTypeStr = x.MsgTypeStr;
+            Who = x.Who;
+            WhoName = x.WhoName;
+            MsgStatusStr = x.MsgStatusStr;
+            Content = x.Content;
+            RefuseContent = x.RefuseContent;
+            Flag_7 = x.Flag_7;
+            Flag_8 = x.Flag_8;
+            GroupId = x.GroupId;
+            GroupName = x.GroupName;
+            ActionUin = x.ActionUin;
+            ActionName = x.ActionName;
+            ActionGroupCard = x.ActionGroupCard;
+            Action = x.Action;
+        }
+        /// <summary>
+        /// 同意请求
+        /// </summary>
+        public async Task<string> RequestAccept()
+        {
+            var k = this;
+            k.Action = 11;
+            return await PASA(UrlType.AnswerInviteGroup, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+        /// <summary>
+        /// 拒绝请求
+        /// </summary>
+        public async Task<string> RequestDenied()
+        {
+            var k = this;
+            k.Action = 21;
+            return await PASA(UrlType.AnswerInviteGroup, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+        /// <summary>
+        /// 忽略请求
+        /// </summary>
+        public async Task<string> RequestDismiss()
+        {
+            var k = this;
+            k.Action = 14;
+            return await PASA(UrlType.AnswerInviteGroup, Newtonsoft.Json.JsonConvert.SerializeObject(k));
+        }
+    }
+    /*------------------------------------------------------*/
+    /// <summary>
     /// 加好友事件
     /// </summary>
     public class ON_EVENT_FRIEND_ADD
@@ -168,9 +225,13 @@ namespace MeowIOTBot.QQ.QQEvent
         public string TypeStatus;
         public int UserID;
     }
-
-    //[11 agree 14 忽略 21 disagree]
-
+    /// <summary>
+    /// 删除好友事件
+    /// </summary>
+    public class ON_EVENT_FRIEND_DELETE
+    {
+        public long UserID;
+    }
 
     /// <summary>
     /// 事件类型枚举类
@@ -182,6 +243,7 @@ namespace MeowIOTBot.QQ.QQEvent
         /// 还没识别的事件类型
         /// </summary>
         ON_EVENT_NULL_REF,
+        /*--------------------------*/
         /// <summary>
         /// 管理员设置事件
         /// </summary>
@@ -207,10 +269,20 @@ namespace MeowIOTBot.QQ.QQEvent
         /// </summary>
         ON_EVENT_GROUP_JOIN,
         /// <summary>
+        /// 某人邀你进群
+        /// </summary>
+        ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP,
+        /*-------------*/
+        /// <summary>
         /// 某人加你好友
         /// </summary>
-        ON_EVENT_FRIEND_ADD
+        ON_EVENT_FRIEND_ADD,
+        /// <summary>
+        /// 某人不再是你的好友
+        /// </summary>
+        ON_EVENT_FRIEND_DELETE
     }
+
     /// <summary>
     /// 事件的摘要
     /// <para>Event Hash</para>
@@ -315,6 +387,7 @@ namespace MeowIOTBot.QQ.QQEvent
                 };
             }
             else { throw new Exception(EC.E02); }
+            
         }
         /// <summary>
         /// 枚举类型(用于转换下面的InnerData)

@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json.Linq;
+using MeowIOTBot.Basex;
 
-namespace MeowIOTBot.Basex
+namespace MeowIOTBot
 {
     
     public sealed partial class MeowServiceClient : MeowClient
@@ -163,51 +164,91 @@ namespace MeowIOTBot.Basex
                     {
                         var x = (ON_EVENT_GROUP_ADMIN)d.Data;
                         __ON_EVENT_GROUP_ADMIN.Invoke(d.EMsg, x);
+                        Log($"[*群管理员变更*] 群{x.GroupID}的{x.UserID}{(x.Flag==0?"不再是管理员了":"成为管理员")}");
                     }
                     break;
                 case "ON_EVENT_GROUP_SHUT":
                     {
                         var x = (ON_EVENT_GROUP_SHUT)d.Data;
                         __ON_EVENT_GROUP_SHUT.Invoke(d.EMsg, x);
+                        Log($"[*群禁言*] 群{x.GroupID}的{(x.UserID==0?"全体":x.UserID)}被{(x.ShutTime==0?"解除禁言":$"禁言{x.ShutTime}分钟")}");
                     }
                     break;
                 case "ON_EVENT_GROUP_ADMINSYSNOTIFY":
                     {
                         var x = (ON_EVENT_GROUP_ADMINSYSNOTIFY)d.Data;
                         __ON_EVENT_GROUP_ADMINSYSNOTIFY.Invoke(d.EMsg, x);
+                        switch (d.EMsg.Content switch
+                        {
+                            "退群消息" => EventType.ON_EVENT_GROUP_EXIT,
+                            "邀请加群" => EventType.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP,
+                            _ => EventType.ON_EVENT_GROUP_ADMINSYSNOTIFY
+                        })
+                        {
+                            case EventType.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP:
+                            __ON_EVENT_GROUP_INVITE.Invoke(d.EMsg, new ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP(x));
+                            break;
+                        }
+                        Log($"[*{x.MsgTypeStr}*] {x.Who}-->{x.GroupId}::{x.MsgStatusStr}");
                     }
                     break;
                 case "ON_EVENT_GROUP_EXIT":
                     {
                         var x = (ON_EVENT_GROUP_EXIT)d.Data;
                         __ON_EVENT_GROUP_EXIT.Invoke(d.EMsg, x);
+                        Log($"[*群成员退出*] 群{d.EMsg.FromUser}的{x.UserID}用户退出了群聊");
                     }
                     break;
                 case "ON_EVENT_GROUP_EXIT_SUCC":
                     {
                         var x = (ON_EVENT_GROUP_EXIT_SUCC)d.Data;
                         __ON_EVENT_GROUP_EXIT_SUCC.Invoke(d.EMsg, x);
+                        Log($"[*群主动退出*] 你主动退出了群号为{x.GroupID}的群聊");
                     }
                     break;
                 case "ON_EVENT_GROUP_JOIN":
                     {
                         var x = (ON_EVENT_GROUP_JOIN)d.Data;
                         __ON_EVENT_GROUP_JOIN.Invoke(d.EMsg, x);
+                        Log($"[*群成员加入*] {x.UserID}加入了{d.EMsg.FromUser}群");
                     }
                     break;
+                    /*----------------------------------------------------------*/
                 case "ON_EVENT_FRIEND_ADD":
                     {
                         var x = (ON_EVENT_FRIEND_ADD)d.Data;
                         __ON_EVENT_FRIEND_ADD.Invoke(d.EMsg, x);
+                        Log($"[*好友添加申请*] {x.UserID}申请成为你的好友");
+                    }
+                    break;
+                case "ON_EVENT_NOTIFY_PUSHADDFRD":
+                    {
+                        var x = (ON_EVENT_NOTIFY_PUSHADDFRD)d.Data;
+                        __ON_EVENT_FRIEND_PUSHADDFRD.Invoke(d.EMsg, x);
+                        Log($"[*好友添加成功*] {x.UserID}已经成为你的好友");
+                    }
+                    break;
+                case "ON_EVENT_FRIEND_ADD_STATUS":
+                    {
+                        var x = (ON_EVENT_FRIEND_ADD_STATUS)d.Data;
+                        __ON_EVENT_FRIEND_ADD_STATUS.Invoke(d.EMsg, x);
+                        Log($"[*好友添加状态*] {x.UserID}{x.TypeStatus}");
+                    }
+                    break;
+                case "ON_EVENT_FRIEND_DELETE":
+                    {
+                        var x = (ON_EVENT_FRIEND_DELETE)d.Data;
+                        __ON_EVENT_FRIEND_DELETE.Invoke(d.EMsg, x);
+                        Log($"[*解除好友*] {x.UserID}不再是你的好友了");
                     }
                     break;
                 default:
                     {
                         __ON_UNMOUNT_EVENT.Invoke(null, e.Data);
+                        Log($"[*未解析事件*] 事件源Json:\n{e.Data}");
                     }
                     break;
             }
-            Log($"{d.EMsg.FromUser}=>{d.EMsg.ToUser} [{d.EMsg.Content}]");
         }
     }
 }
