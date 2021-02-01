@@ -32,7 +32,7 @@ which have full Codec comment Inline bydef is EN/CN but mostly is CN comment.</D
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MeowSocketLibraryForRinkoIOT" Version="1.0.1" />
+    <PackageReference Include="Electronicute.MeowSocketLibrary" Version="2.0.0" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 
