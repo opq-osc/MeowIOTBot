@@ -7,23 +7,28 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>this is a delegate library for IOTQQBot Programmer/User which you can use this to connect your IOT backend Easily and 
-which have full Codec comment Inline bydef is EN/CN but mostly is CN comment.</Description>
+    <Description>**从今天起MeowIOTBot正式更名为Electronicute.MeowIOTBot**
+这是一个IOT开发的SDK,能允许您快速构建关于IOTBot的自主封装程序,采用了IOTBot的Analytic-json规范,收发分离
+本项目目前注释完全(双语)
+**From Now On Project *MeowIOTBot* is Officially Change Name to *Electronicute.MeowIotBot* **
+This is a IOTBot Backend SDK for Enterprise User to Contact the IOT Backend for sending/Recieveing Message.
+this Project is fully Commented(-ish) for Language in English and Chinese.</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>In this Version we are stop support in .netCore 3.1 Version and Change to more specific .net5.0, if you can-not using .net5.0 you can use the 1.x.x version instead.
-这个版本更新将会取消支持.net 3.1 进而升级为.net 5 ,如果您无法开发.net 5请继续关注1.xx版本(可能不会再更新)</PackageReleaseNotes>
+    <PackageReleaseNotes>本版本是MeowIOTBot 3.X的最后一版,修正了部分事件格式,更改了事件的引起方式,修改了私聊群聊的回复方式,增加了不同事件的回答方案,SDK从现在开始不再支持.netCore3.1进而转向.net5,相关Wiki已经作出变更,进行开发请选择VS2019 build 4.8.04084 +
+This version is the last Version of *MeowIOTBot* and it's the Lifecycle Begins of Electronicute Products we fix serveral bug  and disappear from .netcore 3.1 we made a jump to .net5 for future existance, we trying to made a better experience on .net 5 even on your application writing, even our wiki on github(which is still not have a english wiki), and if you want to develop in this SDK you should at least having a VS2019 build 4.8.04084 +</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>3.1.0</Version>
-    <AssemblyVersion>3.1.0.0</AssemblyVersion>
-    <FileVersion>3.1.0.0</FileVersion>
-    <PackageId>MeowIOTBot</PackageId>
+    <Version>4.0.1</Version>
+    <AssemblyVersion>4.0.1.101</AssemblyVersion>
+    <FileVersion>4.0.1.101</FileVersion>
+    <PackageId>Electronicute.MeowIOTBot</PackageId>
+    <PackageTags>IOTQQBot, QQBot, Tencent</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

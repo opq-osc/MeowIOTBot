@@ -355,30 +355,45 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         public class Pic
         {
             /// <summary>
+            /// 文件的标号
+            /// <para>File Identity of SnapPic</para>
+            /// </summary>
+            public long? FileId;
+            /// <summary>
             /// 文件的Md5
             /// <para>File Md5</para>
             /// </summary>
-            public string FileMd5 { get; }
+            public string FileMd5;
             /// <summary>
             /// 文件的大小
             /// <para>File Size</para>
             /// </summary>
-            public long FileSize { get; }
+            public long FileSize;
+            /// <summary>
+            /// 闪照的转发前置
+            /// <para>The Buffer Of SnapPic</para>
+            /// </summary>
+            public string ForwordBuf;
+            /// <summary>
+            /// 闪图的转发序列号
+            /// <para>The Number identity of SnapPic</para>
+            /// </summary>
+            public long ForwordField;
             /// <summary>
             /// 文件的路径
             /// <para>File Path (relative)</para>
             /// </summary>
-            public string Path { get; }
+            public string Path;
             /// <summary>
             /// 文件的URL
             /// <para>file Url</para>
             /// </summary>
-            public string Url { get; }
+            public string Url;
             /// <summary>
             /// 文件的提示符号
             /// <para>File tips</para>
             /// </summary>
-            public string Tips { get; }
+            public string Tips;
         }
         /// <summary>
         /// 图片列表
@@ -396,6 +411,12 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         public string Content;
         /// <summary>
+        /// 用来判断是否为闪照
+        /// <para>the flag for determain weather or not is a SnapPic.</para>
+        /// </summary>
+        public bool _isSnapPic;
+
+        /// <summary>
         /// 构造好友图片
         /// <para>construct a Content</para>
         /// </summary>
@@ -405,18 +426,35 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             var jo = JObject.Parse(content.Replace("\\\"", "\""));
             jo.TryGetValue("Content", out var _Content);
             this.Content = _Content?.ToString();
-            jo.TryGetValue("GroupPic", out var _GroupPic);
-            jo.TryGetValue("FriendPic", out var _FriendPic);
-            if (_FriendPic != null)
+            jo.TryGetValue("Tips", out var tips);
+            _isSnapPic = tips.ToString().Contains("闪照");
+            if(_isSnapPic)
             {
-                PicList = _FriendPic.ToObject<Pic[]>();
+                jo.TryGetValue("FileId", out var FileId);
+                jo.TryGetValue("FileMd5", out var FileMd5);
+                jo.TryGetValue("FileSize", out var FileSize);
+                jo.TryGetValue("ForwordBuf", out var ForwordBuf);
+                jo.TryGetValue("ForwordField", out var ForwordField);
+                jo.TryGetValue("Url", out var Url);
+                PicList = new Pic[] {
+                    new Pic {
+                        FileId = FileId?.ToObject<long>(),
+                        FileMd5 = FileMd5.ToString(),
+                        FileSize = FileSize.ToObject<long>(),
+                        ForwordBuf = ForwordBuf.ToString(),
+                        ForwordField = ForwordField.ToObject<long>(),
+                        Url = Url.ToString()
+                        }
+                };
             }
-            else if (_GroupPic != null)
-            {
-                PicList = _GroupPic.ToObject<Pic[]>();
+            else{
+                jo.TryGetValue("GroupPic", out var _GroupPic);
+                jo.TryGetValue("FriendPic", out var _FriendPic);
+                if (_FriendPic != null){PicList = _FriendPic.ToObject<Pic[]>();}
+                else if (_GroupPic != null){PicList = _GroupPic.ToObject<Pic[]>();}
+                jo.TryGetValue("UserID", out var atuid);
+                AtedQQ = atuid?.ToObject<int[]>();
             }
-            jo.TryGetValue("UserID", out var atuid);
-            AtedQQ = atuid?.ToObject<int[]>();
         }
     }
     /// <summary>

@@ -389,7 +389,6 @@ namespace MeowIOTBot.QQ.QQFunc
                     $"\"FromGroupID\":{FromGroupID}}}"
                 );
     }
-
     /// <summary>
     /// 群成员列表
     /// <para>QQ GroupMember List</para>
@@ -635,7 +634,7 @@ namespace MeowIOTBot.QQ.QQFunc
     /// <para>请求应答已经禁用,以后的请求应答会在请求的委托中决定,保证请求的操作同步</para>
     /// <para>for request response is now OBSOLETE you need to go Event and set the Parameter</para>
     /// </summary>
-    [Obsolete]
+    [Obsolete("使用事件委托中的同意和不同意进行回答",true)]
     public class QQRequestResponse
     {
         /// <summary>

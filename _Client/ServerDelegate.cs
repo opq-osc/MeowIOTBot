@@ -42,17 +42,25 @@ namespace MeowIOTBot
                 case "TextMsg":
                     {
                         var msg = new TextMsg(content);
+                        _FriendTextMsgRecieve.Invoke(prop, msg);
                         Log($"好友文本信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
                             $"内容:{msg.Content}", ConsoleColor.Magenta);
-                        _FriendTextMsgRecieve.Invoke(prop, msg);
                     }
                     break;
                 case "PicMsg":
                     {
                         var msg = new PicMsg(content);
-                        Log($"好友图片信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
-                            $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
                         _FriendPicMsgRecieve.Invoke(prop, msg);
+                        if (msg._isSnapPic)
+                        {
+                            Log($"好友闪照信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}]", ConsoleColor.Yellow);
+                        }
+                        else
+                        {
+                            Log($"好友图片信息 [{prop.IOBody.MsgFromQQ}->{prop.IOBody.MsgRecvQQ}] \n" +
+                            $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
+                        }
+                        
                     }
                     break;
                 case "VoiceMsg":
@@ -122,14 +130,18 @@ namespace MeowIOTBot
                 case "PicMsg":
                     {
                         var msg = new PicMsg(content);
-                        var d = "";
+                        var d = "图片";
                         if(msg.AtedQQ != null)
                         {
                             _GroupAtPicMsgRecieve.Invoke(prop, msg);
-                            d = "At";
+                            d = "At图片";
+                        }
+                        if (msg._isSnapPic)
+                        {
+                            d = "闪照";
                         }
                         _GroupPicMsgRecieve.Invoke(prop, msg);
-                        Log($"群{d}图片信息 [{prop.IOBody.MsgFromQQ}] " +
+                        Log($"群{d} [{prop.IOBody.MsgFromQQ}] " +
                             $"在群聊 [{prop.IOBody.FromGroupId} :: {prop.IOBody.FromGroupName}] \n" +
                             $"内容:{msg.Content} | 图片共 {msg.PicList.Length} 张", ConsoleColor.Yellow);
                     }

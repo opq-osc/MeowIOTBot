@@ -232,7 +232,6 @@ namespace MeowIOTBot.QQ.QQEvent
     {
         public long UserID;
     }
-
     /// <summary>
     /// 事件类型枚举类
     /// <para>EventType EnumClass</para>
@@ -282,7 +281,6 @@ namespace MeowIOTBot.QQ.QQEvent
         /// </summary>
         ON_EVENT_FRIEND_DELETE
     }
-
     /// <summary>
     /// 事件的摘要
     /// <para>Event Hash</para>
