@@ -131,7 +131,6 @@ namespace MeowIOTBot.QQ.QQFunc
             public string weishi { get; set; }
         }
     }
-
     /// <summary>
     /// QQ用户
     /// </summary>
