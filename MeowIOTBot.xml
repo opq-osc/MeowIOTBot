@@ -1469,34 +1469,6 @@
             <para>the Content</para>
             </param>
         </member>
-        <member name="T:MeowIOTBot.QQ.QQFunc.QQRequestResponse">
-            <summary>
-            QQ请求应答
-            <para>QQ Action response</para>
-            <para>请求应答已经禁用,以后的请求应答会在请求的委托中决定,保证请求的操作同步</para>
-            <para>for request response is now OBSOLETE you need to go Event and set the Parameter</para>
-            </summary>
-        </member>
-        <member name="M:MeowIOTBot.QQ.QQFunc.QQRequestResponse.DealFriend(System.Int32)">
-            <summary>
-            处理好友添加
-            <para>dealing with Friend Addition</para>
-            </summary>
-            <param name="Action"> 
-            1忽略 2同意 3拒绝 
-            <para>for a type [int] 1:Ignore 2:Agree 3:Reject</para>
-            </param>
-        </member>
-        <member name="M:MeowIOTBot.QQ.QQFunc.QQRequestResponse.DealGroupInvite(System.Int32)">
-            <summary>
-            处理群添加
-            <para>dealing with Group Addition</para>
-            </summary>
-            <param name="Action"> 
-            11 同意 14 忽略 21 不同意 
-            <para>for a type [int] 11:Agree 14:Ignore 21:Reject</para>
-            </param>
-        </member>
         <member name="T:MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2">
             <summary>
             原信息

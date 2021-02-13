@@ -627,35 +627,6 @@ namespace MeowIOTBot.QQ.QQFunc
                 $"\"ActionUserID\":{ActionUserID},\"Content\":\"{Content}\"}}"
                 );
     }
-    /// <summary>
-    /// QQ请求应答
-    /// <para>QQ Action response</para>
-    /// <para>请求应答已经禁用,以后的请求应答会在请求的委托中决定,保证请求的操作同步</para>
-    /// <para>for request response is now OBSOLETE you need to go Event and set the Parameter</para>
-    /// </summary>
-    [Obsolete("使用事件委托中的同意和不同意进行回答",true)]
-    public class QQRequestResponse
-    {
-        /// <summary>
-        /// 处理好友添加
-        /// <para>dealing with Friend Addition</para>
-        /// </summary>
-        /// <param name="Action"> 
-        /// 1忽略 2同意 3拒绝 
-        /// <para>for a type [int] 1:Ignore 2:Agree 3:Reject</para>
-        /// </param>
-
-        public static async Task<string> DealFriend(int Action) => await PASA(UrlType.DealFriend, $"{{\"Action\":{Action}}}");
-        /// <summary>
-        /// 处理群添加
-        /// <para>dealing with Group Addition</para>
-        /// </summary>
-        /// <param name="Action"> 
-        /// 11 同意 14 忽略 21 不同意 
-        /// <para>for a type [int] 11:Agree 14:Ignore 21:Reject</para>
-        /// </param>
-        public static async Task<string> DealGroupInvite(int Action) => await PASA(UrlType.AnswerInviteGroup, $"{{\"Action\":{Action}}}");
-    }
 }
 
 
