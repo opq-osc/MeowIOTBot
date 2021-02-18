@@ -309,7 +309,7 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             /// QQ号
             /// <para>QQNumber</para>
             /// </summary>
-            public long QQNumber;
+            public long QQUid;
         }
         /// <summary>
         /// 构造at类型的消息 * 仅群聊

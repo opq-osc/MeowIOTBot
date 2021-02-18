@@ -2080,7 +2080,7 @@
             <para>Nick</para>
             </summary>
         </member>
-        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo.QQNumber">
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo.QQUid">
             <summary>
             QQ号
             <para>QQNumber</para>
