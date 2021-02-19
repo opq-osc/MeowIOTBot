@@ -8,7 +8,6 @@ using MeowIOTBot.Basex;
 
 namespace MeowIOTBot
 {
-    
     public sealed partial class MeowServiceClient : MeowClient
     {
         private void Meow_OnFriendMsgs(object sender, ObjectEvent.ObjectEventArgs e)

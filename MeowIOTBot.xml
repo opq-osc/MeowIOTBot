@@ -2333,6 +2333,38 @@
             <para>Client With a detailed delegate</para>
             </summary>
         </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendTextMessageEventHandler">
+            <summary>
+            好友消息事件 : 文本
+            <para>Serveric [OnFriend : Text] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendPicMessageEventHandler">
+            <summary>
+            好友消息事件 : 图片大类
+            <para>Serveric [OnFriend : Pic] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendVocMessageEventHandler">
+            <summary>
+            好友消息事件 : 语音大类
+            <para>Serveric [OnFriend : Voc] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventFriendVidMessageEventHandler">
+            <summary>
+            好友消息事件 : 视频大类
+            <para>Serveric [OnFriend : Vid] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
         <member name="E:MeowIOTBot.MeowServiceClient._FriendTextMsgRecieve">
             <summary>
             好友消息事件 : 文本
@@ -2356,6 +2388,54 @@
             好友消息事件 : 视频大类
             <para>Serveric [OnFriend : Vid] Message Event</para>
             </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupAtTextMessageEventHandler">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : AtText] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupTextMessageEventHandler">
+            <summary>
+            群消息委托 : 文本大类
+            <para>Serveric [OnGroup : Text] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupPicMessageEventHandler">
+            <summary>
+            群消息事件 : 图片大类
+            <para>Serveric [OnGroup : Pic] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupAtPicMessageEventHandler">
+            <summary>
+            群消息事件 : 图片大类
+            <para>Serveric [OnGroup : AtPic] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupVocMessageEventHandler">
+            <summary>
+            群消息事件 : 语音大类
+            <para>Serveric [OnGroup : Voc] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.EventGroupVidMessageEventHandler">
+            <summary>
+            群消息事件 : 视频大类
+            <para>Serveric [OnGroup : Vid] Message Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
         </member>
         <member name="E:MeowIOTBot.MeowServiceClient._GroupAtTextMsgRecieve">
             <summary>
@@ -2392,6 +2472,102 @@
             群消息事件 : 视频大类
             <para>Serveric [OnGroup : Vid] Message Event</para>
             </summary>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_ADMIN_EventHandler">
+            <summary>
+            管理员变更事件
+            <para>GroupAdminChangeEvent</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_SHUT_EventHandler">
+            <summary>
+            群禁言事件
+            <para>GroupShut-upEvent</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_EXIT_EventHandler">
+            <summary>
+            群操作相关事件 (一层解析)
+            <para>*FirstLayerOf*GroupAdministratorEvent</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_EXIT_SUCC_EventHandler">
+            <summary>
+            退群相关事件
+            <para>Someone Exit the Group</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_JOIN_EventHandler">
+            <summary>
+            主动退群成功事件
+            <para>SelfExitEvent</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler">
+            <summary>
+            加群事件
+            <para>Join Group Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_INVITE_EventHandler">
+            <summary>
+            邀请加群事件
+            <para>Invite into group Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_FRIEND_ADD_EventHandler">
+            <summary>
+            加好友事件
+            <para>Add Friend Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_FRIEND_DELETE_EventHandler">
+            <summary>
+            删除好友事件
+            <para>Friend Delete Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_NOTIFY_PUSHADDFRD_EventHandler">
+            <summary>
+            成为好友事件
+            <para>Become Friend Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_FRIEND_ADD_STATUS_EventHandler">
+            <summary>
+            好友状态事件
+            <para>Friend Status Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_EventHandler">
+            <summary>
+            未识别事件
+            <para>Unknown Event</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
         </member>
         <member name="E:MeowIOTBot.MeowServiceClient.__ON_EVENT_GROUP_ADMIN">
             <summary>

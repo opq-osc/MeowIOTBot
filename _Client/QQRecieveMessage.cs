@@ -342,11 +342,11 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         public AtTextMsg(string content) : base(content)
         {
             var jo = JObject.Parse(content.Replace("\\\"", "\""));
-            try
+            jo.TryGetValue("UserExt", out var atedQQ);
+            AtedQQ = atedQQ?.ToObject<List<QQinfo>>();
+            if(AtedQQ != null)
             {
-                
                 StringBuilder sb = new StringBuilder();
-                AtedQQ = jo["UserExt"].ToObject<List<QQinfo>>();
                 List<QQinfo> ls = new List<QQinfo>();
                 Content = jo["Content"].ToString();
                 foreach (var d in Content.Split(' ')[AtedQQ.Count..])
@@ -363,9 +363,9 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
                 }
                 RemoveAtContent = sb.ToString();
             }
-            catch
+            else
             {
-                if ("[回复]".Equals(jo["Tips"].ToString()))
+                if ("[回复]".Equals(jo["Tips"]?.ToString()))
                 {
                     Content = jo["Content"].ToString();
                     replyContent = jo["SrcContent"].ToString();
@@ -377,7 +377,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
                     Console.WriteLine($"Message Unhandled -- {Content}");
                 }
             }
-            
         }
     }
     /// <summary>
