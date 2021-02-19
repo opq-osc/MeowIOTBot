@@ -2062,6 +2062,30 @@
             <para>Text Message</para>
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.replyContent">
+            <summary>
+            文本信息
+            <para>Text Message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg._isReplyAt">
+            <summary>
+            是否回复类型的At信息
+            <para>is reply at message</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.ReplyAtUserID">
+            <summary>
+            回复类型At信息的被回复者
+            <para>indecated the reply message's UserId</para>
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.ReplyMessageSeq">
+            <summary>
+            回复类型At信息的顺序码
+            <para>indecated the reply message's Message Sequence</para>
+            </summary>
+        </member>
         <member name="F:MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.AtedQQ">
             <summary>
             被at的人

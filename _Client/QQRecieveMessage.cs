@@ -290,6 +290,26 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </summary>
         public string RemoveAtContent;
         /// <summary>
+        /// 文本信息
+        /// <para>Text Message</para>
+        /// </summary>
+        public string replyContent;
+        /// <summary>
+        /// 是否回复类型的At信息
+        /// <para>is reply at message</para>
+        /// </summary>
+        public bool _isReplyAt;
+        /// <summary>
+        /// 回复类型At信息的被回复者
+        /// <para>indecated the reply message's UserId</para>
+        /// </summary>
+        public long[] ReplyAtUserID;
+        /// <summary>
+        /// 回复类型At信息的顺序码
+        /// <para>indecated the reply message's Message Sequence</para>
+        /// </summary>
+        public long ReplyMessageSeq;
+        /// <summary>
         /// 被at的人
         /// <para>the List of AtedQQ</para>
         /// </summary>
@@ -321,25 +341,43 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// </param>
         public AtTextMsg(string content) : base(content)
         {
-            var c = content.Replace("\\\"", "\"");
-            var jo = JObject.Parse(c);
-            StringBuilder sb = new StringBuilder();
-            AtedQQ = jo["UserExt"].ToObject<List<QQinfo>>();
-            List<QQinfo> ls = new List<QQinfo>();
-            Content = jo["Content"].ToString();
-            foreach (var d in Content.Split(' ')[AtedQQ.Count..])
+            var jo = JObject.Parse(content.Replace("\\\"", "\""));
+            try
             {
-                for (int i = 0; i < ls.Count; i++) 
+                
+                StringBuilder sb = new StringBuilder();
+                AtedQQ = jo["UserExt"].ToObject<List<QQinfo>>();
+                List<QQinfo> ls = new List<QQinfo>();
+                Content = jo["Content"].ToString();
+                foreach (var d in Content.Split(' ')[AtedQQ.Count..])
                 {
-                    if (d.Equals(ls[i].QQNick))
+                    for (int i = 0; i < ls.Count; i++)
                     {
-                        ls[i] = null;
-                        break;
+                        if (d.Equals(ls[i].QQNick))
+                        {
+                            ls[i] = null;
+                            break;
+                        }
                     }
+                    sb.Append($"{d} ");
                 }
-                sb.Append($"{d} ");
+                RemoveAtContent = sb.ToString();
             }
-            RemoveAtContent = sb.ToString();
+            catch
+            {
+                if ("[回复]".Equals(jo["Tips"].ToString()))
+                {
+                    Content = jo["Content"].ToString();
+                    replyContent = jo["SrcContent"].ToString();
+                    ReplyAtUserID = jo["UserID"].ToObject<long[]>();
+                    ReplyMessageSeq = jo["MsgSeq"].ToObject<long>();
+                }
+                else
+                {
+                    Console.WriteLine($"Message Unhandled -- {Content}");
+                }
+            }
+            
         }
     }
     /// <summary>
