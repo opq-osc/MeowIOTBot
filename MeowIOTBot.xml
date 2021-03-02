@@ -544,9 +544,39 @@
             管理员变更事件
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMIN.Flag">
+            <summary>
+            标志,是否成为管理员
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMIN.GroupID">
+            <summary>
+            群号
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMIN.UserID">
+            <summary>
+            用户名
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_SHUT">
             <summary>
             群禁言事件
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_SHUT.GroupID">
+            <summary>
+            群名
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_SHUT.ShutTime">
+            <summary>
+            禁言时间(秒)
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_SHUT.UserID">
+            <summary>
+            用户名
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT">
@@ -554,14 +584,39 @@
             群成员退出群聊事件
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT.UserID">
+            <summary>
+            退出成员名
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT_SUCC">
             <summary>
             主动退群成功事件
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT_SUCC.GroupID">
+            <summary>
+            退出的群
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_JOIN">
             <summary>
             某人进群事件
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_JOIN.InviteUin">
+            <summary>
+            被邀请人
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_JOIN.UserID">
+            <summary>
+            用户ID
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_JOIN.UserName">
+            <summary>
+            用户名
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP">
@@ -588,6 +643,36 @@
         <member name="M:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP.RequestDismiss">
             <summary>
             忽略请求
+            </summary>
+        </member>
+        <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE">
+            <summary>
+            群成员撤回消息
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE.AdminUserID">
+            <summary>
+            执行人
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE.GroupID">
+            <summary>
+            执行群
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE.MsgRandom">
+            <summary>
+            撤回消息的随机码
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE.MsgSeq">
+            <summary>
+            撤回消息序号
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE.UserID">
+            <summary>
+            被执行人
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD">
@@ -675,14 +760,49 @@
             成为好友事件
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_NOTIFY_PUSHADDFRD.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_NOTIFY_PUSHADDFRD.UserID">
+            <summary>
+            用户
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS">
             <summary>
             好友状态信息事件(被同意添加好友/被拒绝添加好友)
             </summary>
         </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS.Type">
+            <summary>
+            类型
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS.TypeStatus">
+            <summary>
+            类型状态
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS.UserID">
+            <summary>
+            用户QQ号
+            </summary>
+        </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_DELETE">
             <summary>
             删除好友事件
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_DELETE.UserID">
+            <summary>
+            用户QQ号
             </summary>
         </member>
         <member name="T:MeowIOTBot.QQ.QQEvent.EventType">
@@ -729,6 +849,11 @@
         <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP">
             <summary>
             某人邀你进群
+            </summary>
+        </member>
+        <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_GROUP_REVOKE">
+            <summary>
+            群成员撤回消息
             </summary>
         </member>
         <member name="F:MeowIOTBot.QQ.QQEvent.EventType.ON_EVENT_FRIEND_ADD">

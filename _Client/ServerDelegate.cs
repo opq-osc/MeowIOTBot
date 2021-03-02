@@ -167,7 +167,6 @@ namespace MeowIOTBot
         }
         private void Meow_OnEventMsgs(object sender, ObjectEvent.ObjectEventArgs e)
         {
-            Console.WriteLine(e.Data);
             var d = new Event(e.Data);
             switch (d.EType.ToString())
             {

@@ -32,8 +32,17 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_ADMIN
     {
+        /// <summary>
+        /// 标志,是否成为管理员
+        /// </summary>
         public long Flag;
+        /// <summary>
+        /// 群号
+        /// </summary>
         public long GroupID;
+        /// <summary>
+        /// 用户名
+        /// </summary>
         public long UserID;
     }
     /// <summary>
@@ -41,8 +50,17 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_SHUT
     {
+        /// <summary>
+        /// 群名
+        /// </summary>
         public long GroupID;
+        /// <summary>
+        /// 禁言时间(秒)
+        /// </summary>
         public long ShutTime;
+        /// <summary>
+        /// 用户名
+        /// </summary>
         public long UserID;
     }
     /// <summary>
@@ -50,6 +68,9 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_EXIT
     {
+        /// <summary>
+        /// 退出成员名
+        /// </summary>
         public long UserID;
     }
     /// <summary>
@@ -57,6 +78,9 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_EXIT_SUCC
     {
+        /// <summary>
+        /// 退出的群
+        /// </summary>
         public long GroupID;
     }
     /// <summary>
@@ -64,8 +88,17 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_JOIN
     {
+        /// <summary>
+        /// 被邀请人
+        /// </summary>
         public long InviteUin;
+        /// <summary>
+        /// 用户ID
+        /// </summary>
         public long UserID;
+        /// <summary>
+        /// 用户名
+        /// </summary>
         public string UserName;
     }
     /// <summary>
@@ -123,6 +156,32 @@ namespace MeowIOTBot.QQ.QQEvent
             k.Action = 14;
             return await PASA(UrlType.AnswerInviteGroup, Newtonsoft.Json.JsonConvert.SerializeObject(k));
         }
+    }
+    /// <summary>
+    /// 群成员撤回消息
+    /// </summary>
+    public class ON_EVENT_GROUP_REVOKE
+    {
+        /// <summary>
+        /// 执行人
+        /// </summary>
+        public long AdminUserID;
+        /// <summary>
+        /// 执行群
+        /// </summary>
+        public long GroupID;
+        /// <summary>
+        /// 撤回消息的随机码
+        /// </summary>
+        public long MsgRandom;
+        /// <summary>
+        /// 撤回消息序号
+        /// </summary>
+        public long MsgSeq;
+        /// <summary>
+        /// 被执行人
+        /// </summary>
+        public long UserID;
     }
     /*------------------------------------------------------*/
     /// <summary>
@@ -212,7 +271,13 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_NOTIFY_PUSHADDFRD
     {
+        /// <summary>
+        /// 昵称
+        /// </summary>
         public string NickName;
+        /// <summary>
+        /// 用户
+        /// </summary>
         public long UserID;
     }
     /// <summary>
@@ -220,9 +285,21 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_FRIEND_ADD_STATUS
     {
+        /// <summary>
+        /// 昵称
+        /// </summary>
         public string NickName;
+        /// <summary>
+        /// 类型
+        /// </summary>
         public int Type;
+        /// <summary>
+        /// 类型状态
+        /// </summary>
         public string TypeStatus;
+        /// <summary>
+        /// 用户QQ号
+        /// </summary>
         public int UserID;
     }
     /// <summary>
@@ -230,6 +307,9 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_FRIEND_DELETE
     {
+        /// <summary>
+        /// 用户QQ号
+        /// </summary>
         public long UserID;
     }
     /// <summary>
@@ -271,6 +351,10 @@ namespace MeowIOTBot.QQ.QQEvent
         /// 某人邀你进群
         /// </summary>
         ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP,
+        /// <summary>
+        /// 群成员撤回消息
+        /// </summary>
+        ON_EVENT_GROUP_REVOKE,
         /*-------------*/
         /// <summary>
         /// 某人加你好友
@@ -365,6 +449,7 @@ namespace MeowIOTBot.QQ.QQEvent
                     "ON_EVENT_GROUP_EXIT_SUCC" => EventType.ON_EVENT_GROUP_EXIT_SUCC,
                     "ON_EVENT_GROUP_JOIN" => EventType.ON_EVENT_GROUP_JOIN,
                     "ON_EVENT_FRIEND_ADD" => EventType.ON_EVENT_FRIEND_ADD,
+                    "ON_EVENT_GROUP_REVOKE" => EventType.ON_EVENT_GROUP_REVOKE,
                     _ => EventType.ON_EVENT_NULL_REF
                 };
             }
@@ -381,11 +466,11 @@ namespace MeowIOTBot.QQ.QQEvent
                     "ON_EVENT_GROUP_EXIT_SUCC" => jed.ToObject<ON_EVENT_GROUP_EXIT_SUCC>(),
                     "ON_EVENT_GROUP_JOIN" => jed.ToObject<ON_EVENT_GROUP_JOIN>(),
                     "ON_EVENT_FRIEND_ADD" => jed.ToObject<ON_EVENT_FRIEND_ADD>(),
+                    "ON_EVENT_GROUP_REVOKE" => jed.ToObject<ON_EVENT_GROUP_REVOKE>(),
                     _ => null
                 };
             }
             else { throw new Exception(EC.E02); }
-            
         }
         /// <summary>
         /// 枚举类型(用于转换下面的InnerData)

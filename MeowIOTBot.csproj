@@ -17,16 +17,15 @@ this Project is fully Commented(-ish) for Language in English and Chinese.</Desc
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>修改了at类信息会优先于回复信息列表的内容字段解释,防止取出异常
-modify the AtMessage Factory Mode for update in backbone appliation which except for an exception.</PackageReleaseNotes>
+    <PackageReleaseNotes>新增解析了 EVENT_GROUP_REVOKE</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.0.4</Version>
-    <AssemblyVersion>4.0.5.1002</AssemblyVersion>
-    <FileVersion>4.0.5.1002</FileVersion>
+    <Version>4.0.5</Version>
+    <AssemblyVersion>4.0.5.1004</AssemblyVersion>
+    <FileVersion>4.0.5.1004</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent</PackageTags>
   </PropertyGroup>
