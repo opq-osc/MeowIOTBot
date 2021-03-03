@@ -8,10 +8,6 @@ using static MeowIOTBot.NetworkHelper.PostHelper;
 using static MeowIOTBot.QQ.QQFunc.QQGroupList;
 using static MeowIOTBot.QQ.QQFunc.QQGroupUserList;
 
-/// <summary>
-/// 总操作函数库
-/// <para>Controller of QQ Action</para>
-/// </summary>
 namespace MeowIOTBot.QQ.QQFunc
 {
     /// <summary>

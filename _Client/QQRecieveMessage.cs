@@ -11,10 +11,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
     /// QQ信息的包装类
     /// <para>QQ Message's Class</para>
     /// </summary>
-    /// <typeparam name="MsgBody">
-    /// 信息类型
-    /// <para>Message Type</para>
-    /// </typeparam>
     public class QQRecieveMessage
     {
         /// <summary>
@@ -48,10 +44,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <param name="iOBody">
         /// 信息的IO附加参数
         /// <para>Message IO Body Parameter</para>
-        /// </param>
-        /// <param name="body">
-        /// 消息体
-        /// <para>Message Body</para>
         /// </param>
         /// <param name="property">
         /// 信息的公用属性类

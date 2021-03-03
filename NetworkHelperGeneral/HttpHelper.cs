@@ -58,7 +58,6 @@ namespace MeowIOTBot.NetworkHelper
         /// 连接节点 
         /// <para>Backend Point</para>
         /// </param>
-        /// </param>
         /// <param name="contentType">
         /// 内容格式 
         /// <para>Usually is Json</para>
@@ -66,6 +65,7 @@ namespace MeowIOTBot.NetworkHelper
         /// <param name="header">
         /// UA识别头 
         /// <para>HeaderCheck for Linux Nginx</para>
+        /// </param>
         public HttpHelper(string url, string contentType, WebHeaderCollection header = null)
         {
             Url = url;
@@ -96,9 +96,9 @@ namespace MeowIOTBot.NetworkHelper
                 myResponseStream.Close();
                 return retString;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
         /// <summary>
