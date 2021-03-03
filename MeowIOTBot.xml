@@ -2654,6 +2654,14 @@
             <param name="sender">报文头</param>
             <param name="e">报文体</param>
         </member>
+        <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_GROUP_REVOKE_EventHandler">
+            <summary>
+            群成员撤回信息事件
+            <para>Event for revoke message in group</para>
+            </summary>
+            <param name="sender">报文头</param>
+            <param name="e">报文体</param>
+        </member>
         <member name="T:MeowIOTBot.MeowServiceClient.Event_ON_EVENT_FRIEND_ADD_EventHandler">
             <summary>
             加好友事件
@@ -2734,6 +2742,12 @@
             <summary>
             邀请加群事件
             <para>Invite into group Event</para>
+            </summary>
+        </member>
+        <member name="E:MeowIOTBot.MeowServiceClient.__ON_EVENT_GROUP_REVOKE">
+            <summary>
+            群成员撤回信息事件
+            <para>Event for revoke message in group</para>
             </summary>
         </member>
         <member name="E:MeowIOTBot.MeowServiceClient.__ON_EVENT_FRIEND_ADD">

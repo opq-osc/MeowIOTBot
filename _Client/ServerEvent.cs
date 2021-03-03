@@ -184,6 +184,13 @@ namespace MeowIOTBot
         /// <param name="e">报文体</param>
         public delegate void Event_ON_EVENT_GROUP_INVITE_EventHandler(EventMsg sender, ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP e);
         /// <summary>
+        /// 群成员撤回信息事件
+        /// <para>Event for revoke message in group</para>
+        /// </summary>
+        /// <param name="sender">报文头</param>
+        /// <param name="e">报文体</param>
+        public delegate void Event_ON_EVENT_GROUP_REVOKE_EventHandler(EventMsg sender, ON_EVENT_GROUP_REVOKE e);
+        /// <summary>
         /// 加好友事件
         /// <para>Add Friend Event</para>
         /// </summary>
@@ -254,6 +261,11 @@ namespace MeowIOTBot
         /// <para>Invite into group Event</para>
         /// </summary>
         public event Event_ON_EVENT_GROUP_INVITE_EventHandler __ON_EVENT_GROUP_INVITE;
+        /// <summary>
+        /// 群成员撤回信息事件
+        /// <para>Event for revoke message in group</para>
+        /// </summary>
+        public event Event_ON_EVENT_GROUP_REVOKE_EventHandler __ON_EVENT_GROUP_REVOKE;
 
         /// <summary>
         /// 加好友事件

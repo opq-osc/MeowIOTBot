@@ -252,6 +252,13 @@ namespace MeowIOTBot
                         Log($"[*解除好友*] {x.UserID}不再是你的好友了");
                     }
                     break;
+                case "ON_EVENT_GROUP_REVOKE":
+                    {
+                        var x = (ON_EVENT_GROUP_REVOKE)d.Data;
+                        __ON_EVENT_GROUP_REVOKE.Invoke(d.EMsg, x);
+                        Log($"[*群成员撤回信息*] 在群{x.GroupID},{x.AdminUserID}撤回了{x.UserID}的信息");
+                    }
+                    break;
                 default:
                     {
                         __ON_UNMOUNT_EVENT.Invoke(null, e.Data);

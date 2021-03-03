@@ -23,7 +23,7 @@ this Project is fully Commented(-ish) for Language in English and Chinese.</Desc
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.0.5</Version>
+    <Version>4.0.6</Version>
     <AssemblyVersion>4.0.5.1004</AssemblyVersion>
     <FileVersion>4.0.5.1004</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
