@@ -119,6 +119,10 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// </summary>
         public string PicMd5s;
         /// <summary>
+        /// 图像的Base64类
+        /// </summary>
+        public string PicBase64Buf;
+        /// <summary>
         /// 总体图片构造类
         /// </summary>
         /// <param name="sendTo">发送到</param>
@@ -127,17 +131,19 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="picUrl">图片URL</param>
         /// <param name="picPath">图片服务端路径</param>
         /// <param name="picMd5s">图片Md5</param>
+        /// <param name="picBase64Buf">图片的Base64</param>
         /// <param name="GroupId">陌生人识别号</param>
         /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
         /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_PicMsg(long sendTo, MessageSendToType sendToType, string content = null,
             string picUrl = null, string picPath = null, string picMd5s = null,
-            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+            long GroupId = 0, List<long> atqq = null, bool atAll = false, string picBase64Buf = null)
             : base(sendTo, sendToType, MessageSendType.PicMsg, content, GroupId, atqq, atAll)
         {
             PicUrl = picUrl;
             PicPath = picPath;
             PicMd5s = picMd5s;
+            PicBase64Buf = picBase64Buf;
         }
     }
     /// <summary>
