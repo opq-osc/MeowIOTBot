@@ -1,12 +1,8 @@
 ﻿using MeowIOTBot.NetworkHelper;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using static MeowIOTBot.NetworkHelper.PostHelper;
-using static MeowIOTBot.QQ.QQFunc.QQGroupList;
-using static MeowIOTBot.QQ.QQFunc.QQGroupUserList;
 
 namespace MeowIOTBot.QQ.QQFunc
 {

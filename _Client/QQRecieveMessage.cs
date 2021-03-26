@@ -1,9 +1,7 @@
-﻿using MeowIOTBot.Basex;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
 {
@@ -263,7 +261,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
         /// <para>Message Basic Content</para>
         /// </param>
         public TextMsg(string content) : base($"{{\"Content\":\"{content}\"}}") => Content = content;
-        
     }
     /// <summary>
     /// at类型的消息 * 仅群聊

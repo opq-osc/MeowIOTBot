@@ -1,8 +1,4 @@
 ﻿using System;
-using MeowIOTBot.QQ.QQMessage.QQRecieveMessage;
-using System.Collections.Generic;
-using System.Text;
-using MeowIOTBot.QQ.QQEvent;
 
 namespace MeowIOTBot
 {

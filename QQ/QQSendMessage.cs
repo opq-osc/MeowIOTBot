@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 
 namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
 {
-    #region V2信息实体定义
     /// <summary>
     /// 原信息
     /// </summary>
@@ -315,7 +314,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
             : base(sendTo, sendToType, MessageSendType.XmlMsg, XmlContent, GroupId, atqq, atAll)
         { }
     }
-    #endregion
 
     /// <summary>
     /// 枚举的发送类别

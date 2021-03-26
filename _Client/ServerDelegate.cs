@@ -1,9 +1,6 @@
 ﻿using MeowIOTBot.QQ.QQMessage.QQRecieveMessage;
 using MeowIOTBot.QQ.QQEvent;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Newtonsoft.Json.Linq;
 using MeowIOTBot.Basex;
 
 namespace MeowIOTBot
