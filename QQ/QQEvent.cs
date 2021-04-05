@@ -10,21 +10,69 @@ namespace MeowIOTBot.QQ.QQEvent
     /// </summary>
     public class ON_EVENT_GROUP_ADMINSYSNOTIFY
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public long Seq;
+        /// <summary>
+        /// 
+        /// </summary>
         public long Type;
+        /// <summary>
+        /// 
+        /// </summary>
         public string MsgTypeStr;
+        /// <summary>
+        /// 
+        /// </summary>
         public long Who;
+        /// <summary>
+        /// 
+        /// </summary>
         public string WhoName;
+        /// <summary>
+        /// 
+        /// </summary>
         public string MsgStatusStr;
+        /// <summary>
+        /// 
+        /// </summary>
         public string Content;
+        /// <summary>
+        /// 
+        /// </summary>
         public string RefuseContent;
+        /// <summary>
+        /// 
+        /// </summary>
         public long Flag_7;
+        /// <summary>
+        /// 
+        /// </summary>
         public long Flag_8;
+        /// <summary>
+        /// 
+        /// </summary>
         public long GroupId;
+        /// <summary>
+        /// 
+        /// </summary>
         public string GroupName;
+        /// <summary>
+        /// 
+        /// </summary>
         public long ActionUin;
+        /// <summary>
+        /// 
+        /// </summary>
         public string ActionName;
+        /// <summary>
+        /// 
+        /// </summary>
         public string ActionGroupCard;
+        /// <summary>
+        /// 
+        /// </summary>
         public long Action;
     }
     /// <summary>

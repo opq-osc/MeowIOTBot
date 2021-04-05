@@ -309,7 +309,7 @@ namespace MeowIOTBot.QQ.QQFunc
         /// </summary>
         public class _FriendList
         {
-            private List<QQFriend> q = new();
+            private readonly List<QQFriend> q = new();
             /// <summary>
             /// 添加集方法
             /// <para>Set Insert Function</para>
@@ -333,7 +333,7 @@ namespace MeowIOTBot.QQ.QQFunc
             /// <para>get Set</para>
             /// </summary>
             /// <returns></returns>
-            public List<QQFriend> getInstance() => this.q;
+            public List<QQFriend> getInstance() => q;
         }
 
         /// <summary>
@@ -546,7 +546,7 @@ namespace MeowIOTBot.QQ.QQFunc
             /// <summary>
             /// 私有的群列表
             /// </summary>
-            private List<QQGroup> q = new();
+            private readonly List<QQGroup> q = new();
             /// <summary>
             /// 重构的对比添加
             /// </summary>
@@ -568,7 +568,7 @@ namespace MeowIOTBot.QQ.QQFunc
             /// 获取群列表
             /// </summary>
             /// <returns></returns>
-            public List<QQGroup> getInstance() => this.q;
+            public List<QQGroup> getInstance() => q;
         }
         /// <summary>
         /// 拉取群列表

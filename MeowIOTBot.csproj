@@ -7,26 +7,22 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>**从今天起MeowIOTBot正式更名为Electronicute.MeowIOTBot**
-这是一个IOT开发的SDK,能允许您快速构建关于IOTBot的自主封装程序,采用了IOTBot的Analytic-json规范,收发分离
-本项目目前注释完全(双语)
-**From Now On Project *MeowIOTBot* is Officially Change Name to *Electronicute.MeowIotBot* **
-This is a IOTBot Backend SDK for Enterprise User to Contact the IOT Backend for sending/Recieveing Message.
-this Project is fully Commented(-ish) for Language in English and Chinese.</Description>
+    <Description>这是一个IOTBot开发的SDK
+允许您快速构建关于IOTBot的自主封装程序
+采用了Analytic-json规范,收发分离,本项目目前注释完全</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>加入了最新的判断模式,将原来的Send加入了错误判定,默认不进行判断,如果填写参数则使用新版发送机制,
-优化了图片发送,新增发送bitmap实例(自动对象销毁形)</PackageReleaseNotes>
+    <PackageReleaseNotes>修复源文档少许bug,优化了过程流程</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.0.8</Version>
-    <AssemblyVersion>4.0.8.0</AssemblyVersion>
-    <FileVersion>4.0.8.0</FileVersion>
+    <Version>4.0.9</Version>
+    <AssemblyVersion>4.0.8.1009</AssemblyVersion>
+    <FileVersion>4.0.8.1009</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent</PackageTags>
   </PropertyGroup>
@@ -38,7 +34,6 @@ this Project is fully Commented(-ish) for Language in English and Chinese.</Desc
 
   <ItemGroup>
     <PackageReference Include="Electronicute.MeowSocketLibrary" Version="2.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 

@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = silent
+
+# CA1507: Use nameof to express symbol names
+dotnet_diagnostic.CA1507.severity = silent

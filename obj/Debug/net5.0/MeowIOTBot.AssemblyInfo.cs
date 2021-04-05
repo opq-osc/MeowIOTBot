@@ -14,17 +14,12 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Electronicute")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2020 @ Electronicute")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute(@"**从今天起MeowIOTBot正式更名为Electronicute.MeowIOTBot**
-这是一个IOT开发的SDK,能允许您快速构建关于IOTBot的自主封装程序,采用了IOTBot的Analytic-json规范,收发分离
-本项目目前注释完全(双语)
-**From Now On Project *MeowIOTBot* is Officially Change Name to *Electronicute.MeowIotBot* **
-This is a IOTBot Backend SDK for Enterprise User to Contact the IOT Backend for sending/Recieveing Message.
-this Project is fully Commented(-ish) for Language in English and Chinese.")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("4.0.8.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.0.8")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("这是一个IOTBot开发的SDK\r\n允许您快速构建关于IOTBot的自主封装程序\r\n采用了Analytic-json规范,收发分离,本项目目前注释完全")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("4.0.8.1009")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.0.9")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeowIOTBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeowIOTBot")]
-[assembly: System.Reflection.AssemblyVersionAttribute("4.0.8.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("4.0.8.1009")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/DavidSciMeow/MeowIOTBot")]
 [assembly: System.Resources.NeutralResourcesLanguageAttribute("zh")]
 

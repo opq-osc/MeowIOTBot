@@ -118,11 +118,11 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
                     bool x = false;
                     foreach (var k in atqq)
                     {
-                        if (x) { sb.Append(","); }
+                        if (x) { sb.Append(','); }
                         sb.Append(k);
                         x = true;
                     }
-                    Content = $"{sb.ToString()})]{content}";
+                    Content = $"{sb})]{content}";
                 }
             }
         }
