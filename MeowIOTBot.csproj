@@ -17,15 +17,16 @@ this Project is fully Commented(-ish) for Language in English and Chinese.</Desc
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageReleaseNotes>新增解析了 EVENT_GROUP_REVOKE</PackageReleaseNotes>
+    <PackageReleaseNotes>加入了最新的判断模式,将原来的Send加入了错误判定,默认不进行判断,如果填写参数则使用新版发送机制,
+优化了图片发送,新增发送bitmap实例(自动对象销毁形)</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
     <SignAssembly>true</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.0.6</Version>
-    <AssemblyVersion>4.0.5.1004</AssemblyVersion>
-    <FileVersion>4.0.5.1004</FileVersion>
+    <Version>4.0.8</Version>
+    <AssemblyVersion>4.0.8.0</AssemblyVersion>
+    <FileVersion>4.0.8.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent</PackageTags>
   </PropertyGroup>

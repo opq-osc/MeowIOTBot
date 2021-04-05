@@ -1,0 +1,10 @@
+C:\Users\David\source\repos\MeowIOTBot\bin\Debug\netcoreapp3.1\MeowIOTBot.deps.json
+C:\Users\David\source\repos\MeowIOTBot\bin\Debug\netcoreapp3.1\MeowIOTBot.dll
+C:\Users\David\source\repos\MeowIOTBot\bin\Debug\netcoreapp3.1\MeowIOTBot.pdb
+C:\Users\David\source\repos\MeowIOTBot\bin\Debug\netcoreapp3.1\MeowIOTBot.xml
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.AssemblyInfoInputs.cache
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.AssemblyInfo.cs
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.csproj.CoreCompileInputs.cache
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.dll
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.pdb
+C:\Users\David\source\repos\MeowIOTBot\obj\Debug\netcoreapp3.1\MeowIOTBot.csprojAssemblyReference.cache

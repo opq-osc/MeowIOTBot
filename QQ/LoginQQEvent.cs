@@ -38,7 +38,7 @@ namespace MeowIOTBot
         /// <param name="width">宽度</param>
         private static void PrintQRCodeFromBase64(string base64img, int height, int width)
         {
-            MemoryStream stream = new MemoryStream(Convert.FromBase64String(base64img));
+            MemoryStream stream = new(Convert.FromBase64String(base64img));
             Bitmap b = new(new Bitmap(stream), width, height);
             for (int x = 0; x < width; x++)
             {

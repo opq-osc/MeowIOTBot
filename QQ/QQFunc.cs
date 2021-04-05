@@ -309,7 +309,7 @@ namespace MeowIOTBot.QQ.QQFunc
         /// </summary>
         public class _FriendList
         {
-            private List<QQFriend> q = new List<QQFriend>();
+            private List<QQFriend> q = new();
             /// <summary>
             /// 添加集方法
             /// <para>Set Insert Function</para>
@@ -546,7 +546,7 @@ namespace MeowIOTBot.QQ.QQFunc
             /// <summary>
             /// 私有的群列表
             /// </summary>
-            private List<QQGroup> q = new List<QQGroup>();
+            private List<QQGroup> q = new();
             /// <summary>
             /// 重构的对比添加
             /// </summary>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>MeowIOTBot</id>
+    <version>2.0.0</version>
+    <authors>DavidSciMeow</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/DavidSciMeow/MeowIOTBot</projectUrl>
+    <description>this is a delegate library for IOTQQBot Programmer/User which you can use this to connect your IOT backend Easily and 
+which have full Codec comment Inline bydef is EN/CN but mostly is CN comment.</description>
+    <releaseNotes>In this Version we are stop support in .netCore 3.1 Version and Change to more specific .net5.0, if you can-not using .net5.0 you can use the 1.x.x version instead.
+这个版本更新将会取消支持.net 3.1 进而升级为.net 5 ,如果您无法开发.net 5请继续关注1.xx版本(可能不会再更新)</releaseNotes>
+    <copyright>2020 @ Electronicute</copyright>
+    <repository type="GitHub" url="https://github.com/DavidSciMeow/MeowIOTBot" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="MeowSocketLibraryForRinkoIOT" version="1.0.1" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\David\source\repos\MeowIOTBot\bin\Debug\net5.0\MeowIOTBot.dll" target="lib\net5.0\MeowIOTBot.dll" />
+    <file src="C:\Users\David\source\repos\MeowIOTBot\bin\Debug\net5.0\MeowIOTBot.xml" target="lib\net5.0\MeowIOTBot.xml" />
+  </files>
+</package>

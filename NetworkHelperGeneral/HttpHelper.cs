@@ -89,7 +89,7 @@ namespace MeowIOTBot.NetworkHelper
                 request.ContentType = contentType;
                 HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync(); //响应结果
                 Stream myResponseStream = response.GetResponseStream();
-                StreamReader streamReader = new StreamReader(myResponseStream);
+                StreamReader streamReader = new(myResponseStream);
                 retString = streamReader.ReadToEnd();
                 streamReader.Close();
                 myResponseStream.Close();
@@ -133,7 +133,7 @@ namespace MeowIOTBot.NetworkHelper
                 HttpWebResponse resp = (HttpWebResponse)await req.GetResponseAsync(); //响应结果
                 Stream stream = resp.GetResponseStream();
                 //获取响应内容
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                using (StreamReader reader = new(stream, Encoding.UTF8))
                 {
                     result = reader.ReadToEnd();
                 }

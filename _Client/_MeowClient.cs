@@ -73,7 +73,7 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public MeowClient Connect()
         {
-            Client socket = new Client(url);
+            Client socket = new(url);
             socket.Connect();
             socket.On("connect", (fn) =>
             {

@@ -1,10 +1,64 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
 {
+    /// <summary>
+    /// 返回状态类
+    /// </summary>
+    public class SenderStatus 
+    {
+        /// <summary>
+        /// 原消息串
+        /// </summary>
+        public string MessageStr;
+        /// <summary>
+        /// 状态码
+        /// </summary>
+        public Sdstatus StatusCode;
+        /// <summary>
+        /// 构造
+        /// </summary>
+        /// <param name="jo"></param>
+        public SenderStatus(JObject jo)
+        {
+            MessageStr = jo["Msg"]?.ToString();
+            StatusCode = (Sdstatus)(jo["Ret"]?.ToObject<int>() ?? -1);
+        }
+        /// <summary>
+        /// 中文输出错误类型
+        /// </summary>
+        /// <param name="CHS"></param>
+        /// <returns></returns>
+        public string ToString(bool CHS = false)
+        {
+            if (CHS)
+            {
+                return (int)StatusCode switch
+                {
+                    -1 => "超时空串",
+                    0 => "发送成功",
+                    34 => "未知错误",
+                    46 => "手动完成身份验证",
+                    110 => "发送失败,你已被移出群聊",
+                    120 => "你已被禁言",
+                    241 => "发送频率过高",
+                    299 => "超过群发言频率限制",
+                    _ => "其他错误"
+                };
+            }
+            else
+            {
+                return base.ToString();
+            }
+        }
+    }
     /// <summary>
     /// 原信息
     /// </summary>
@@ -59,12 +113,12 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
                 }
                 else
                 {
-                    StringBuilder sb = new StringBuilder();
+                    StringBuilder sb = new();
                     sb.Append("[ATUSER(");
                     bool x = false;
                     foreach (var k in atqq)
                     {
-                        if (x){sb.Append(",");}
+                        if (x) { sb.Append(","); }
                         sb.Append(k);
                         x = true;
                     }
@@ -81,6 +135,23 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
                 NetworkHelper.PostHelper.UrlType.SendMsgV2,
                 JsonConvert.SerializeObject(this, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore })
             );
+        /// <summary>
+        /// 一个异步的发送信息方法
+        /// </summary>
+        /// <param name="treatAsErr">是否将服务端异常视作错误(默认否)</param>
+        /// <returns>返回一个成功与否的类</returns>
+        public async Task<SenderStatus> Send(bool treatAsErr = false)
+        {
+            var ss = new SenderStatus(JObject.Parse(await Send()));
+            if (treatAsErr && (ss.StatusCode != Sdstatus.OK))
+            {
+                throw new Exception($"{ss.ToString(true)}::{ss.StatusCode}::{ss.MessageStr}");
+            }
+            else
+            {
+                return ss;
+            }
+        }
     }
     /// <summary>
     /// 封装的文字信息
@@ -135,14 +206,50 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
         /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
         public MsgV2_PicMsg(long sendTo, MessageSendToType sendToType, string content = null,
-            string picUrl = null, string picPath = null, string picMd5s = null,
-            long GroupId = 0, List<long> atqq = null, bool atAll = false, string picBase64Buf = null)
+            string picUrl = null, string picPath = null, string picMd5s = null, string picBase64Buf = null,
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
             : base(sendTo, sendToType, MessageSendType.PicMsg, content, GroupId, atqq, atAll)
         {
             PicUrl = picUrl;
             PicPath = picPath;
             PicMd5s = picMd5s;
             PicBase64Buf = picBase64Buf;
+        }
+        /// <summary>
+        /// 重写的直接发送bitmap的图片构造
+        /// </summary>
+        /// <param name="sendTo">发送到</param>
+        /// <param name="sendToType">信息类型</param>
+        /// <param name="content">内容</param>
+        /// <param name="b">一个将要使用Base64发送的Bitmap实例</param>
+        /// <param name="GroupId">陌生人识别号</param>
+        /// <param name="atqq">是否atqq 数组qq号 (*暂时群组内不好用)</param>
+        /// <param name="atAll">是否At全体 *取消上面的atqq数组 (*暂时群组内不好用)</param>
+        public MsgV2_PicMsg(long sendTo, MessageSendToType sendToType, Bitmap b, string content = null, 
+            long GroupId = 0, List<long> atqq = null, bool atAll = false)
+            : base(sendTo, sendToType, MessageSendType.PicMsg, content, GroupId, atqq, atAll)
+        {
+            if (b != null)
+            {
+                try
+                {
+                    using MemoryStream ms = new();
+                    b.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                    byte[] arr = new byte[ms.Length];
+                    ms.Position = 0;
+                    ms.Read(arr, 0, (int)ms.Length);
+                    ms.Close();
+                    PicBase64Buf = Convert.ToBase64String(arr);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"{EC.E13}:{ex.Message}");
+                }
+            }
+            else
+            {
+                throw new Exception(EC.E14);
+            }
         }
     }
     /// <summary>
@@ -374,5 +481,43 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// 转发信息
         /// </summary>
         ForwordMsg
+    }
+    /// <summary>
+    /// 枚举的发送返回逻辑
+    /// </summary>
+    public enum Sdstatus
+    {
+        /// <summary>
+        /// 空串
+        /// </summary>
+        NULLREF = -1,
+        /// <summary>
+        /// 发送成功
+        /// </summary>
+        OK = 0,
+        /// <summary>
+        /// 未知错误
+        /// </summary>
+        err_STB = 34,
+        /// <summary>
+        /// 手动完成身份验证
+        /// </summary>
+        err_Auth = 46,
+        /// <summary>
+        /// 发送失败,你已被移出群聊
+        /// </summary>
+        err_GroupOut = 110,
+        /// <summary>
+        /// 你已被禁言
+        /// </summary>
+        err_Shut = 120,
+        /// <summary>
+        /// 发送频率过高
+        /// </summary>
+        err_Freq = 241,
+        /// <summary>
+        /// 超过群发言频率限制
+        /// </summary>
+        err_GroupFreq = 299
     }
 }

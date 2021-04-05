@@ -335,8 +335,8 @@ namespace MeowIOTBot.QQ.QQMessage.QQRecieveMessage
             AtedQQ = atedQQ?.ToObject<List<QQinfo>>();
             if(AtedQQ != null)
             {
-                StringBuilder sb = new StringBuilder();
-                List<QQinfo> ls = new List<QQinfo>();
+                StringBuilder sb = new();
+                List<QQinfo> ls = new();
                 Content = jo["Content"].ToString();
                 foreach (var d in Content.Split(' ')[AtedQQ.Count..])
                 {

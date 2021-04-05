@@ -78,7 +78,7 @@ namespace MeowIOTBot.NetworkHelper
                 HttpWebResponse resp = (HttpWebResponse)await req.GetResponseAsync(); //响应结果
                 Stream stream = resp.GetResponseStream();
                 //获取响应内容
-                using (StreamReader reader = new StreamReader(stream, Encoding.UTF8))
+                using (StreamReader reader = new(stream, Encoding.UTF8))
                 {
                     result = reader.ReadToEnd();
                 }

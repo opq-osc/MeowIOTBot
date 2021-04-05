@@ -118,7 +118,7 @@ namespace MeowIOTBot.QQ.QQAction
         public static async Task<List<QQGroupUser>> GetGroupUserList(long GroupId)
         {
             long LastUin = 0;
-            List<QQGroupUser> u = new List<QQGroupUser>();
+            List<QQGroupUser> u = new();
             while (true)
             {
                 var k = await PASA(
@@ -145,7 +145,7 @@ namespace MeowIOTBot.QQ.QQAction
         /// <returns></returns>
         public static async Task<List<QQGroup>> GetGroupList()
         {
-            _GroupList u = new _GroupList();
+            _GroupList u = new();
             int index = 0;
             while (true)
             {
@@ -233,7 +233,7 @@ namespace MeowIOTBot.QQ.QQAction
         /// <returns></returns>
         public static async Task<List<QQFriend>> GetFriendList()
         {
-            _FriendList u = new _FriendList();
+            _FriendList u = new();
             int index = 0;
             while (true)
             {

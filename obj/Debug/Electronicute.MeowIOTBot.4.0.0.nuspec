@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Electronicute.MeowIOTBot</id>
+    <version>4.0.0</version>
+    <authors>DavidSciMeow</authors>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
+    <projectUrl>https://github.com/DavidSciMeow/MeowIOTBot</projectUrl>
+    <description>**从今天起MeowIOTBot正式更名为Electronicute.MeowIOTBot**
+这是一个IOT开发的SDK,能允许您快速构建关于IOTBot的自主封装程序,采用了IOTBot的Analytic-json规范,收发分离
+本项目目前注释完全(双语)
+**From Now On Project *MeowIOTBot* is Officially Change Name to *Electronicute.MeowIotBot* **
+This is a IOTBot Backend SDK for Enterprise User to Contact the IOT Backend for sending/Recieveing Message.
+this Project is fully Commented(-ish) for Language in English and Chinese.</description>
+    <releaseNotes>本版本是MeowIOTBot 3.X的最后一版,修正了部分事件格式,更改了事件的引起方式,修改了私聊群聊的回复方式,增加了不同事件的回答方案,SDK从现在开始不再支持.netCore3.1进而转向.net5,相关Wiki已经作出变更,进行开发请选择VS2019 build 4.8.04084 +
+This version is the last Version of *MeowIOTBot* and it's the Lifecycle Begins of Electronicute Products we fix serveral bug  and disappear from .netcore 3.1 we made a jump to .net5 for future existance, we trying to made a better experience on .net 5 even on your application writing, even our wiki on github(which is still not have a english wiki), and if you want to develop in this SDK you should at least having a VS2019 build 4.8.04084 +</releaseNotes>
+    <copyright>2020 @ Electronicute</copyright>
+    <repository type="GitHub" url="https://github.com/DavidSciMeow/MeowIOTBot" />
+    <dependencies>
+      <group targetFramework="net5.0">
+        <dependency id="Electronicute.MeowSocketLibrary" version="2.0.0" exclude="Build,Analyzers" />
+        <dependency id="System.Drawing.Common" version="5.0.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\David\source\repos\MeowIOTBot\bin\Debug\net5.0\MeowIOTBot.dll" target="lib\net5.0\MeowIOTBot.dll" />
+    <file src="C:\Users\David\source\repos\MeowIOTBot\bin\Debug\net5.0\MeowIOTBot.xml" target="lib\net5.0\MeowIOTBot.xml" />
+  </files>
+</package>

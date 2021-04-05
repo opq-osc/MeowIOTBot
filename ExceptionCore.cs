@@ -11,5 +11,7 @@
         public readonly static string E02 = "Json事件缺少 [EventData] , 没有内部初始化";
         public readonly static string E11 = "同意类型缺失,没有参数呈递";
         public readonly static string E12 = "本消息类型无法回复,不含逻辑参数";
+        public readonly static string E13 = "图片转换失效,请检查传入的bitmap实例";
+        public readonly static string E14 = "图片转换失效,bitmap实例为空";
     }
 }
