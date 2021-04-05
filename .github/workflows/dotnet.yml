@@ -1,5 +1,4 @@
-name: dotnet from build to post nuget
-
+name: dotnet
 #只在main上的操作会进行
 on:
   push:
@@ -24,16 +23,10 @@ jobs:
     #构建
     - name: Build
       run: dotnet build --no-restore
-  #任务2:测试
-  Test:
-    runs-on: ubuntu-latest
-    steps:
+    #任务2:测试
     - name: Test
       run: dotnet test --no-build --verbosity normal
   #任务3:发布nuget
-  publish:
-    runs-on: ubuntu-latest
-    steps:
     - name: Publish
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
