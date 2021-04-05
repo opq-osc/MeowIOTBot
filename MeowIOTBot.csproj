@@ -21,7 +21,7 @@ this Project is fully Commented(-ish) for Language in English and Chinese.</Desc
 优化了图片发送,新增发送bitmap实例(自动对象销毁形)</PackageReleaseNotes>
     <NeutralLanguage>zh</NeutralLanguage>
     <PackageProjectUrl>https://github.com/DavidSciMeow/MeowIOTBot</PackageProjectUrl>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
     <Version>4.0.8</Version>
