@@ -55,8 +55,9 @@ namespace MeowIOTBot.NetworkHelper
                     UrlType.LoginQQ => $"{CallerUrl}/v1/Login/GetQRcode",
                     UrlType.__RefreshKeys => $"{CallerUrl}/v1/RefreshKeys?qq={LoginQQ}",
                     UrlType.__Logs => $"{CallerUrl}/v1/Log",
-                    UrlType.ShutUpSingle => $"{CallerUrl}/v1/LuaApiCaller?qq=${LoginQQ}&funcname=OidbSvc.0x570_8&timeout={Timeout}",
-                    UrlType.ShutUpEntirely => $"{CallerUrl}/v1/LuaApiCaller?qq=${LoginQQ}&funcname=OidbSvc.0x89a_0&timeout={Timeout}",
+                    UrlType.ShutUpSingle => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname=OidbSvc.0x570_8&timeout={Timeout}",
+                    UrlType.Tickles => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname=OidbSvc.0xed3_1&timeout={Timeout}",
+                    UrlType.ShutUpEntirely => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname=OidbSvc.0x89a_0&timeout={Timeout}",
                     //UrlType.SendMsgV2 => $"{CallerUrl}/v2/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                     _ => $"{CallerUrl}/v1/LuaApiCaller?qq={LoginQQ}&funcname={urlType}&timeout={Timeout}",
                 };
@@ -219,7 +220,12 @@ namespace MeowIOTBot.NetworkHelper
             /// 加群退群管理
             /// <para>add in or leave Group Control</para>
             /// </summary>
-            GroupMgr
+            GroupMgr,
+            /// <summary>
+            /// 戳一戳
+            /// <para>repersent the Tickle action</para>
+            /// </summary>
+            Tickles
         }
     }
 }

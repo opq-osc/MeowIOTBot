@@ -33,6 +33,24 @@ namespace MeowIOTBot.QQ.QQAction
         /// </param>
         public static async Task<string> ToZanSombody(long qid) => await PASA(UrlType.QQZan, $"{{\"UserID\":{qid}}}");
         /// <summary>
+        /// 戳一戳某个人
+        /// <para>sent QQ Tickle</para>
+        /// </summary>
+        /// <param name="type">
+        /// 被戳人的类型 好友为0 群友为1
+        /// <para>the Tickles-type as friend is 0 group is 1</para>
+        /// </param>
+        /// <param name="qid">
+        /// 好友的QQ号
+        /// <para>the friend's QQ number</para>
+        /// </param>
+        /// <param name="groupid">
+        /// 如果戳群友,这里填入群号(默认不用管)
+        /// <para>as if you tickles the groupmember then this is Groupnumber</para>
+        /// </param>
+        /// <returns></returns>
+        public static async Task<string> ToTickle(int type, long qid, long groupid=0) => await PASA(UrlType.Tickles, $"{{\"Type\":{type},\"UserID\":{qid},\"GroupID\":{groupid}}}");
+        /// <summary>
         /// 全局Log
         /// <para>RoundLog</para>
         /// </summary>
