@@ -1,7 +1,5 @@
 ﻿using MeowIOTBot.ObjectEvent;
 using Newtonsoft.Json.Linq;
-using SocketLibrary;
-using SocketLibrary.Messages;
 using System;
 
 namespace MeowIOTBot.Basex
@@ -38,7 +36,7 @@ namespace MeowIOTBot.Basex
         /// socket标
         /// <para>socket Client Variable</para>
         /// </summary>
-        private Client socket = null;
+        private SocketIOClient.SocketIO socket = null;
         /// <summary>
         /// 构造代理的类
         /// <para>DelegateLibrary</para>
@@ -73,28 +71,22 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public MeowClient Connect()
         {
-            Client socket = new(url);
-            socket.Connect();
-            socket.On("connect", (fn) =>
-            {
-                socket.Emit("GetWebConn", qq, null, (d) =>
-                {
-                    var jsonMsg = d as string;
-                    Console.WriteLine($"状态 => [{qq}].{jsonMsg}");
-                });
-            });
+            socket = new(url);
+            socket.ConnectAsync().GetAwaiter().GetResult();
+            socket.EmitAsync("GetWebConn", qq).GetAwaiter().GetResult();
+            Console.WriteLine($"[{qq}] :: Connect {(socket.Connected ?"Complete":"Err")}");
             socket.On("OnGroupMsgs", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
+                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnGroupMsgs.Invoke(new object(), x);
             });
             socket.On("OnFriendMsgs", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
+                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnFriendMsgs.Invoke(new object(), x);
             });
             socket.On("OnEvents", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(((JSONMessage)fn).MessageText));
+                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnEventMsgs.Invoke(new object(), x);
             });
@@ -110,7 +102,7 @@ namespace MeowIOTBot.Basex
             {
                 if (socket != null)
                 {
-                    socket.Dispose(); // close & dispose of socket client
+                    socket = null; // close & dispose of socket client
                 }
             }
             catch

@@ -7,7 +7,9 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>4.2.0 同步更新"上传群文件"</Description>
+    <Description>4.3.0 
+修复了6.0.12的WebsocketIO连接问题,取消了我自己的Websocket库,从此使用socket.io官方库进行同步升级.
+请所有开发者务必升级至本版本</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -18,11 +20,11 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.2.0</Version>
-    <AssemblyVersion>4.2.0.0</AssemblyVersion>
-    <FileVersion>4.2.1.1002</FileVersion>
+    <Version>4.3.0</Version>
+    <AssemblyVersion>4.3.0.0</AssemblyVersion>
+    <FileVersion>4.3.0.10</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
-    <PackageTags>IOTQQBot, QQBot, Tencent</PackageTags>
+    <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -31,7 +33,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Electronicute.MeowSocketLibrary" Version="2.0.0" />
+    <PackageReference Include="SocketIOClient" Version="2.1.7" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
 
