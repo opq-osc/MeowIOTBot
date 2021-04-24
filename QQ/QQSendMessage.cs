@@ -60,9 +60,58 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         }
     }
     /// <summary>
+    /// 可发送信息类接口设计
+    /// </summary>
+    public interface Sendable
+    {
+        /// <summary>
+        /// 一个异步的发送信息方法
+        /// </summary>
+        /// <returns>返回一个成功与否的字符串</returns>
+        public Task<string> Send();
+        /// <summary>
+        /// 一个异步的发送信息方法
+        /// </summary>
+        /// <param name="treatAsErr">是否将服务端异常视作错误(默认否)</param>
+        /// <returns>返回一个成功与否的类</returns>
+        public Task<SenderStatus> Send(bool treatAsErr = false);
+    }
+    /// <summary>
+    /// 可发送类的发送实现方案
+    /// </summary>
+    public abstract class SendableClass : Sendable
+    {
+        /// <summary>
+        /// 一个异步的发送信息方法
+        /// </summary>
+        /// <returns>返回一个成功与否的字符串</returns>
+        public async Task<string> Send() =>
+            await NetworkHelper.PostHelper.PASA(
+                NetworkHelper.PostHelper.UrlType.SendMsgV2,
+                JsonConvert.SerializeObject(this, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore })
+            );
+        /// <summary>
+        /// 一个异步的发送信息方法
+        /// </summary>
+        /// <param name="treatAsErr">是否将服务端异常视作错误(默认否)</param>
+        /// <returns>返回一个成功与否的类</returns>
+        public async Task<SenderStatus> Send(bool treatAsErr = false)
+        {
+            var ss = new SenderStatus(JObject.Parse(await Send()));
+            if (treatAsErr && (ss.StatusCode != Sdstatus.OK))
+            {
+                throw new Exception($"{ss.ToString(true)}::{ss.StatusCode}::{ss.MessageStr}");
+            }
+            else
+            {
+                return ss;
+            }
+        }
+    }
+    /// <summary>
     /// 原信息
     /// </summary>
-    public class MsgV2
+    public class MsgV2 : SendableClass
     {
         /// <summary>
         /// 发送到的位置
@@ -124,32 +173,6 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
                     }
                     Content = $"{sb})]{content}";
                 }
-            }
-        }
-        /// <summary>
-        /// 一个异步的发送信息方法
-        /// </summary>
-        /// <returns>返回一个成功与否的字符串</returns>
-        public async Task<string> Send() =>
-            await NetworkHelper.PostHelper.PASA(
-                NetworkHelper.PostHelper.UrlType.SendMsgV2,
-                JsonConvert.SerializeObject(this, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore })
-            );
-        /// <summary>
-        /// 一个异步的发送信息方法
-        /// </summary>
-        /// <param name="treatAsErr">是否将服务端异常视作错误(默认否)</param>
-        /// <returns>返回一个成功与否的类</returns>
-        public async Task<SenderStatus> Send(bool treatAsErr = false)
-        {
-            var ss = new SenderStatus(JObject.Parse(await Send()));
-            if (treatAsErr && (ss.StatusCode != Sdstatus.OK))
-            {
-                throw new Exception($"{ss.ToString(true)}::{ss.StatusCode}::{ss.MessageStr}");
-            }
-            else
-            {
-                return ss;
             }
         }
     }
@@ -421,6 +444,60 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
             : base(sendTo, sendToType, MessageSendType.XmlMsg, XmlContent, GroupId, atqq, atAll)
         { }
     }
+    /// <summary>
+    /// 封装的上传群文件方法
+    /// </summary>
+    public class MsgV2_UploadFile : SendableClass
+    {
+        /// <summary>
+        /// 发送到的位置
+        /// </summary>
+        public long ToUserUid;
+        /// <summary>
+        /// 信息的类型
+        /// </summary>
+        public string SendMsgType;
+        /// <summary>
+        /// 文件路径
+        /// </summary>
+        public string FilePath;
+        /// <summary>
+        /// 文件URL
+        /// </summary>
+        public string FileUrl;
+        /// <summary>
+        /// 文件的Base64
+        /// </summary>
+        public string FileBase64;
+        /// <summary>
+        /// 文件名
+        /// </summary>
+        public string FileName;
+        /// <summary>
+        /// 是否通知
+        /// </summary>
+        public bool Notify;
+        /// <summary>
+        /// 构造一个发送群文件的方法
+        /// </summary>
+        /// <param name="toUserUid">发送到(群号)</param>
+        /// <param name="fileName">文件名</param>
+        /// <param name="filePath">文件服务器路径</param>
+        /// <param name="fileUrl">文件URL(网络)</param>
+        /// <param name="fileBase64">文件Base64</param>
+        /// <param name="notify">是否通知(默认否)</param>
+        public MsgV2_UploadFile(long toUserUid, string fileName,
+            string filePath=null, string fileUrl=null, string fileBase64=null, bool notify = true)
+        {
+            ToUserUid = toUserUid;
+            SendMsgType = "UploadGroupFile";
+            FilePath = filePath;
+            FileUrl = fileUrl;
+            FileBase64 = fileBase64;
+            FileName = fileName;
+            Notify = notify;
+        }
+    }
 
     /// <summary>
     /// 枚举的发送类别
@@ -480,7 +557,11 @@ namespace MeowIOTBot.QQ.QQMessage.QQSendMessage
         /// <summary>
         /// 转发信息
         /// </summary>
-        ForwordMsg
+        ForwordMsg,
+        /// <summary>
+        /// 上传群文件
+        /// </summary>
+        UploadGroupFile
     }
     /// <summary>
     /// 枚举的发送返回逻辑
