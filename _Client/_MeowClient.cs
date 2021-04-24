@@ -74,7 +74,7 @@ namespace MeowIOTBot.Basex
             socket = new(url);
             socket.ConnectAsync().GetAwaiter().GetResult();
             socket.EmitAsync("GetWebConn", qq).GetAwaiter().GetResult();
-            Console.WriteLine($"[{qq}] :: Connect {(socket.Connected ?"Complete":"Err")}");
+            Console.WriteLine($"[{qq}] :: Connecting");
             socket.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
