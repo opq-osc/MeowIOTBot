@@ -32,6 +32,7 @@ namespace MeowIOTBot.Basex
         /// <para>Backends Url</para>
         /// </summary>
         public string url { get; }
+        private System.Timers.Timer ping = new System.Timers.Timer();
         /// <summary>
         /// socket标
         /// <para>socket Client Variable</para>
@@ -74,6 +75,13 @@ namespace MeowIOTBot.Basex
             socket = new(url);
             socket.ConnectAsync().GetAwaiter().GetResult();
             socket.EmitAsync("GetWebConn", qq).GetAwaiter().GetResult();
+
+            ping.Elapsed += (s, e) => { 
+                socket.EmitAsync("ping", "").GetAwaiter().GetResult();
+                Log("Serveric Ping in next 10s");
+            };
+            ping.Interval = 10000;
+            ping.Start();
             Console.WriteLine($"[{qq}] :: Connecting");
             socket.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
@@ -100,6 +108,7 @@ namespace MeowIOTBot.Basex
         {
             try
             {
+                ping.Dispose();
                 if (socket != null)
                 {
                     socket = null; // close & dispose of socket client
@@ -116,6 +125,16 @@ namespace MeowIOTBot.Basex
         /// <para>normally dispose</para>
         /// </summary>
         public void Dispose() => Close();
+        private static void Log(string s, ConsoleColor Fore = ConsoleColor.White, ConsoleColor Back = ConsoleColor.Black)
+        {
+            if (logFlag)
+            {
+                Console.ForegroundColor = Fore;
+                Console.BackgroundColor = Back;
+                Console.WriteLine($"{DateTime.Now} : : {s}");
+                Console.ResetColor();
+            }
+        }
     }
     public partial class MeowClient : IDisposable
     {
