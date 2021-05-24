@@ -7,10 +7,8 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>4.3.11
-修复了一个小bug
-修复了6.0.12的WebsocketIO连接问题,取消了我自己的Websocket库,从此使用socket.io官方库进行同步升级.
-请所有开发者务必升级至本版本</Description>
+    <Description>4.3.2
+修复了Socketio不主动ping的bug</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -21,9 +19,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.3.1</Version>
-    <AssemblyVersion>4.3.1.0</AssemblyVersion>
-    <FileVersion>4.3.1.1</FileVersion>
+    <Version>4.3.2</Version>
+    <AssemblyVersion>4.3.2.0</AssemblyVersion>
+    <FileVersion>4.3.2.2</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>

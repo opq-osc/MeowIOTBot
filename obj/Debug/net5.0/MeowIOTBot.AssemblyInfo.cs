@@ -14,13 +14,12 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Electronicute")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2020 @ Electronicute")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("4.3.11\r\n修复了一个小bug\r\n修复了6.0.12的WebsocketIO连接问题,取消了我自己的Websocket库,从此使用socket.io官方库进行" +
-    "同步升级.\r\n请所有开发者务必升级至本版本")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("4.3.1.1")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.3.1")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("4.3.2\r\n修复了Socketio不主动ping的bug")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("4.3.2.2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("4.3.2")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeowIOTBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeowIOTBot")]
-[assembly: System.Reflection.AssemblyVersionAttribute("4.3.1.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("4.3.2.0")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/DavidSciMeow/MeowIOTBot")]
 [assembly: System.Resources.NeutralResourcesLanguageAttribute("zh")]
 
