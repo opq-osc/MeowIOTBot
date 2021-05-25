@@ -21,18 +21,12 @@ namespace MeowIOTBot.Basex
         /// <para>decided if you want to Console.Write(log)</para>
         /// <para>this can be dynamically</para>
         /// </summary>
-        public static bool logFlag { get; set; }
-        /// <summary>
-        /// 要连接的QQ
-        /// <para>the QQ you want to Connect</para>
-        /// </summary>
-        public string qq { get; }
+        public static LogType logFlag { get; set; }
         /// <summary>
         /// 后端的处理位置
         /// <para>Backends Url</para>
         /// </summary>
         public string url { get; }
-        private System.Timers.Timer ping = new System.Timers.Timer();
         /// <summary>
         /// socket标
         /// <para>socket Client Variable</para>
@@ -56,14 +50,9 @@ namespace MeowIOTBot.Basex
         /// ws的连接Client位置 例如 ws://localhost:10000
         /// <para>Ws connection backend, like wise 'ws://localhost:10000'</para>
         /// </param>
-        /// <param name="qq">
-        /// 要监听的QQ
-        /// <para>the QQ you want to Listento</para>
-        /// </param>
-        public MeowClient(string url, string qq, bool logflag = false)
+        public MeowClient(string url, LogType logflag = LogType.None)
         {
             logFlag = logflag;
-            this.qq = qq;
             this.url = url;
         }
         /// <summary>
@@ -73,16 +62,30 @@ namespace MeowIOTBot.Basex
         public MeowClient Connect()
         {
             socket = new(url);
-            socket.ConnectAsync().GetAwaiter().GetResult();
-            socket.EmitAsync("GetWebConn", qq).GetAwaiter().GetResult();
+            socket.ConnectAsync();
 
-            ping.Elapsed += (s, e) => { 
-                socket.EmitAsync("ping", "").GetAwaiter().GetResult();
-                Log("Serveric Ping in next 10s");
+            socket.OnConnected += (s, e) =>
+            {
+                ServerUtil.Log($"{s.GetType().GetProperty("url")} is connected",LogType.None);
             };
-            ping.Interval = 10000;
-            ping.Start();
-            Console.WriteLine($"[{qq}] :: Connecting");
+            socket.OnPing += async (s, e) =>
+            {
+                ServerUtil.Log($"server - ping", LogType.ServerMessage);
+                await socket.EmitAsync("Ping", "heartbeat");
+            };
+            socket.OnPong += (s, e) =>
+            {
+                ServerUtil.Log($"client - pong check {e}", LogType.ServerMessage);
+            };
+            socket.OnDisconnected += (s, e) =>
+            {
+                ServerUtil.Log($"{socket.ServerUri} closed - retrying reconnect", LogType.ServerMessage);
+            };
+            socket.OnReconnecting += (s, e) =>
+            {
+                ServerUtil.Log($"{socket.ServerUri} reconnecting", LogType.ServerMessage);
+            };
+
             socket.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
@@ -108,7 +111,6 @@ namespace MeowIOTBot.Basex
         {
             try
             {
-                ping.Dispose();
                 if (socket != null)
                 {
                     socket = null; // close & dispose of socket client
@@ -125,16 +127,6 @@ namespace MeowIOTBot.Basex
         /// <para>normally dispose</para>
         /// </summary>
         public void Dispose() => Close();
-        private static void Log(string s, ConsoleColor Fore = ConsoleColor.White, ConsoleColor Back = ConsoleColor.Black)
-        {
-            if (logFlag)
-            {
-                Console.ForegroundColor = Fore;
-                Console.BackgroundColor = Back;
-                Console.WriteLine($"{DateTime.Now} : : {s}");
-                Console.ResetColor();
-            }
-        }
     }
     public partial class MeowClient : IDisposable
     {

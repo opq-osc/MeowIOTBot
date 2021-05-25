@@ -7,8 +7,12 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>4.3.2
-修复了Socketio不主动ping的bug</Description>
+    <Description>5.0.0
+通过和框架作者了解得知最新框架不存在qq监听,将返回所有qq,请开发者注意变更参数,
+取消原来的connect,使用新的connect参数;
+框架优化ping - pong check 增加了客户端Log记录类型
+框架优化操作函数,修复了群撤回信息读取不正常的错误
+框架优化操作参量,Json/XML信息解析优化</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -19,7 +23,7 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>4.3.2</Version>
+    <Version>5.0.0</Version>
     <AssemblyVersion>4.3.2.0</AssemblyVersion>
     <FileVersion>4.3.2.2</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>

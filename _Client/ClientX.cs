@@ -26,10 +26,6 @@ namespace MeowIOTBot
         /// IOT处理端地址(请详细参见项目wiki)
         /// <para>IOT backend Url:please visit Wiki to see more</para>
         /// </param>
-        /// <param name="qq">
-        /// 你要监听的qq
-        /// <para>the QQ you want to listen to</para>
-        /// </param>
         /// <param name="logFlag">
         /// 日志处理标
         /// <para>the log handler</para>
@@ -39,13 +35,13 @@ namespace MeowIOTBot
         /// <para>Full stack delegated IOT Backend</para>
         /// <para>用法如下 (Usage as below)</para>
         /// <code>
-        /// <para>using var recv = MeowIOTClient.Connect("url", "qq");</para>
+        /// <para>using var recv = MeowIOTClient.Connect("url", LogType.None );</para>
         /// <para>recv._(delegate event) += (s, e) =>{};</para>
         /// </code>
         /// </returns>
-        public static MeowServiceClient Connect(string url, string qq, bool logFlag = false)
+        public static MeowServiceClient Connect(string url, LogType logFlag)
         {
-            socket = new MeowServiceClient(url, qq, logFlag);
+            socket = new MeowServiceClient(url, logFlag);
             socket.CreateClient();
             //防止空指针异常
             socket._FriendTextMsgRecieve += SocketNullDelegate; //好友私聊
@@ -65,14 +61,13 @@ namespace MeowIOTBot
             socket.__ON_EVENT_GROUP_EXIT_SUCC += SocketNullDelegate;
             socket.__ON_EVENT_GROUP_INVITE += SocketNullDelegate;
             socket.__ON_EVENT_GROUP_JOIN += SocketNullDelegate;
+            socket.__ON_EVENT_GROUP_REVOKE += SocketNullDelegate;
             socket.__ON_EVENT_GROUP_SHUT += SocketNullDelegate;
-
             socket.__ON_EVENT_FRIEND_ADD += SocketNullDelegate; 
             socket.__ON_EVENT_FRIEND_ADD_STATUS += SocketNullDelegate;
             socket.__ON_EVENT_FRIEND_DELETE += SocketNullDelegate;
             socket.__ON_EVENT_FRIEND_PUSHADDFRD += SocketNullDelegate;
-
-            socket.__ON_UNMOUNT_EVENT += SocketNullDelegate; 
+            socket.__ON_UNMOUNT_EVENT += SocketNullDelegate;
             return socket;
         }
         private static void SocketNullDelegate(object sender, object e){ }
