@@ -63,10 +63,9 @@ namespace MeowIOTBot.Basex
         {
             socket = new(url);
             socket.ConnectAsync();
-
             socket.OnConnected += (s, e) =>
             {
-                ServerUtil.Log($"{s.GetType().GetProperty("url")} is connected",LogType.None);
+                ServerUtil.Log($"{socket.ServerUri} is connected",LogType.None);
             };
             socket.OnPing += async (s, e) =>
             {
