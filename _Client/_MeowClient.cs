@@ -28,32 +28,78 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public string url { get; }
         /// <summary>
+        /// 自动重连计时器 Reconnection Timer
+        /// </summary>
+        public static System.Timers.Timer refreshTimer = new();
+        /// <summary>
+        /// 连接的超时Tick .Connection TimeOut Tick (ms)
+        /// </summary>
+        public long ConnectionTimedOutTick;
+        /// <summary>
+        /// 重连延迟 ReconnectionDelay
+        /// </summary>
+        public int ReconnectionDelay;
+        /// <summary>
+        /// 重连最大延迟 ReconnectionDelay
+        /// </summary>
+        public int ReconnectionDelayMax;
+        /// <summary>
+        /// ENGINEIO 版本 Engine.io version
+        /// </summary>
+        public int EIO;
+        /// <summary>
+        /// 是否能重连
+        /// <para>Reconnection</para>
+        /// </summary>
+        public bool Reconnection;
+        /// <summary>
+        /// 是否重试第一次连接
+        /// <para>AllowedRetryFirstConnection</para>
+        /// </summary>
+        public bool AllowedRetryFirstConnection;
+        /// <summary>
         /// socket标
         /// <para>socket Client Variable</para>
         /// </summary>
         private SocketIOClient.SocketIO socket = null;
         /// <summary>
         /// 构造代理的类
-        /// <para>DelegateLibrary</para>
         /// <code>
-        /// <para>用法如下 (Usage)</para>
+        /// <para>用法如下</para>
         /// <para>using var c = new MeowClient("url", "qq");</para>
         /// <para>c.Connect();</para>
         /// <para>c.OnServerAction += (s, e) =>{};</para>
         /// </code>
         /// </summary>
-        /// <param name="logflag">
-        /// 是否打印日志
-        /// <para>if you want have an Log</para>
-        /// </param>
-        /// <param name="url">
-        /// ws的连接Client位置 例如 ws://localhost:10000
-        /// <para>Ws connection backend, like wise 'ws://localhost:10000'</para>
-        /// </param>
-        public MeowClient(string url, LogType logflag = LogType.None)
+        /// <param name="url">ws的连接Client位置 例如 ws://localhost:10000</param>
+        /// <param name="logflag">是否打印日志</param>
+        /// <param name="ReconnectInterval">强制重连请求 *分钟</param>
+        /// <param name="enableForceReconnection">是否强制使用计时器重连</param>
+        /// <param name="connectionTimedOutTick">自动重连计时</param>
+        /// <param name="reconnectionDelay">自动重连延迟</param>
+        /// <param name="reconnectionDelayMax">自动重连最大计时</param>
+        /// <param name="eIO">Engine IO 版本</param>
+        /// <param name="reconnection">是否使用官方推荐自动重连</param>
+        /// <param name="allowedRetryFirstConnection">是否重试第一次失败连接</param>
+        public MeowClient(string url, LogType logflag = LogType.None,
+            double ReconnectInterval = 30, bool enableForceReconnection = false,
+            long connectionTimedOutTick = 10000, int reconnectionDelay = 1,
+            int reconnectionDelayMax = 10, int eIO = 3,
+            bool reconnection = true, bool allowedRetryFirstConnection = true)
         {
             logFlag = logflag;
             this.url = url;
+            refreshTimer.Interval = ReconnectInterval * 1000 * 60;
+            ConnectionTimedOutTick = connectionTimedOutTick;
+            ReconnectionDelay = reconnectionDelay;
+            ReconnectionDelayMax = reconnectionDelayMax;
+            Reconnection = reconnection;
+            AllowedRetryFirstConnection = allowedRetryFirstConnection;
+            EIO = eIO;
+            if (enableForceReconnection)
+            {
+                refreshTimer.Start();
+            }
         }
         /// <summary>
         /// 连接并获取最原始的Client对象
@@ -62,29 +108,37 @@ namespace MeowIOTBot.Basex
         public MeowClient Connect()
         {
             socket = new(url);
+            socket.Options.AllowedRetryFirstConnection = AllowedRetryFirstConnection;
+            socket.Options.Reconnection = Reconnection;
+            socket.Options.ReconnectionDelay = ReconnectionDelay;
+            socket.Options.ReconnectionDelayMax = ReconnectionDelayMax;
+            socket.Options.EIO = EIO;
             socket.ConnectAsync();
             socket.OnConnected += (s, e) =>
             {
                 ServerUtil.Log($"{socket.ServerUri} is connected",LogType.None);
             };
-            socket.OnPing += async (s, e) =>
+            socket.OnPing += (s, e) =>
             {
                 ServerUtil.Log($"server - ping", LogType.ServerMessage);
-                await socket.EmitAsync("Ping", "heartbeat");
             };
             socket.OnPong += (s, e) =>
             {
                 ServerUtil.Log($"client - pong check {e}", LogType.ServerMessage);
             };
-            socket.OnDisconnected += (s, e) =>
-            {
-                ServerUtil.Log($"{socket.ServerUri} closed - retrying reconnect", LogType.ServerMessage);
-            };
             socket.OnReconnecting += (s, e) =>
             {
                 ServerUtil.Log($"{socket.ServerUri} reconnecting", LogType.ServerMessage);
             };
-
+            socket.OnDisconnected += (s, e) =>
+            {
+                ServerUtil.Log($"{socket.ServerUri} closed", LogType.ServerMessage);
+                socket.ConnectAsync();
+            };
+            refreshTimer.Elapsed += (s, e) =>
+            {
+                socket.DisconnectAsync();
+            };
             socket.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
@@ -112,6 +166,8 @@ namespace MeowIOTBot.Basex
             {
                 if (socket != null)
                 {
+                    refreshTimer.Stop();
+                    refreshTimer.Dispose();
                     socket = null; // close & dispose of socket client
                 }
             }

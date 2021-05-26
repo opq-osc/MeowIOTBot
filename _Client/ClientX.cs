@@ -22,26 +22,25 @@ namespace MeowIOTBot
         /// 连接IOT后端
         /// <para>connect IOT Backend</para>
         /// </summary>
-        /// <param name="url">
-        /// IOT处理端地址(请详细参见项目wiki)
-        /// <para>IOT backend Url:please visit Wiki to see more</para>
-        /// </param>
-        /// <param name="logFlag">
-        /// 日志处理标
-        /// <para>the log handler</para>
-        /// </param>
-        /// <returns>
-        /// 完全代理的IOT端
-        /// <para>Full stack delegated IOT Backend</para>
-        /// <para>用法如下 (Usage as below)</para>
-        /// <code>
-        /// <para>using var recv = MeowIOTClient.Connect("url", LogType.None );</para>
-        /// <para>recv._(delegate event) += (s, e) =>{};</para>
-        /// </code>
-        /// </returns>
-        public static MeowServiceClient Connect(string url, LogType logFlag)
+        /// <param name="url">ws的连接Client位置 例如 ws://localhost:10000</param>
+        /// <param name="logflag">是否打印日志</param>
+        /// <param name="ReconnectInterval">强制重连请求 *分钟</param>
+        /// <param name="enableForceReconnection">是否强制使用计时器重连</param>
+        /// <param name="connectionTimedOutTick">自动重连计时</param>
+        /// <param name="reconnectionDelay">自动重连延迟</param>
+        /// <param name="reconnectionDelayMax">自动重连最大计时</param>
+        /// <param name="eIO">Engine IO 版本</param>
+        /// <param name="reconnection">是否使用官方推荐自动重连</param>
+        /// <param name="allowedRetryFirstConnection">是否重试第一次失败连接</param>
+        public static MeowServiceClient Connect(string url, LogType logFlag,
+            double ReconnectInterval = 30, bool enableForceReconnection = false,
+            long connectionTimedOutTick = 10000, int reconnectionDelay = 10000,
+            int reconnectionDelayMax = 100000, int eIO = 3,
+            bool reconnection = true, bool allowedRetryFirstConnection = false)
         {
-            socket = new MeowServiceClient(url, logFlag);
+            socket = new MeowServiceClient(url, logFlag, ReconnectInterval, enableForceReconnection,
+             connectionTimedOutTick, reconnectionDelay, reconnectionDelayMax, eIO,
+             reconnection, allowedRetryFirstConnection);
             socket.CreateClient();
             //防止空指针异常
             socket._FriendTextMsgRecieve += SocketNullDelegate; //好友私聊

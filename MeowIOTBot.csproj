@@ -7,13 +7,9 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.0.0
+    <Description>var 5.1.0
 ====详细操作请看wiki更新====
-通过和框架作者了解得知最新框架不存在qq监听,将返回所有qq,请开发者注意变更参数,
-取消原来的connect,使用新的connect参数;
-框架优化ping - pong check 增加了客户端Log记录类型
-框架优化操作函数,修复了群撤回信息读取不正常的错误
-框架优化操作参量,Json/XML信息解析优化</Description>
+连接后端参数增加,包括自动重连和EIO设定,</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -24,9 +20,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>5.0.0</Version>
-    <AssemblyVersion>5.0.0.0</AssemblyVersion>
-    <FileVersion>5.0.0.0</FileVersion>
+    <Version>5.1.0</Version>
+    <AssemblyVersion>5.1.0.1110</AssemblyVersion>
+    <FileVersion>5.1.0.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
