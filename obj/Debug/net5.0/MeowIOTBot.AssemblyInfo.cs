@@ -14,12 +14,13 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Electronicute")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2020 @ Electronicute")]
-[assembly: System.Reflection.AssemblyDescriptionAttribute("var 5.1.1\r\n====详细操作请看wiki更新====\r\n连接后端参数增加,包括自动重连和EIO设定,\r\n优化强制重连机制")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("5.1.1.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.1.1")]
+[assembly: System.Reflection.AssemblyDescriptionAttribute("var 5.2.0\r\n完全更新类设计,删除了一个代理类,整合了SocketIO端到MeowIOTClient,\r\n使用了纯面向对象设计,连接方式有些许变化,详细信" +
+    "息请看wiki.")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("5.2.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.2.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeowIOTBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeowIOTBot")]
-[assembly: System.Reflection.AssemblyVersionAttribute("5.1.1.1")]
+[assembly: System.Reflection.AssemblyVersionAttribute("5.2.0.100")]
 [assembly: System.Reflection.AssemblyMetadataAttribute("RepositoryUrl", "https://github.com/DavidSciMeow/MeowIOTBot")]
 [assembly: System.Resources.NeutralResourcesLanguageAttribute("zh")]
 
