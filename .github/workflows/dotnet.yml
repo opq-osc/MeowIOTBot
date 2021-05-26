@@ -26,9 +26,19 @@ jobs:
     #任务2:测试
     - name: Test
       run: dotnet test --no-build --verbosity normal
-  #任务3:发布nuget
+    #任务3:发布nuget
     - name: Publish
       uses: brandedoutcast/publish-nuget@v2.5.2
       with:
        PROJECT_FILE_PATH: MeowIOTBot.csproj   #确定发布项目名
        NUGET_KEY: ${{secrets.NUGET_API_KEY}}  #使用专用key
+    #任务4:创建github release
+    - name: Create GitHub release
+      uses: marvinpinto/action-automatic-releases@latest
+      with:
+        repo_token: "${{ secrets.ACC_TOKEN }}"
+        automatic_release_tag: ${{ env.ReleaseVersion }}
+        title: ${{ env.ReleaseVersion }}
+        prerelease: false
+        files: |
+          artifacts/packages/*
