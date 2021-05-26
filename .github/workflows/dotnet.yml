@@ -7,8 +7,7 @@ on:
     branches: [ main ]
 #工作流任务列表
 jobs:
-  #任务1:构建(build)
-  build:
+  Build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -26,9 +25,25 @@ jobs:
     #任务2:测试
     - name: Test
       run: dotnet test --no-build --verbosity normal
-  nuget:
+  #任务2:发布Nuget
+  Publish:
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
+    #设置dotnet操作流环境
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    #恢复库
+    - name: Restore dependencies
+      run: dotnet restore
+    #构建
+    - name: Build
+      run: dotnet build --no-restore
+    #任务2:测试
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
     #任务3:发布nuget
     - name: Publish
       uses: brandedoutcast/publish-nuget@v2.5.2
