@@ -7,9 +7,10 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.1.0
+    <Description>var 5.1.1
 ====详细操作请看wiki更新====
-连接后端参数增加,包括自动重连和EIO设定,</Description>
+连接后端参数增加,包括自动重连和EIO设定,
+优化强制重连机制</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -20,9 +21,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>5.1.0</Version>
-    <AssemblyVersion>5.1.0.1110</AssemblyVersion>
-    <FileVersion>5.1.0.0</FileVersion>
+    <Version>5.1.1</Version>
+    <AssemblyVersion>5.1.1.1</AssemblyVersion>
+    <FileVersion>5.1.1.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
