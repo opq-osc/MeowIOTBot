@@ -7,8 +7,26 @@ on:
     branches: [ main ]
 #工作流任务列表
 jobs:
-  #任务1:构建(build)
-  build:
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    #设置dotnet操作流环境
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    #恢复库
+    - name: Restore dependencies
+      run: dotnet restore
+    #构建
+    - name: Build
+      run: dotnet build --no-restore
+    #任务2:测试
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
+  #任务2:发布Nuget
+  Publish:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -32,13 +50,16 @@ jobs:
       with:
        PROJECT_FILE_PATH: MeowIOTBot.csproj   #确定发布项目名
        NUGET_KEY: ${{secrets.NUGET_API_KEY}}  #使用专用key
+  #GitRelease:
+    #runs-on: ubuntu-latest
+    #steps:
     #任务4:创建github release
-    - name: Create GitHub release
-      uses: marvinpinto/action-automatic-releases@latest
-      with:
-        repo_token: "${{ secrets.ACC_TOKEN }}"
-        automatic_release_tag: ${{ env.ReleaseVersion }}
-        title: ${{ env.ReleaseVersion }}
-        prerelease: false
-        files: |
-          artifacts/packages/*
+    #- name: Create GitHub release
+      #uses: marvinpinto/action-automatic-releases@latest
+      #with:
+        #repo_token: "${{ secrets.ACC_TOKEN }}"
+        #automatic_release_tag: ${{ env.ReleaseVersion }}
+        #title: ${{ env.ReleaseVersion }}
+        #prerelease: false
+        #files: |
+          #artifacts/packages/*
