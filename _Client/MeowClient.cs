@@ -68,31 +68,24 @@ namespace MeowIOTBot.Basex
             {
                 ServerUtil.Log($"Server err {e}", LogType.None, ConsoleColor.Red, ConsoleColor.White);
             };
-            ss.OnPing += (s, e) =>
+            ss.OnPing += async (s, e) =>
             {
-                ServerUtil.Log($"Server Ping", LogType.ServerMessage);
+                ServerUtil.Log($"Client Ping", LogType.ServerMessage);
+                if (ss.Disconnected)
+                {
+                    ServerUtil.Log($"Serveric - Disconnect", LogType.ServerMessage);
+                    await ss.ConnectAsync();
+                };
             };
             ss.OnPong += (s, e) =>
             {
-                ServerUtil.Log($"Client Pong in {e}", LogType.ServerMessage);
-                Task.Delay(e);
-                ss.EmitAsync("Ping", "HeartBeat");
-                ServerUtil.Log($"Client Pong complete and checked", LogType.ServerMessage);
+                ServerUtil.Log($"Server Pong in {e}", LogType.ServerMessage);
             };
             ss.OnConnected += (s, e) =>
             {
                 if (ss.Connected)
                 {
                     ServerUtil.Log($"{ss.ServerUri} is connected", LogType.None);
-                }
-            };
-            ss.OnDisconnected += async (s, e) =>
-            {
-                ServerUtil.Log($"{ss.ServerUri} is now closed", LogType.None);
-                if (ss.Disconnected)
-                {
-                    await ss.ConnectAsync();
-                    ServerUtil.Log($"{ss.ServerUri} is now reconnecting", LogType.None);
                 }
             };
         }
