@@ -28,6 +28,7 @@ namespace MeowIOTBot.Basex
         /// <para>socket Client Variable</para>
         /// </summary>
         public SocketIOClient.SocketIO ss = null;
+        private static bool ping = false;
         /// <summary>
         /// 构造代理的类
         /// <code>
@@ -68,18 +69,25 @@ namespace MeowIOTBot.Basex
             {
                 ServerUtil.Log($"Server err {e}", LogType.None, ConsoleColor.Red, ConsoleColor.White);
             };
-            ss.OnPing += async (s, e) =>
+            ss.OnPing += (s, e) =>
             {
                 ServerUtil.Log($"Client Ping", LogType.ServerMessage);
-                if (ss.Disconnected)
+                Task.Delay(1000);
+                if (ping)
                 {
-                    ServerUtil.Log($"Serveric - Disconnect", LogType.ServerMessage);
-                    await ss.ConnectAsync();
-                };
+                    if (ss.Disconnected)
+                    {
+                        ServerUtil.Log($"Serveric - Disconnect", LogType.ServerMessage);
+                    };
+                    ServerUtil.Log($"Serveric - Reconnect", LogType.ServerMessage);
+                    ReConnect();
+                }
+                ping = true;
             };
             ss.OnPong += (s, e) =>
             {
                 ServerUtil.Log($"Server Pong in {e}", LogType.ServerMessage);
+                ping = false;
             };
             ss.OnConnected += (s, e) =>
             {
@@ -109,7 +117,11 @@ namespace MeowIOTBot.Basex
                 GC.Collect();
             }
         }
-
+        private void ReConnect()
+        {
+            ss.DisconnectAsync();
+            ss.ConnectAsync();
+        }
         /// <summary>
         /// 服务器的总体事件集合委托
         /// <para>On Server Message delegate</para>

@@ -583,7 +583,7 @@ namespace MeowIOTBot.QQ.QQFunc
             JsonConvert.DeserializeObject<QQGroupList>(
                 await PASA(
                     UrlType.GetGroupList,
-                    $"{{\"NextToken\"{nt}}}")
+                    $"{{\"NextToken\":{nt}}}")
                 );
     }
     /// <summary>

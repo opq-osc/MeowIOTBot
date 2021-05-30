@@ -7,9 +7,9 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.2.1
-尝试使用ping解决EIO主动断线的情况
-未复现</Description>
+    <Description>var 5.2.2
+优化重连机制,保证框架在线,
+修复群列表获取错误</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -20,9 +20,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>5.2.1</Version>
-    <AssemblyVersion>5.2.1.1</AssemblyVersion>
-    <FileVersion>5.2.1.0</FileVersion>
+    <Version>5.2.2</Version>
+    <AssemblyVersion>5.2.2.2</AssemblyVersion>
+    <FileVersion>5.2.2.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
