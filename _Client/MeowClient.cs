@@ -1,5 +1,6 @@
 ﻿using MeowIOTBot.ObjectEvent;
 using Newtonsoft.Json.Linq;
+using SocketIOClient;
 using System;
 using System.Threading.Tasks;
 
@@ -27,7 +28,7 @@ namespace MeowIOTBot.Basex
         /// socket标
         /// <para>socket Client Variable</para>
         /// </summary>
-        public SocketIOClient.SocketIO ss = null;
+        public SocketIO ss = null;
         private static bool ping = false;
         /// <summary>
         /// 构造代理的类
@@ -43,13 +44,14 @@ namespace MeowIOTBot.Basex
         /// <param name="eIO">Engine IO 版本</param>
         /// <param name="reconnection">是否使用官方推荐自动重连</param>
         /// <param name="allowedRetryFirstConnection">是否重试第一次失败连接</param>
-        public MeowClient(string url, LogType logflag, int eIO)
+        public MeowClient(string url, LogType logflag)
         {
             logFlag = logflag;
-            ss = new(url, new SocketIOClient.SocketIOOptions()
-            {
-                EIO = eIO
-            });
+            ss = new(url);
+            ss.Options.Reconnection = true;
+            ss.Options.ReconnectionDelay = 1000;
+            ss.Options.ReconnectionDelayMax = 1500;
+            ss.Options.ConnectionTimeout = new(1, 0, 0, 0);
             ss.On("OnGroupMsgs", (fn) => {
                 var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
                 OnServerAction.Invoke(new object(), x);
@@ -72,29 +74,22 @@ namespace MeowIOTBot.Basex
             ss.OnPing += (s, e) =>
             {
                 ServerUtil.Log($"Client Ping", LogType.ServerMessage);
-                Task.Delay(1000);
-                if (ping)
-                {
-                    if (ss.Disconnected)
-                    {
-                        ServerUtil.Log($"Serveric - Disconnect", LogType.ServerMessage);
-                    };
-                    ServerUtil.Log($"Serveric - Reconnect", LogType.ServerMessage);
-                    ReConnect();
-                }
-                ping = true;
             };
             ss.OnPong += (s, e) =>
             {
-                ServerUtil.Log($"Server Pong in {e}", LogType.ServerMessage);
-                ping = false;
+                ServerUtil.Log($"Server Pong", LogType.ServerMessage);
             };
             ss.OnConnected += (s, e) =>
             {
-                if (ss.Connected)
-                {
-                    ServerUtil.Log($"{ss.ServerUri} is connected", LogType.None);
-                }
+                ServerUtil.Log($"{ss.ServerUri} is connected", LogType.None);
+            };
+            ss.OnDisconnected += (s, e) =>
+            {
+                ServerUtil.Log($"Disconnect : {e}", LogType.ServerMessage);
+            };
+            ss.OnReconnecting += (s, e) =>
+            {
+                ServerUtil.Log($"Reconnect : {e}", LogType.ServerMessage);
             };
         }
         /// <summary>

@@ -30,8 +30,8 @@ namespace MeowIOTBot
         /// <param name="eIO">Engine IO 版本</param>
         /// <param name="reconnection">是否使用官方推荐自动重连</param>
         /// <param name="allowedRetryFirstConnection">是否重试第一次失败连接</param>
-        public MeowIOTClient(string url, LogType logflag, int eIO = 3) 
-        : base(url, logflag, eIO)
+        public MeowIOTClient(string url, LogType logflag) 
+        : base(url, logflag)
         {
             OnServerAction += SocketNullDelegate;
             OnGroupMsgs += Meow_OnGroupMsgs;
