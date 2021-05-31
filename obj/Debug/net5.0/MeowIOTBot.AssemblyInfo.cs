@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCopyrightAttribute("2020 @ Electronicute")]
 [assembly: System.Reflection.AssemblyDescriptionAttribute("var 5.2.4\r\n测试表明某些linux的Websocket在上一版本无法正确加载,windows用户可继续使用上一版本,linux建议更新到本版本")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("5.2.4.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.2.3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("5.2.4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MeowIOTBot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MeowIOTBot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("5.2.4.1")]
