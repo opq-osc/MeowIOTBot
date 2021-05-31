@@ -7,9 +7,8 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.2.3
-测试重连的稳定性.有其他需求可以自己添加到Client.ss.option
-更换官方框架</Description>
+    <Description>var 5.2.4
+测试表明某些linux的Websocket在上一版本无法正确加载,windows用户可继续使用上一版本,linux建议更新到本版本</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -21,8 +20,8 @@
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
     <Version>5.2.3</Version>
-    <AssemblyVersion>5.2.3.1</AssemblyVersion>
-    <FileVersion>5.2.3.0</FileVersion>
+    <AssemblyVersion>5.2.4.1</AssemblyVersion>
+    <FileVersion>5.2.4.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
@@ -34,7 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="SocketIOClientBest" Version="2.9.0" />
+    <PackageReference Include="Socket.Io.Client.Core" Version="1.2.0" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 

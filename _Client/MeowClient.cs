@@ -1,8 +1,6 @@
 ﻿using MeowIOTBot.ObjectEvent;
 using Newtonsoft.Json.Linq;
-using SocketIOClient;
 using System;
-using System.Threading.Tasks;
 
 namespace MeowIOTBot.Basex
 {
@@ -28,8 +26,11 @@ namespace MeowIOTBot.Basex
         /// socket标
         /// <para>socket Client Variable</para>
         /// </summary>
-        public SocketIO ss = null;
-        private static bool ping = false;
+        public Socket.Io.Client.Core.SocketIoClient ss = new();
+        /// <summary>
+        /// SocketUrl
+        /// </summary>
+        protected string Url;
         /// <summary>
         /// 构造代理的类
         /// <code>
@@ -47,50 +48,22 @@ namespace MeowIOTBot.Basex
         public MeowClient(string url, LogType logflag)
         {
             logFlag = logflag;
-            ss = new(url);
-            ss.Options.Reconnection = true;
-            ss.Options.ReconnectionDelay = 1000;
-            ss.Options.ReconnectionDelayMax = 1500;
-            ss.Options.ConnectionTimeout = new(1, 0, 0, 0);
-            ss.On("OnGroupMsgs", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
+            Url = url;
+            ss.On("OnGroupMsgs").Subscribe((f) => {
+                var x = new ObjectEventArgs(JObject.Parse(f.Data[0].ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnGroupMsgs.Invoke(new object(), x);
             });
-            ss.On("OnFriendMsgs", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
+            ss.On("OnFriendMsgs").Subscribe((f) => {
+                var x = new ObjectEventArgs(JObject.Parse(f.Data[0].ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnFriendMsgs.Invoke(new object(), x);
             });
-            ss.On("OnEvents", (fn) => {
-                var x = new ObjectEventArgs(JObject.Parse(fn.GetValue(0).ToString()));
+            ss.On("OnEvents").Subscribe((f) => {
+                var x = new ObjectEventArgs(JObject.Parse(f.Data[0].ToString()));
                 OnServerAction.Invoke(new object(), x);
                 OnEventMsgs.Invoke(new object(), x);
             });
-            ss.OnError += (s, e) =>
-            {
-                ServerUtil.Log($"Server err {e}", LogType.None, ConsoleColor.Red, ConsoleColor.White);
-            };
-            ss.OnPing += (s, e) =>
-            {
-                ServerUtil.Log($"Client Ping", LogType.ServerMessage);
-            };
-            ss.OnPong += (s, e) =>
-            {
-                ServerUtil.Log($"Server Pong", LogType.ServerMessage);
-            };
-            ss.OnConnected += (s, e) =>
-            {
-                ServerUtil.Log($"{ss.ServerUri} is connected", LogType.None);
-            };
-            ss.OnDisconnected += (s, e) =>
-            {
-                ServerUtil.Log($"Disconnect : {e}", LogType.ServerMessage);
-            };
-            ss.OnReconnecting += (s, e) =>
-            {
-                ServerUtil.Log($"Reconnect : {e}", LogType.ServerMessage);
-            };
         }
         /// <summary>
         /// 关闭连接
@@ -112,11 +85,7 @@ namespace MeowIOTBot.Basex
                 GC.Collect();
             }
         }
-        private void ReConnect()
-        {
-            ss.DisconnectAsync();
-            ss.ConnectAsync();
-        }
+
         /// <summary>
         /// 服务器的总体事件集合委托
         /// <para>On Server Message delegate</para>

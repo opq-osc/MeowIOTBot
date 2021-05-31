@@ -66,7 +66,7 @@ namespace MeowIOTBot
         /// </summary>
         public async System.Threading.Tasks.Task<MeowIOTClient> Connect()
         {
-            await ss.ConnectAsync();
+            await ss.OpenAsync(new(Url));
             return this;
         }
 
