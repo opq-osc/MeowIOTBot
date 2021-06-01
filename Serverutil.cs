@@ -44,15 +44,17 @@ namespace MeowIOTBot
         /// <param name="l">类型</param>
         /// <param name="Fore">前景色</param>
         /// <param name="Back">背景色</param>
-        public static void Log(string s, LogType l, ConsoleColor Fore = ConsoleColor.White, ConsoleColor Back = ConsoleColor.Black)
+        /// <param name="k">*</param>
+        public static int Log(string s, LogType l, ConsoleColor Fore = ConsoleColor.White, ConsoleColor Back = ConsoleColor.Black, int k = 0)
         {
             if ((int)Basex.MeowClient.logFlag >= (int)l)
             {
                 Console.ForegroundColor = Fore;
                 Console.BackgroundColor = Back;
-                Console.WriteLine($"{DateTime.Now} : : {s}");
+                Console.WriteLine($"- [Meow] [{DateTime.Now}] - \n{s}");
                 Console.ResetColor();
             }
+            return k;
         }
     }
 }

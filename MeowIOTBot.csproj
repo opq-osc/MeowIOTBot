@@ -7,8 +7,8 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.2.4
-测试表明某些linux的Websocket在上一版本无法正确加载,windows用户可继续使用上一版本,linux建议更新到本版本</Description>
+    <Description>var 5.3.0
+加入了底层的进程监视器,用于检测状态如果服务器出现状态问题触发响应标</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -19,9 +19,9 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>5.2.4</Version>
-    <AssemblyVersion>5.2.4.1</AssemblyVersion>
-    <FileVersion>5.2.4.0</FileVersion>
+    <Version>5.3.0</Version>
+    <AssemblyVersion>5.3.0.1</AssemblyVersion>
+    <FileVersion>5.3.0.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
   </PropertyGroup>
