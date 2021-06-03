@@ -7,8 +7,8 @@
     <Authors>DavidSciMeow</Authors>
     <Company>Electronicute</Company>
     <Product>MeowIOTBot</Product>
-    <Description>var 5.3.0
-加入了底层的进程监视器,用于检测状态如果服务器出现状态问题触发响应标</Description>
+    <Description>var 5.4.0
+优化了进程监视器,更新类图</Description>
     <Copyright>2020 @ Electronicute</Copyright>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/DavidSciMeow/MeowIOTBot</RepositoryUrl>
@@ -19,37 +19,24 @@
     <SignAssembly>false</SignAssembly>
     <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>Electronicute.pfx</AssemblyOriginatorKeyFile>
-    <Version>5.3.0</Version>
-    <AssemblyVersion>5.3.0.1</AssemblyVersion>
-    <FileVersion>5.3.0.0</FileVersion>
+    <Version>5.4.0</Version>
+    <AssemblyVersion>5.4.0.44</AssemblyVersion>
+    <FileVersion>5.4.0.0</FileVersion>
     <PackageId>Electronicute.MeowIOTBot</PackageId>
     <PackageTags>IOTQQBot, QQBot, Tencent, opqbot</PackageTags>
+    <ApplicationIcon>TextTemplate.ico</ApplicationIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Users\David\source\repos\MeowIOTBot\MeowIOTBot.xml</DocumentationFile>
     <Optimize>false</Optimize>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Socket.Io.Client.Core" Version="1.2.0" />
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Properties\Resources.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

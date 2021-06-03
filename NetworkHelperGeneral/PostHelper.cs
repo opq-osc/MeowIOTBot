@@ -134,7 +134,7 @@ namespace MeowIOTBot.NetworkHelper
             /// 发送信息(弃用)
             /// <para>send Message which is already Obselete</para>
             /// </summary>
-            [Obsolete]
+            [Obsolete("已弃用", false)]
             SendMsg,
             /// <summary>
             /// 新的发送信息接口

@@ -29,11 +29,11 @@ namespace MeowIOTBot.Basex
         /// </summary>
         public Socket.Io.Client.Core.SocketIoClient ss = new();
         /// <summary>
-        /// SocketUrl
+        /// Url
         /// </summary>
-        protected string Url;
+        public string Url;
         /// <summary>
-        /// Cascade timer monitor as the Socket disconnect
+        /// 进程监视器
         /// </summary>
         public System.Timers.Timer MonitorTimer = new()
         {
@@ -46,6 +46,7 @@ namespace MeowIOTBot.Basex
         /// <param name="url">ws的连接Client位置 例如 ws://localhost:10000</param>
         /// <param name="logflag">是否打印日志</param>
         /// <param name="MonitorInterval">底层监视器回报的间隔(底层监视器将在第一次连接成功后一直回报到进程结束)</param>
+        /// <param name="_MonitorEnable"></param>
         public MeowClient(string url, LogType logflag, long MonitorInterval = 10000, bool _MonitorEnable = true)
         {
             logFlag = logflag;

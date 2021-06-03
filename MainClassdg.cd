@@ -1,0 +1,669 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical" MembersFormat="FullSignature">
+  <Class Name="MeowIOTBot.MeowIOTClient">
+    <Position X="8.25" Y="3.25" Width="8.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupAtPicMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_SHUT_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventFriendTextMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_EXIT_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_NOTIFY_PUSHADDFRD_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventFriendVidMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_ADMIN_SYSNOTIFY_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupAtTextMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupPicMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_FRIEND_ADD_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_ADMIN_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventFriendPicMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_JOIN_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_FRIEND_ADD_STATUS_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_FRIEND_DELETE_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupVocMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_INVITE_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventFriendVocMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupVidMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.EventGroupTextMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_REVOKE_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.MeowIOTClient.Event_ON_EVENT_GROUP_EXIT_SUCC_EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\ClientX.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BABgQAoEAAGAAJIAAAABAOAAAAQgAAQAAAAABIEgQEE=</HashCode>
+      <FileName>_Client\ClientX.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.LoginQQ">
+    <Position X="21.75" Y="11.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>QQ\LoginQQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.EC">
+    <Position X="27.25" Y="5.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAAAAAAAAAA=</HashCode>
+      <FileName>ExceptionCore.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.ServerUtil">
+    <Position X="8.25" Y="1.75" Width="8.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Serverutil.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.Basex.MeowClient">
+    <Position X="17.5" Y="0.5" Width="9.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Delegate Name="MeowIOTBot.Basex.MeowClient.EventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\MeowClient.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.Basex.MeowClient.ObjectEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\MeowClient.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.Basex.MeowClient.GroupMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\MeowClient.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.Basex.MeowClient.FriendMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\MeowClient.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+      <Delegate Name="MeowIOTBot.Basex.MeowClient.EventMessageEventHandler">
+        <TypeIdentifier>
+          <NewMemberFileName>_Client\MeowClient.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Delegate>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>QAAAAEIAQCAAAUAAIAAAAAAAAAAAgAAQCAAAAAAAgAA=</HashCode>
+      <FileName>_Client\MeowClient.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MeowIOTBot.NetworkHelper.HttpHelper">
+    <Position X="50.5" Y="8.5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAIAAAAAAAAAAAAAAAJAACAAAAAAAAAA=</HashCode>
+      <FileName>NetworkHelperGeneral\HttpHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.NetworkHelper.PostHelper">
+    <Position X="50.5" Y="0.75" Width="7.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="MeowIOTBot.NetworkHelper.PostHelper.UrlType">
+        <TypeIdentifier>
+          <NewMemberFileName>NetworkHelperGeneral\PostHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAEAAAAAAAAAAAQAAAAgAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>NetworkHelperGeneral\PostHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.ObjectEvent.ObjectEventArgs">
+    <Position X="27.25" Y="7.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAEAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectEvent\GeneralEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQAction.Me">
+    <Position X="37" Y="13.5" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAACAAAAAIAAAAAABAAAAAgA=</HashCode>
+      <FileName>QQ\QQAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQAction.Group">
+    <Position X="37" Y="15.5" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>ABAQAAgAAEAAAAACAAAAAAAAAIAAAAgAhAAAAABAAAA=</HashCode>
+      <FileName>QQ\QQAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQAction.Friend">
+    <Position X="37" Y="11.75" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAAgAAgAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>QQ\QQAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMINSYSNOTIFY">
+    <Position X="17.5" Y="14.75" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AEAACAAEAgAABCAAAAAAAAQIgAAAAAAAAQAMAQAAAAU=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMIN">
+    <Position X="27.25" Y="14.75" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_SHUT">
+    <Position X="27.25" Y="22.25" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT">
+    <Position X="27.25" Y="16.5" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_EXIT_SUCC">
+    <Position X="27.25" Y="17.75" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_JOIN">
+    <Position X="27.25" Y="19" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_ADMINSYSNOTIFY_INVITE_GROUP">
+    <Position X="17.5" Y="19" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_GROUP_REVOKE">
+    <Position X="17.5" Y="21" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAAAAAAAQAAAAAgAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD">
+    <Position X="27.25" Y="9.75" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>EAACAAAAAgABQAAAUAAIAAwAgAAAAAAAEQAAAAAAAIQ=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_NOTIFY_PUSHADDFRD">
+    <Position X="17.5" Y="23.25" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_ADD_STATUS">
+    <Position X="17.5" Y="13" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAgAAAAAAAEAAQAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.ON_EVENT_FRIEND_DELETE">
+    <Position X="27.25" Y="13.5" Width="9.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.EventMsg">
+    <Position X="31.25" Y="7.25" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAgAAAAAAQAAAAAAAAAAQABAAAAAAACAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQEvent.Event">
+    <Position X="27.25" Y="3.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAEBAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQCookie">
+    <Position X="37" Y="18.5" Width="6.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQCookie.Pskey">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAABAAAAAAAAAAAAAAAAAgAAgAAAAAIAAAIAAA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQPerson">
+    <Position X="48.25" Y="18.5" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQPerson.datax">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAgIAAAACAAAAAQAAAAACA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQFriendList">
+    <Position X="43.75" Y="18.5" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQFriendList.QQFriend">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQFriendList._FriendList">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAACABAAAAIEAAAAAgAAAAAA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQFriendRequest">
+    <Position X="43.75" Y="24.5" Width="8.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupUserList">
+    <Position X="43.75" Y="13" Width="4.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupUserList.QQGroupUser">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAARAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupList">
+    <Position X="48.25" Y="12.75" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupList.QQGroup">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupList._GroupList">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQFunc.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>IAIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQFunc.QQGroupRequest">
+    <Position X="43.75" Y="11.5" Width="8.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>QQ\QQFunc.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.QQRecieveMessage">
+    <Position X="31.25" Y="0.75" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAEAAAAAAAAAAAgAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.IOBody">
+    <Position X="31.25" Y="5" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAEAAAAAIAAQAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MsgProperty">
+    <Position X="31.25" Y="2.75" Width="7.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAABRAAAAAAAAAAAAAAAAAAAAgAAEAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.Message">
+    <Position X="38.75" Y="2.75" Width="11.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.TextMsg">
+    <Position X="38.75" Y="0.75" Width="11.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg">
+    <Position X="38.75" Y="7" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.AtTextMsg.QQinfo">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQRecieveMessage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAQIBBAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg">
+    <Position X="45.5" Y="6" Width="3.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.PicMsg.Pic">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQRecieveMessage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAEEAEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VoiceMsg">
+    <Position X="45.5" Y="4.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.VideoMsg">
+    <Position X="38.75" Y="4.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAABAAACAAAAEAEAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.SenderStatus">
+    <Position X="52.5" Y="20.5" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAEAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.SendableClass">
+    <Position X="58.25" Y="11.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2">
+    <Position X="52.5" Y="14.25" Width="11" />
+    <TypeIdentifier>
+      <HashCode>AAwAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_TxtMsg">
+    <Position X="59.5" Y="17.5" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_PicMsg">
+    <Position X="59.5" Y="19.25" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAABIAAAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_VocMsg">
+    <Position X="59.5" Y="22" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_FwdMsg">
+    <Position X="59.5" Y="24.25" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAACAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_RplMsg">
+    <Position X="59.5" Y="26.25" Width="16.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_RplMsg.replayInfo">
+        <TypeIdentifier>
+          <NewMemberFileName>QQ\QQSendMessage.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_JsnMsg">
+    <Position X="59.5" Y="30.5" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_XmlMsg">
+    <Position X="59.5" Y="32" Width="16.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MsgV2_UploadFile">
+    <Position X="65" Y="14.5" Width="11" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAgAAAAQAAAAAAAABAAABCAABAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.Sendable">
+    <Position X="53.75" Y="11.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="MeowIOTBot.QQ.QQEvent.EventType">
+    <Position X="17.5" Y="9.75" Width="4" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAADAAkAAIAAAIAAQAEAgAAAAEAAAA=</HashCode>
+      <FileName>QQ\QQEvent.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeowIOTBot.QQ.QQMessage.QQRecieveMessage.MessageIOType">
+    <Position X="28.5" Y="0.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAgCAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQRecieveMessage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendToType">
+    <Position X="52.5" Y="16.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.MessageSendType">
+    <Position X="54.75" Y="16.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>ACAAgEAQAAAAIAAAAAIAAAAAAQAAAAAAAAAAAAAAKCA=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeowIOTBot.QQ.QQMessage.QQSendMessage.Sdstatus">
+    <Position X="52.5" Y="18.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAEAAAAAAAIAAACAAAEAAABAACAAAQ=</HashCode>
+      <FileName>QQ\QQSendMessage.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="MeowIOTBot.LogType">
+    <Position X="21.75" Y="9.75" Width="5.25" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAEAAIAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Serverutil.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei UI" Size="9" />
+</ClassDiagram>

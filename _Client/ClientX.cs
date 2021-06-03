@@ -22,16 +22,10 @@ namespace MeowIOTBot
         /// </summary>
         /// <param name="url">ws的连接Client位置 例如 ws://localhost:10000</param>
         /// <param name="logflag">是否打印日志</param>
-        /// <param name="ReconnectInterval">强制重连请求 *分钟</param>
-        /// <param name="enableForceReconnection">是否强制使用计时器重连</param>
-        /// <param name="connectionTimedOutTick">自动重连计时</param>
-        /// <param name="reconnectionDelay">自动重连延迟</param>
-        /// <param name="reconnectionDelayMax">自动重连最大计时</param>
-        /// <param name="eIO">Engine IO 版本</param>
-        /// <param name="reconnection">是否使用官方推荐自动重连</param>
-        /// <param name="allowedRetryFirstConnection">是否重试第一次失败连接</param>
-        public MeowIOTClient(string url, LogType logflag) 
-        : base(url, logflag)
+        /// <param name="monitortime">监视器循环时间</param>
+        /// <param name="monitorenable">是否启用监视器(默认启动)</param>
+        public MeowIOTClient(string url, LogType logflag, long monitortime=10000, bool monitorenable=true) 
+        : base(url, logflag, monitortime, monitorenable)
         {
             OnServerAction += SocketNullDelegate;
             OnGroupMsgs += Meow_OnGroupMsgs;
@@ -62,10 +56,29 @@ namespace MeowIOTBot
             __ON_UNMOUNT_EVENT += SocketNullDelegate;
         }
         /// <summary>
-        /// 连接IOT后端
+        /// 连接后端
         /// </summary>
         public async System.Threading.Tasks.Task<MeowIOTClient> Connect()
         {
+            await ss.OpenAsync(new(Url));
+            return this;
+        }
+        /// <summary>
+        /// 断开后端
+        /// </summary>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<MeowIOTClient> DisConnect()
+        {
+            await ss.CloseAsync();
+            return this;
+        }
+        /// <summary>
+        /// 重连后端
+        /// </summary>
+        /// <returns></returns>
+        public async System.Threading.Tasks.Task<MeowIOTClient> ReConnect()
+        {
+            await ss.CloseAsync();
             await ss.OpenAsync(new(Url));
             return this;
         }
